@@ -8,12 +8,12 @@
 
 import Foundation
 import UIKit
-import UIColor_Hex_Swift
+//import UIColor_Hex_Swift
 
 
 public struct Note {
     
-    public static let defaultColor = UIColor("#FFFFFF")
+    public static let defaultColor = UIColor(hexString: "#FFFFFF")!
     
     public let uuid: String
     
@@ -66,7 +66,7 @@ extension Note: JSONConvertable {
         result["title"] = title
         result["content"] = content
         if color != Note.defaultColor {
-            result["color"] = color.hexString()
+            result["color"] = color.hexString
         }
         if let date = erasureDate {
             result["erasureDate"] = date.iso8601String
@@ -87,7 +87,11 @@ extension Note: JSONConvertable {
         let colorString = json["color"] as? String
         let color : UIColor
         if colorString != nil {
-            color = UIColor(colorString!)
+            if let uiColor = UIColor(hexString: colorString!) {
+                color = uiColor
+            } else {
+                return nil
+            }
         } else {
             color = Note.defaultColor
         }

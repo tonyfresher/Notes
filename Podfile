@@ -5,7 +5,6 @@ target 'Notes' do
   # Pods for Notes
   pod 'SwiftyJSON'
   pod 'CocoaLumberjack'
-  pod 'UIColor_Hex_Swift', '~> 3.0.2'
 
   target 'NotesTests' do
     inherit! :search_paths

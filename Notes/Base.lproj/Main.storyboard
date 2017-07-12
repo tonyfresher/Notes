@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8NT-lA-igS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8Kb-DP-Hfg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,24 +23,56 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JcX-FW-CRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1034" y="134"/>
+            <point key="canvasLocation" x="-1034" y="18"/>
         </scene>
-        <!--Notes Table View Controller-->
+        <!--Split View Controller-->
+        <scene sceneID="6ul-aJ-Apt">
+            <objects>
+                <splitViewController id="8Kb-DP-Hfg" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="8NT-lA-igS" kind="relationship" relationship="masterViewController" id="tFV-9J-Zhz"/>
+                        <segue destination="k8R-hk-l5z" kind="relationship" relationship="detailViewController" id="cA2-gc-LkX"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aa3-zT-CeE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1961" y="409"/>
+        </scene>
+        <!--Notes-->
         <scene sceneID="wZr-ZN-xy7">
             <objects>
                 <tableViewController id="FgM-ER-LSP" customClass="NotesTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8co-gP-KHw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8co-gP-KHw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mip-jz-YYx" customClass="Not">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="wvQ-qI-3nT" detailTextLabel="ejQ-iW-Ahz" style="IBUITableViewCellStyleSubtitle" id="mip-jz-YYx">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mip-jz-YYx" id="K2u-ND-9FL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvQ-qI-3nT">
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ejQ-iW-Ahz">
+                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="k8R-hk-l5z" kind="showDetail" identifier="show_detail" id="2eo-S9-HYt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -48,11 +80,32 @@
                             <outlet property="delegate" destination="FgM-ER-LSP" id="H1o-nY-Pcb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iXR-Yl-vLa"/>
+                    <navigationItem key="navigationItem" title="Notes" id="iXR-Yl-vLa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4PD-cC-IzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="134"/>
+            <point key="canvasLocation" x="-258" y="18"/>
+        </scene>
+        <!--Note Detail View Controller-->
+        <scene sceneID="Kub-LF-rqz">
+            <objects>
+                <viewController id="k8R-hk-l5z" customClass="NoteDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="daC-ag-73Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="W2M-EO-eRh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rRS-U2-Zrj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0N-YI-tnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1034" y="835"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2eo-S9-HYt"/>
+    </inferredMetricsTieBreakers>
 </document>
