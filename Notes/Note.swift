@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import UIColor_Hex_Swift
 
 
 public struct Note {
+    
+    public static let defaultColor = UIColor("#FFFFFF")
     
     public let uuid: String
     
@@ -22,13 +25,13 @@ public struct Note {
     init(uuid: String = UUID().uuidString,
          title: String,
          content: String,
-         color: UIColor = UIColor.white,
+         color: UIColor = defaultColor,
          erasureDate: Date? = nil) {
         self.uuid = uuid
         self.title = title
         self.content = content
         self.color = color
-        self.erasureDate = erasureDate
+        self.erasureDate = erasureDate?.withZeroNanoseconds
     }
 }
 
@@ -51,7 +54,7 @@ public protocol JSONConvertable {
     
     var json: [String: Any] { get }
     
-    static func parse(_ json: [String: Any]) -> Note
+    static func parse(_ json: [String: Any]) -> Note?
 }
 
 extension Note: JSONConvertable {
@@ -62,33 +65,48 @@ extension Note: JSONConvertable {
         result["uuid"] = uuid
         result["title"] = title
         result["content"] = content
-        if color != UIColor.white {
-            result["color"] = color
+        if color != Note.defaultColor {
+            result["color"] = color.hexString()
         }
         if let date = erasureDate {
-            result["erasureDate"] = date
+            result["erasureDate"] = date.iso8601String
         }
         
         return result
     }
     
-    public static func parse(_ json: [String: Any]) -> Note {
+    public static func parse(_ json: [String: Any]) -> Note? {
         let uuid = json["uuid"] as? String
         let title = json["title"] as? String
         let content = json["content"] as? String
         
         guard uuid != nil, title != nil, content != nil else {
-            fatalError("Wrong JSON structure")
+            return nil
         }
         
-        let color = json["color"] as? UIColor ?? UIColor.white
-        let erasureDate = json["erasureDate"] as? Date
+        let colorString = json["color"] as? String
+        let color : UIColor
+        if colorString != nil {
+            color = UIColor(colorString!)
+        } else {
+            color = Note.defaultColor
+        }
         
-        return Note(uuid: uuid!,
-                    title: title!,
-                    content: content!,
-                    color: color,
-                    erasureDate: erasureDate)
+        let erasureDateString = json["erasureDate"] as? String
+        if erasureDateString != nil {
+            let erasureDate = Date(iso8601String: erasureDateString!)
+            guard erasureDate != nil else {
+                return nil
+            }
+            return Note(uuid: uuid!,
+                        title: title!, content: content!,
+                        color: color, erasureDate: erasureDate!)
+        } else {
+            return Note(uuid: uuid!,
+                        title: title!, content: content!,
+                        color: color, erasureDate: nil)
+            
+        }
     }
 }
 

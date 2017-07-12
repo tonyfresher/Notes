@@ -6,15 +6,18 @@ PODS:
   - CocoaLumberjack/Extensions (3.2.0):
     - CocoaLumberjack/Default
   - SwiftyJSON (3.1.4)
+  - UIColor_Hex_Swift (3.0.2)
 
 DEPENDENCIES:
   - CocoaLumberjack
   - SwiftyJSON
+  - UIColor_Hex_Swift (~> 3.0.2)
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 15dae4525a9bb86c3cfeb723e2692b87e0c04df2
+PODFILE CHECKSUM: 424455d86cd6edd817e46ea2a6cec5d9fa2c50cb
 
 COCOAPODS: 1.2.1

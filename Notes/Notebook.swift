@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 
 public protocol NoteCollection {
@@ -26,7 +27,7 @@ public class Notebook : NoteCollection {
     
     public private(set) var notes: [Note] = []
     
-    init(notes: [Note]) {
+    init(from notes: [Note]) {
         self.notes = notes
     }
     
@@ -51,7 +52,15 @@ public class Notebook : NoteCollection {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
-            // TODO: fix saving
+            do {
+                let notesInJSON = notes.map { $0.json }
+                try JSONSerialization
+                    .data(withJSONObject: notesInJSON, options: .prettyPrinted)
+                    .write(to: URL(fileURLWithPath: path))
+            } catch {
+                debugPrint(error.localizedDescription)
+            }
+            
             debugPrint("\(self) saved to \(path)")
             return path
         } else {
@@ -64,12 +73,20 @@ public class Notebook : NoteCollection {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
-            // Also fix there
-            let array = NSArray(contentsOfFile: path)
-            
-            if let notes = array as? [Note] {
-                debugPrint("\(notes) loaded from \(path)")
-                return Notebook(notes: notes)
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+                
+                var json: [[String: Any]]?
+                json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
+                
+                guard json != nil else {
+                    return nil
+                }
+                
+                let notes = json!.map { Note.parse($0)! }
+                return Notebook(from: notes)
+            } catch {
+                debugPrint("failed while reading JSON from: \(path)\n" + error.localizedDescription)
             }
         }
         
