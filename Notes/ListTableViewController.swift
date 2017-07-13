@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    private var notebook = Notebook(from: [Note(), Note()])
+    private var notebook = Notebook(from: [Note(title: "Foo1", content: "Bar"), Note(title: "Foo2", content: "Bar")])
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,21 +50,39 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row < notebook.size
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            do {
+                try notebook.removeNote(uuid: notebook[indexPath.row].uuid)
+            } catch {
+                DDLogWarn("Failed while deleting from \(notebook) with UUID: \(notebook[indexPath.row].uuid)")
+            }
+            tableView.endUpdates()
+        }
+    }
+    
     private let createNewIdentifier = "CreateNote"
     
     private let editNoteIdentifier = "EditNote"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination.contents as? NoteDetailViewController,
-            let noteIndex = tableView.indexPathForSelectedRow?.row {
+        if let detailViewController = segue.destination.contents as? NoteDetailViewController {
             if segue.identifier == createNewIdentifier {
                 detailViewController.note = Note()
             } else if segue.identifier == editNoteIdentifier {
-                detailViewController.note = notebook[noteIndex]
+                if let noteIndex = tableView.indexPathForSelectedRow?.row {
+                    detailViewController.note = notebook[noteIndex]
+                }
             }
         }
     }
-
+    
     
     /*
      // Override to support conditional editing of the table view.

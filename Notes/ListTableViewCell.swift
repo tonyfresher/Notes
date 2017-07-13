@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
-    var note: Note? { didSet { updateUI() } }
+    var note: Note! { didSet { updateUI() } }
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +18,11 @@ class ListTableViewCell: UITableViewCell {
     }
 
     private func updateUI() {
-        
+        guard note != nil else {
+            return
+        }
+        textLabel?.text = note.title
+        detailTextLabel?.text = note.content
     }
 
 }

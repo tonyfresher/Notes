@@ -37,7 +37,7 @@ public class Notebook : NoteCollection {
     
     public subscript(index: Int) -> Note {
         get {
-            assert(index < notes.count, "Index is out of bounds")
+            assert(index >= 0 && index < notes.count, "Index is out of bounds")
             return notes[index]
         }
         set { notes[index] = newValue }
