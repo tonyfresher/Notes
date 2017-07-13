@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-//import UIColor_Hex_Swift
 
 
 public struct Note {
@@ -23,8 +22,8 @@ public struct Note {
     public var erasureDate: Date?
     
     init(uuid: String = UUID().uuidString,
-         title: String,
-         content: String,
+         title: String = "",
+         content: String = "",
          color: UIColor = defaultColor,
          erasureDate: Date? = nil) {
         self.uuid = uuid
@@ -32,6 +31,10 @@ public struct Note {
         self.content = content
         self.color = color
         self.erasureDate = erasureDate?.withZeroNanoseconds
+    }
+    
+    public var isEmpty: Bool {
+        return title == "" && content == "" && color == Note.defaultColor && erasureDate == nil
     }
 }
 

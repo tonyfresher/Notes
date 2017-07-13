@@ -19,8 +19,9 @@
 		029186B91F15550A001099DD /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186B81F15550A001099DD /* Notebook.swift */; };
 		029186BB1F15F120001099DD /* FormationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186BA1F15F120001099DD /* FormationUtils.swift */; };
 		029186BE1F1610E3001099DD /* FormationUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186BD1F1610E3001099DD /* FormationUtilsTests.swift */; };
-		029186C11F164F62001099DD /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C01F164F62001099DD /* NotesTableViewController.swift */; };
+		029186C11F164F62001099DD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C01F164F62001099DD /* ListTableViewController.swift */; };
 		029186C31F165543001099DD /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C21F165543001099DD /* NoteDetailViewController.swift */; };
+		029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C61F16C704001099DD /* ListTableViewCell.swift */; };
 		18CC4CC33911433E977722C3 /* Pods_NotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF76875C7BCE9785FD1F65B3 /* Pods_NotesUITests.framework */; };
 		7A80E486B627A81278E16FF6 /* Pods_NotesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05E4155B4D5032A156A2A04 /* Pods_NotesTests.framework */; };
 		8D8BB4694D2E2C4A7715FDCC /* Pods_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C22440DCC8DC2427C97DAAC /* Pods_Notes.framework */; };
@@ -62,8 +63,9 @@
 		029186B81F15550A001099DD /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
 		029186BA1F15F120001099DD /* FormationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationUtils.swift; sourceTree = "<group>"; };
 		029186BD1F1610E3001099DD /* FormationUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationUtilsTests.swift; sourceTree = "<group>"; };
-		029186C01F164F62001099DD /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		029186C01F164F62001099DD /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		029186C21F165543001099DD /* NoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		029186C61F16C704001099DD /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		2CC92D00A970A5E280876990 /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		537F9F2465FEBC91A81EA97B /* Pods-NotesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotesTests/Pods-NotesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56359DAF8DA5EC339E5CFC30 /* Pods-NotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,8 +175,9 @@
 		029186BF1F164F41001099DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				029186C01F164F62001099DD /* NotesTableViewController.swift */,
+				029186C01F164F62001099DD /* ListTableViewController.swift */,
 				029186C21F165543001099DD /* NoteDetailViewController.swift */,
+				029186C61F16C704001099DD /* ListTableViewCell.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -487,12 +490,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0291868B1F150FFB001099DD /* Notes.xcdatamodeld in Sources */,
+				029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */,
 				029186C31F165543001099DD /* NoteDetailViewController.swift in Sources */,
 				029186831F150FFB001099DD /* AppDelegate.swift in Sources */,
 				029186BB1F15F120001099DD /* FormationUtils.swift in Sources */,
 				029186B91F15550A001099DD /* Notebook.swift in Sources */,
 				029186B71F1554F9001099DD /* Note.swift in Sources */,
-				029186C11F164F62001099DD /* NotesTableViewController.swift in Sources */,
+				029186C11F164F62001099DD /* ListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

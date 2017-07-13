@@ -3,7 +3,6 @@ target 'Notes' do
   use_frameworks!
 
   # Pods for Notes
-  pod 'SwiftyJSON'
   pod 'CocoaLumberjack'
 
   target 'NotesTests' do

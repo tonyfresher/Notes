@@ -19,4 +19,13 @@ class FormationUtilsTests: XCTestCase {
         let dateFromString = Date(iso8601String: dateString)
         XCTAssertEqual(date, dateFromString)
     }
+    
+    func testColorConversion() {
+        let colorString = "#000001"
+        if let color = UIColor(hexString: colorString) {
+            XCTAssertEqual(colorString, color.hexString)
+        } else {
+            XCTFail()
+        }
+    }
 }

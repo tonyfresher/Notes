@@ -12,11 +12,13 @@ import CocoaLumberjack
 
 public protocol NoteCollection {
     
-    var notes: [Note] { get }
+    var size: Int { get }
+    
+    subscript(index: Int) -> Note { get set }
     
     func addNote(_ note: Note)
     
-    func removeNote(uuid: String) -> Note
+    func removeNote(uuid: String) throws -> Note
     
     func saveToFile(_ filename: String) throws -> String
     
@@ -25,27 +27,38 @@ public protocol NoteCollection {
 
 public class Notebook : NoteCollection {
     
-    public private(set) var notes: [Note] = []
+    fileprivate var notes: [Note]
     
-    init(from notes: [Note]) {
+    init(from notes: [Note] = []) {
         self.notes = notes
+    }
+    
+    public var size: Int { return notes.count }
+    
+    public subscript(index: Int) -> Note {
+        get {
+            assert(index < notes.count, "Index is out of bounds")
+            return notes[index]
+        }
+        set { notes[index] = newValue }
     }
     
     public func addNote(_ note: Note) {
         notes.append(note)
         
-        debugPrint("\(note) added to \(self)")
+        DDLogInfo("\(note) added to \(self)")
     }
     
-    public func removeNote(uuid: String) -> Note {
+    public func removeNote(uuid: String) throws -> Note {
         for i in notes.indices {
             if notes[i].uuid == uuid {
-                debugPrint("\(notes[i]) removed from \(self)")
+                DDLogInfo("\(notes[i]) removed from \(self)")
                 return notes.remove(at: i)
             }
         }
         
-        fatalError("There is no note in notebook with such UUID")
+        DDLogError("Failed while finding note in notebook with such UUID: ")
+        throw NotebookError.invalidUUID
     }
     
     public func saveToFile(_ filename: String) throws -> String {
@@ -58,14 +71,15 @@ public class Notebook : NoteCollection {
                     .data(withJSONObject: notesInJSON, options: .prettyPrinted)
                     .write(to: URL(fileURLWithPath: path))
             } catch {
-                debugPrint(error.localizedDescription)
+                DDLogError(error.localizedDescription)
+                throw error
             }
             
-            debugPrint("\(self) saved to \(path)")
+            DDLogInfo("\(self) saved to \(path)")
             return path
         } else {
-            debugPrint("filesystem error while saving")
-            throw FileError()
+            DDLogError("Filesystem error while saving")
+            throw NotebookError.filesystemError
         }
     }
     
@@ -84,9 +98,12 @@ public class Notebook : NoteCollection {
                 }
                 
                 let notes = json!.map { Note.parse($0)! }
+                
+                DDLogInfo("\(notes) loaded from \(path)")
                 return Notebook(from: notes)
             } catch {
-                debugPrint("failed while reading JSON from: \(path)\n" + error.localizedDescription)
+                DDLogWarn("Failed while reading JSON from: \(path)\n\(error.localizedDescription)")
+                return nil
             }
         }
         
@@ -100,7 +117,10 @@ extension Notebook: CustomStringConvertible {
     }
 }
 
-struct FileError : Error {}
+enum NotebookError : Error {
+    case filesystemError
+    case invalidUUID
+}
 
 fileprivate func getFilePath(filename: String) -> String? {
     guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
