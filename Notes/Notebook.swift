@@ -9,7 +9,6 @@
 import Foundation
 import CocoaLumberjack
 
-
 public protocol NoteCollection {
     
     var size: Int { get }
@@ -109,6 +108,17 @@ public class Notebook : NoteCollection {
         
         return nil
     }
+}
+
+extension Notebook: Equatable {
+    public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
+        return lhs.notes == rhs.notes
+    }
+    
+    public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
+        return !(lhs == rhs)
+    }
+
 }
 
 extension Notebook: CustomStringConvertible {

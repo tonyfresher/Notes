@@ -30,14 +30,9 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         guard note != nil else {
             return
         }
-        titleTextView?.text = note.title
-        contentTextView?.text = note.content
+        titleTextView.text = note.title
+        contentTextView.text = note.content
         // And so on
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,11 +46,6 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     @objc private func saveNote(sender: UIBarButtonItem) {
         print("SAVED")
         navigationController?.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

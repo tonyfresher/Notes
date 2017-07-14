@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 public struct Note {
     
     public static let defaultColor = UIColor(hexString: "#FFFFFF")!

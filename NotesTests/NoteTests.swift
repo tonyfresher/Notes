@@ -57,11 +57,6 @@ class NotesTests: XCTestCase {
         
         let newNotes = jsons.map { Note.parse($0)! }
         
-        // MARK: При конвертации никак не получается получить такой же цвет - различаются на тысячные доли
-        XCTAssertEqual(newNotes[0], notes[0])
-        XCTAssertEqual(newNotes[1], notes[1])
-        //XCTAssertEqual(newNotes[2], notes[2])
-        XCTAssertEqual(newNotes[3], notes[3])
-        //XCTAssertEqual(newNotes[4], notes[4])
+        XCTAssertEqual(newNotes, notes)
     }
 }

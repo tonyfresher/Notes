@@ -8,11 +8,19 @@
 
 import UIKit
 import CoreData
+import CocoaLumberjack
+
+let ddloglevel = DDLogLevel.debug
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        DDLog.add(DDTTYLogger.sharedInstance)
+        DDLog.add(DDASLLogger.sharedInstance)
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

@@ -5,13 +5,16 @@ PODS:
   - CocoaLumberjack/Default (3.2.0)
   - CocoaLumberjack/Extensions (3.2.0):
     - CocoaLumberjack/Default
+  - Color-Picker-for-iOS (2.0.2)
 
 DEPENDENCIES:
   - CocoaLumberjack
+  - Color-Picker-for-iOS (~> 2.0)
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
+  Color-Picker-for-iOS: 4980589b3e3cfe7198f227dd50be9adb02d8bc0b
 
-PODFILE CHECKSUM: b400e5cff78cfebb8ca1d256fb4ebb2fa80fd492
+PODFILE CHECKSUM: bed964b9b15d7f53e1a98c0eaf52b57c287c502e
 
 COCOAPODS: 1.2.1

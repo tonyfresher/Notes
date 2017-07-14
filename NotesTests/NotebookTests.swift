@@ -25,7 +25,7 @@ class NotebookTests: XCTestCase {
         let path = try? notebook.saveToFile(filename)
         if path != nil {
             let loaded = Notebook.loadFromFile(filename)
-            XCTAssertEqual(loaded!.notes, notebook.notes)
+            XCTAssertEqual(loaded!, notebook)
         } else {
             XCTFail()
         }

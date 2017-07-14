@@ -9,7 +9,6 @@
 import UIKit
 import CocoaLumberjack
 
-
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
     private var notebook = Notebook(from: [Note(title: "Foo1", content: "Bar"), Note(title: "Foo2", content: "Bar")])
@@ -59,7 +58,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             do {
-                try notebook.removeNote(uuid: notebook[indexPath.row].uuid)
+                let _ = try notebook.removeNote(uuid: notebook[indexPath.row].uuid)
             } catch {
                 DDLogWarn("Failed while deleting from \(notebook) with UUID: \(notebook[indexPath.row].uuid)")
             }
@@ -82,27 +81,6 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             }
         }
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
     
     /*
      // Override to support rearranging the table view.
