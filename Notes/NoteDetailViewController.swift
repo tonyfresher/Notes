@@ -27,6 +27,18 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if state != .blank {
+            navigationController?.topViewController?.navigationItem.rightBarButtonItem =
+                UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(NoteDetailViewController.saveNote(sender:)))
+        }
+        
+        titleTextView?.delegate = self
+        contentTextView?.delegate = self
+        
+        updateUI()
+    }
+    
     private func updateUI() {
         guard note != nil else {
             return
@@ -36,12 +48,12 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         // And so on
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if state != .blank {
-            navigationController?.topViewController?.navigationItem.rightBarButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(NoteDetailViewController.saveNote(sender:)))
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView == titleTextView {
+            note.title = textView.text
+        } else if textView == contentTextView {
+            note.content = textView.text
         }
-        updateUI()
     }
     
     @objc private func saveNote(sender: UIBarButtonItem) {

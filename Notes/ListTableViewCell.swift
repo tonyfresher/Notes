@@ -20,7 +20,6 @@ class ListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     private func updateUI() {
@@ -31,22 +30,5 @@ class ListTableViewCell: UITableViewCell {
         cellTitleLabel?.text = note.title
         cellContentLabel?.text = note.content
         cellImageView?.backgroundColor = UIColor.red//UIImage(withBackground: UIColor.red)//UIColor.red//note.color
-    }
-}
-
-extension UIImage {
-    
-    convenience init(withBackground color: UIColor) {
-        
-        let rect: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)
-        UIGraphicsBeginImageContext(rect.size);
-        let context:CGContext = UIGraphicsGetCurrentContext()!;
-        context.setFillColor(color.cgColor);
-        context.fill(rect)
-        
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        self.init(ciImage: CIImage(image: image)!)
     }
 }

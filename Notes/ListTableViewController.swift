@@ -11,7 +11,7 @@ import CocoaLumberjack
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    private var notebook = Notebook(from: [Note(title: "Foo1", content: "Barasdasdasdsasdasdasdadesdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdasdasdasdasdasdasd"), Note(title: "Foo2", content: "Bar")])
+    private var notebook = Notebook(from: [Note(title: "Foo1asdasdasdasdasdasdasdasdasdasdasdasd", content: "Barasdasdasdsasdasdasdadesdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdasdasdasdasdasdasd"), Note(title: "Foo2", content: "Bar")])
     
     override func awakeFromNib() {
         super.awakeFromNib()
