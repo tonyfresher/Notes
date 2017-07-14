@@ -16,15 +16,10 @@ let ddloglevel = DDLogLevel.debug
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        DDLog.add(DDTTYLogger.sharedInstance)
-        DDLog.add(DDASLLogger.sharedInstance)
-    }
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        DDLog.add(DDTTYLogger.sharedInstance)
+        DDLog.add(DDASLLogger.sharedInstance)
         return true
     }
 

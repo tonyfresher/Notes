@@ -78,10 +78,9 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         if let detailViewController = segue.destination.contents as? NoteDetailViewController {
             if segue.identifier == createNewIdentifier {
                 detailViewController.note = Note()
-            } else if segue.identifier == editNoteIdentifier {
-                if let noteIndex = tableView.indexPathForSelectedRow?.row {
-                    detailViewController.note = notebook[noteIndex]
-                }
+            } else if segue.identifier == editNoteIdentifier,
+                let noteIndex = tableView.indexPathForSelectedRow?.row {
+                detailViewController.note = notebook[noteIndex]
             }
         }
     }

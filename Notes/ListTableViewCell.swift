@@ -11,8 +11,6 @@ import UIKit
 class ListTableViewCell: UITableViewCell {
 
     var note: Note! { didSet { updateUI() } }
-    
-    @IBOutlet weak var cellImageView: UIImageView!
 
     @IBOutlet weak var cellTitleLabel: UILabel!
     
@@ -29,6 +27,6 @@ class ListTableViewCell: UITableViewCell {
         
         cellTitleLabel?.text = note.title
         cellContentLabel?.text = note.content
-        cellImageView?.backgroundColor = UIColor.red//UIImage(withBackground: UIColor.red)//UIColor.red//note.color
+        backgroundColor = note.color
     }
 }

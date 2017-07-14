@@ -57,8 +57,8 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func saveNote(sender: UIBarButtonItem) {
-        DDLogInfo("\(note) was saved to notebook")
-        navigationController?.navigationController?.popToRootViewController(animated: true)
+        DDLogInfo("\(note!) was saved to notebook")
+        rootNavigationController?.popToRootViewController(animated: true)
     }
 }
 
@@ -66,4 +66,18 @@ enum NotesTableViewControllerStates {
     case blank
     case creation
     case editing
+}
+
+extension UIViewController {
+    
+    var rootNavigationController: UINavigationController? {
+        if navigationController == nil { return nil }
+        
+        var controller = navigationController!
+        while controller.navigationController != nil {
+            controller = controller.navigationController!
+        }
+        
+        return controller
+    }
 }

@@ -55,10 +55,6 @@ extension UIColor {
         var int = UInt32()
         
         let scanner = Scanner(string: hex)
-        if (hexString.hasPrefix("#")) {
-            scanner.scanLocation = 1
-        }
-        
         scanner.scanHexInt32(&int)
         
         let a, r, g, b: UInt32
