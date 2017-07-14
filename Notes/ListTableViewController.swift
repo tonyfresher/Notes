@@ -11,7 +11,7 @@ import CocoaLumberjack
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    private var notebook = Notebook(from: [Note(title: "Foo1", content: "Bar"), Note(title: "Foo2", content: "Bar")])
+    private var notebook = Notebook(from: [Note(title: "Foo1", content: "Barasdasdasdsasdasdasdadesdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdasdasdasdasdasdasd"), Note(title: "Foo2", content: "Bar")])
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +32,11 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
+        
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 class NoteDetailViewController: UIViewController, UITextViewDelegate {
     
@@ -44,7 +45,7 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func saveNote(sender: UIBarButtonItem) {
-        print("SAVED")
+        DDLogInfo("\(note) was saved to notebook")
         navigationController?.navigationController?.popToRootViewController(animated: true)
     }
 }
