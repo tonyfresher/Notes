@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="-1961" y="409"/>
         </scene>
-        <!--Notes-->
+        <!--List-->
         <scene sceneID="wZr-ZN-xy7">
             <objects>
-                <tableViewController id="FgM-ER-LSP" customClass="ListTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="List" id="FgM-ER-LSP" customClass="ListTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="8co-gP-KHw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,61 +121,87 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xoy-m6-oof" kind="relationship" relationship="rootViewController" id="Lph-aq-q9N"/>
+                        <segue destination="oXm-jb-NDg" kind="relationship" relationship="rootViewController" id="oGH-Kg-COw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jj0-tF-i8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1035" y="896"/>
         </scene>
-        <!--Note Detail View Controller-->
-        <scene sceneID="ny9-KI-KmC">
+        <!--Detail-->
+        <scene sceneID="kdB-g7-EEG">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Xoy-m6-oof" customClass="NoteDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="oXm-jb-NDg" customClass="NoteDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8NR-HT-rD7"/>
-                        <viewControllerLayoutGuide type="bottom" id="LVh-hR-TES"/>
+                        <viewControllerLayoutGuide type="top" id="Ml0-XB-tq9"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGf-Of-9hw"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Wj6-BL-hgr">
+                    <view key="view" contentMode="scaleToFill" id="coq-kH-aXw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oX6-Ek-NvN">
-                                <rect key="frame" x="20" y="72" width="374" height="252"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cim-6N-yeP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="H21-Gj-X50">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="104"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTh-jb-eTF">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="351.33333333333331"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ePy-LG-pwS">
+                                                <rect key="frame" x="20" y="20" width="374" height="252"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Qo-Ea-nVk" userLabel="Title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="104"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XlF-xs-uNo" userLabel="Content">
+                                                        <rect key="frame" x="0.0" y="104" width="374" height="148"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3a-Zq-apT">
-                                        <rect key="frame" x="0.0" y="104" width="374" height="148"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <constraints>
+                                            <constraint firstItem="ePy-LG-pwS" firstAttribute="leading" secondItem="nTh-jb-eTF" secondAttribute="leading" constant="20" symbolic="YES" id="Cdo-OO-1tt"/>
+                                            <constraint firstAttribute="trailing" secondItem="ePy-LG-pwS" secondAttribute="trailing" constant="20" symbolic="YES" id="YNc-Mm-OiW"/>
+                                            <constraint firstItem="ePy-LG-pwS" firstAttribute="top" secondItem="nTh-jb-eTF" secondAttribute="top" constant="20" symbolic="YES" id="gMM-rO-6xG"/>
+                                            <constraint firstAttribute="bottom" secondItem="ePy-LG-pwS" secondAttribute="bottom" constant="20" symbolic="YES" id="pVG-zM-CoO"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="nTh-jb-eTF" secondAttribute="bottom" id="UtT-zL-5fL"/>
+                                    <constraint firstItem="nTh-jb-eTF" firstAttribute="leading" secondItem="Cim-6N-yeP" secondAttribute="leading" id="XqL-eM-MUu"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTh-jb-eTF" secondAttribute="trailing" id="elC-ES-OGs"/>
+                                    <constraint firstItem="nTh-jb-eTF" firstAttribute="top" secondItem="Cim-6N-yeP" secondAttribute="top" id="uvK-A9-rij"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oX6-Ek-NvN" firstAttribute="top" secondItem="8NR-HT-rD7" secondAttribute="bottom" constant="8" symbolic="YES" id="60Z-y0-LG2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oX6-Ek-NvN" secondAttribute="trailing" id="NbC-i7-uqt"/>
-                            <constraint firstItem="oX6-Ek-NvN" firstAttribute="leading" secondItem="Wj6-BL-hgr" secondAttribute="leadingMargin" id="o3f-aj-Esr"/>
+                            <constraint firstItem="nTh-jb-eTF" firstAttribute="width" secondItem="coq-kH-aXw" secondAttribute="width" id="AL4-QY-mG3"/>
+                            <constraint firstItem="nTh-jb-eTF" firstAttribute="height" secondItem="coq-kH-aXw" secondAttribute="height" priority="250" id="DDD-8F-ReY"/>
+                            <constraint firstItem="Cim-6N-yeP" firstAttribute="leading" secondItem="coq-kH-aXw" secondAttribute="leading" id="gkN-wN-2uV"/>
+                            <constraint firstAttribute="trailing" secondItem="Cim-6N-yeP" secondAttribute="trailing" id="rqr-Td-g2c"/>
+                            <constraint firstItem="Cim-6N-yeP" firstAttribute="bottom" secondItem="eGf-Of-9hw" secondAttribute="top" id="vHV-QS-4BV"/>
+                            <constraint firstItem="Cim-6N-yeP" firstAttribute="top" secondItem="coq-kH-aXw" secondAttribute="top" id="zHk-Q4-jVP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4MT-Zb-UG6"/>
+                    <navigationItem key="navigationItem" id="69o-g5-jV2"/>
                     <connections>
-                        <outlet property="contentTextView" destination="g3a-Zq-apT" id="5n5-qO-RZ4"/>
-                        <outlet property="titleTextView" destination="H21-Gj-X50" id="1wh-aD-gKL"/>
+                        <outlet property="contentTextView" destination="XlF-xs-uNo" id="oEF-p4-roZ"/>
+                        <outlet property="titleTextView" destination="8Qo-Ea-nVk" id="ceD-nA-HS5"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t2Y-h9-Zl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgT-Ly-1sR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-244" y="896"/>
+            <point key="canvasLocation" x="-245" y="896"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
