@@ -22,7 +22,8 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
                              collapseSecondary secondaryViewController: UIViewController,
                              onto primaryViewController: UIViewController) -> Bool {
         if primaryViewController.contents == self {
-            if let ndvc = secondaryViewController.contents as? NoteDetailViewController, ndvc.state == .blank {
+            if let noteDetailViewController =
+                secondaryViewController.contents as? NoteDetailViewController, noteDetailViewController.state == .blank {
                 return true
             }
         }
@@ -104,8 +105,8 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
 extension UIViewController {
     
     var contents: UIViewController {
-        if let navcon = self as? UINavigationController {
-            return navcon.visibleViewController ?? self
+        if let navigationController = self as? UINavigationController {
+            return navigationController.visibleViewController ?? self
         } else {
             return self
         }
