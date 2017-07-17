@@ -8,12 +8,12 @@
 
 import Foundation
 import UIKit
-import UIColor_Hex_Swift
 
+// MARK: Main class
 
 public struct Note {
     
-    public static let defaultColor = UIColor("#FFFFFF")
+    public static let defaultColor = UIColor(hexString: "#ffffff")!
     
     public let uuid: String
     
@@ -23,8 +23,8 @@ public struct Note {
     public var erasureDate: Date?
     
     init(uuid: String = UUID().uuidString,
-         title: String,
-         content: String,
+         title: String = "",
+         content: String = "",
          color: UIColor = defaultColor,
          erasureDate: Date? = nil) {
         self.uuid = uuid
@@ -33,22 +33,13 @@ public struct Note {
         self.color = color
         self.erasureDate = erasureDate?.withZeroNanoseconds
     }
+    
+    public var isEmpty: Bool {
+        return title == "" && content == "" && color == Note.defaultColor && erasureDate == nil
+    }
 }
 
-extension Note: Equatable {
-    
-    public static func == (lhs: Note, rhs: Note) -> Bool {
-        return lhs.uuid == rhs.uuid &&
-            lhs.title == rhs.title &&
-            lhs.content == rhs.content &&
-            lhs.color == rhs.color &&
-            lhs.erasureDate == rhs.erasureDate
-    }
-    
-    public static func != (lhs: Note, rhs: Note) -> Bool {
-        return !(lhs == rhs)
-    }
-}
+// MARK: JSON conversion support
 
 public protocol JSONConvertable {
     
@@ -66,7 +57,7 @@ extension Note: JSONConvertable {
         result["title"] = title
         result["content"] = content
         if color != Note.defaultColor {
-            result["color"] = color.hexString()
+            result["color"] = color.hexString
         }
         if let date = erasureDate {
             result["erasureDate"] = date.iso8601String
@@ -87,7 +78,11 @@ extension Note: JSONConvertable {
         let colorString = json["color"] as? String
         let color : UIColor
         if colorString != nil {
-            color = UIColor(colorString!)
+            if let uiColor = UIColor(hexString: colorString!) {
+                color = uiColor
+            } else {
+                return nil
+            }
         } else {
             color = Note.defaultColor
         }
@@ -107,6 +102,23 @@ extension Note: JSONConvertable {
                         color: color, erasureDate: nil)
             
         }
+    }
+}
+
+// MARK: Additional handy protocols
+
+extension Note: Equatable {
+    
+    public static func == (lhs: Note, rhs: Note) -> Bool {
+        return lhs.uuid == rhs.uuid &&
+            lhs.title == rhs.title &&
+            lhs.content == rhs.content &&
+            lhs.color == rhs.color &&
+            lhs.erasureDate == rhs.erasureDate
+    }
+    
+    public static func != (lhs: Note, rhs: Note) -> Bool {
+        return !(lhs == rhs)
     }
 }
 

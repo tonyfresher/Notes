@@ -3,9 +3,8 @@ target 'Notes' do
   use_frameworks!
 
   # Pods for Notes
-  pod 'SwiftyJSON'
   pod 'CocoaLumberjack'
-  pod 'UIColor_Hex_Swift', '~> 3.0.2'
+  pod "Color-Picker-for-iOS", "~> 2.0"
 
   target 'NotesTests' do
     inherit! :search_paths

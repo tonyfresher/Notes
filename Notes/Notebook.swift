@@ -9,46 +9,109 @@
 import Foundation
 import CocoaLumberjack
 
-
-public protocol NoteCollection {
+public protocol NoteCollection : Sequence {
     
-    var notes: [Note] { get }
+    var size: Int { get }
     
-    func addNote(_ note: Note)
+    subscript(index: Int) -> Note { get set }
     
-    func removeNote(uuid: String) -> Note
+    func add(note: Note)
     
-    func saveToFile(_ filename: String) throws -> String
+    func update(note: Note)
     
-    static func loadFromFile(_ filename: String) -> Notebook?
+    func remove(with uuid: String) throws -> Note
+    
+    func contains(with uuid: String) -> Bool
 }
+
+// MARK: Main class
 
 public class Notebook : NoteCollection {
     
-    public private(set) var notes: [Note] = []
+    fileprivate var notes: [Note]
     
-    init(from notes: [Note]) {
+    init(from notes: [Note] = []) {
         self.notes = notes
     }
     
-    public func addNote(_ note: Note) {
-        notes.append(note)
-        
-        debugPrint("\(note) added to \(self)")
+    public var size: Int { return notes.count }
+    
+    public subscript(index: Int) -> Note {
+        get {
+            assert(index >= 0 && index < notes.count, "Index is out of bounds")
+            return notes[index]
+        }
+        set { notes[index] = newValue }
     }
     
-    public func removeNote(uuid: String) -> Note {
+    public func makeIterator() -> NoteGenerator {
+        return NoteGenerator(notes)
+    }
+    
+    // MARK: Basic manipulations
+
+    public func add(note: Note) {
+        notes.append(note)
+        DDLogInfo("\(note) was added to \(self)")
+    }
+    
+    public func update(note: Note) {
+        for i in notes.indices {
+            if notes[i].uuid == note.uuid {
+                let previousVersion = notes[i]
+                notes[i] = note
+                DDLogInfo("\(previousVersion) was updated to \(note)")
+            }
+        }
+    }
+    
+    public func remove(with uuid: String) throws -> Note {
         for i in notes.indices {
             if notes[i].uuid == uuid {
-                debugPrint("\(notes[i]) removed from \(self)")
-                return notes.remove(at: i)
+                let removed = notes.remove(at: i)
+                DDLogInfo("\(removed) was removed from \(self)")
+                return removed
             }
         }
         
-        fatalError("There is no note in notebook with such UUID")
+        DDLogError("Failed while finding note in notebook with such UUID: ")
+        throw NotebookError.invalidUUID
     }
     
-    public func saveToFile(_ filename: String) throws -> String {
+    public func contains(with uuid: String) -> Bool {
+        return notes.contains { $0.uuid == uuid }
+    }
+}
+
+// MARK: Helper class for sequencing support
+
+public struct NoteGenerator: IteratorProtocol {
+    let array: [Note]
+    var index = 0
+    
+    init(_ array: [Note]) {
+        self.array = array
+    }
+    
+    mutating public func next() -> Note? {
+        let nextElement = index < array.count ? array[index] : nil
+        index += 1
+        return nextElement
+    }
+}
+
+// MARK: Import/export support
+
+protocol FileStorageSupportable {
+    
+    func save(to filename: String) throws -> String
+    
+    static func load(from filename: String) -> Notebook?
+}
+
+extension Notebook : FileStorageSupportable {
+    
+    public func save(to filename: String) throws -> String {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
@@ -58,18 +121,19 @@ public class Notebook : NoteCollection {
                     .data(withJSONObject: notesInJSON, options: .prettyPrinted)
                     .write(to: URL(fileURLWithPath: path))
             } catch {
-                debugPrint(error.localizedDescription)
+                DDLogError(error.localizedDescription)
+                throw error
             }
             
-            debugPrint("\(self) saved to \(path)")
+            DDLogInfo("\(self) saved to \(path)")
             return path
         } else {
-            debugPrint("filesystem error while saving")
-            throw FileError()
+            DDLogError("Filesystem error while saving")
+            throw NotebookError.filesystemError
         }
     }
     
-    public static func loadFromFile(_ filename: String) -> Notebook? {
+    public static func load(from filename: String) -> Notebook? {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
@@ -84,14 +148,38 @@ public class Notebook : NoteCollection {
                 }
                 
                 let notes = json!.map { Note.parse($0)! }
+                
+                DDLogInfo("\(notes) loaded from \(path)")
                 return Notebook(from: notes)
             } catch {
-                debugPrint("failed while reading JSON from: \(path)\n" + error.localizedDescription)
+                DDLogWarn("Failed while reading JSON from: \(path)\n\(error.localizedDescription)")
+                return nil
             }
         }
         
         return nil
     }
+}
+
+fileprivate func getFilePath(filename: String) -> String? {
+    guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
+        return nil
+    }
+    let path = "\(dir)/\(filename).plist"
+    return path
+}
+
+// MARK: Additional handy protocols
+
+extension Notebook: Equatable {
+    public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
+        return lhs.notes == rhs.notes
+    }
+    
+    public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
+        return !(lhs == rhs)
+    }
+    
 }
 
 extension Notebook: CustomStringConvertible {
@@ -100,12 +188,9 @@ extension Notebook: CustomStringConvertible {
     }
 }
 
-struct FileError : Error {}
+// MARK: Custom error
 
-fileprivate func getFilePath(filename: String) -> String? {
-    guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
-        return nil
-    }
-    let path = "\(dir)/\(filename).plist"
-    return path
+enum NotebookError : Error {
+    case filesystemError
+    case invalidUUID
 }

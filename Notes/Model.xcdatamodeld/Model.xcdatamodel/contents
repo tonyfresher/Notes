@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBNote" representedClassName="DBNote" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="erasureDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBNotebook" inverseName="notes" inverseEntity="DBNotebook" syncable="YES"/>
+    </entity>
+    <entity name="DBNotebook" representedClassName="DBNotebook" syncable="YES">
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="DBNote" inverseName="notebook" inverseEntity="DBNote" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DBNote" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="DBNotebook" positionX="117" positionY="-18" width="128" height="58"/>
+    </elements>
+</model>
