@@ -15,6 +15,18 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var contentTextView: UITextView!
     
+    @IBOutlet weak var autoErasureSwitch: UISwitch!
+    
+    @IBAction func switchAutoErasureDatePicker(_ sender: UISwitch) {
+        autoErasureDatePicker.isHidden = sender.isOn ? false : true
+    }
+    
+    @IBOutlet weak var autoErasureDatePicker: UIDatePicker!
+    
+    @IBAction func pickAutoErasureDate(_ sender: UIDatePicker, forEvent event: UIEvent) {
+        note.erasureDate = sender.date
+    }
+    
     var state: NotesTableViewControllerStates = .blank
     
     var note: Note! {
@@ -36,16 +48,23 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         titleTextView?.delegate = self
         contentTextView?.delegate = self
         
-        updateUI()
+        autoErasureDatePicker.minimumDate = Date()
+        
+        initFromNote()
     }
     
-    private func updateUI() {
+    private func initFromNote() {
         guard note != nil else {
             return
         }
         titleTextView.text = note.title
         contentTextView.text = note.content
-        // And so on
+        
+        if let date = note.erasureDate {
+            autoErasureSwitch.isOn = true
+            autoErasureDatePicker.isHidden = false
+            autoErasureDatePicker.setDate(date, animated: false)
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

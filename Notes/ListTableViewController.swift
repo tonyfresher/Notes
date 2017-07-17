@@ -63,7 +63,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             do {
-                let _ = try notebook.removeNote(uuid: notebook[indexPath.row].uuid)
+                _ = try notebook.remove(with: notebook[indexPath.row].uuid)
             } catch {
                 DDLogWarn("Failed while deleting from \(notebook) with UUID: \(notebook[indexPath.row].uuid)")
             }

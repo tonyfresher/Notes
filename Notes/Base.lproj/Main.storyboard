@@ -147,22 +147,48 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="NK4-Xp-zhw">
-                                                <rect key="frame" x="20" y="20" width="374" height="252"/>
+                                                <rect key="frame" x="20" y="20" width="374" height="489"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IFt-la-fOK" userLabel="Title">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFt-la-fOK" userLabel="Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="104"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IS6-1a-vTe" userLabel="Content">
-                                                        <rect key="frame" x="0.0" y="104" width="363" height="148"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IS6-1a-vTe" userLabel="Content">
+                                                        <rect key="frame" x="0.0" y="104" width="363" height="138"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jbd-qg-4G5">
+                                                        <rect key="frame" x="0.0" y="242" width="165" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-erasure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRc-AX-gj9" userLabel="Auto-erasure">
+                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9BO-at-Omr">
+                                                                <rect key="frame" x="116" y="0.0" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="switchAutoErasureDatePicker:" destination="9Hn-0O-jXv" eventType="valueChanged" id="YQ1-sW-dNI"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="h3B-bE-sbw">
+                                                        <rect key="frame" x="0.0" y="273" width="374" height="216"/>
+                                                        <date key="date" timeIntervalSinceReferenceDate="521961403.68314201">
+                                                            <!--2017-07-17 05:16:43 +0000-->
+                                                        </date>
+                                                        <connections>
+                                                            <action selector="pickAutoErasureDate:forEvent:" destination="9Hn-0O-jXv" eventType="valueChanged" id="JEc-Bk-AdC"/>
+                                                        </connections>
+                                                    </datePicker>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -173,6 +199,7 @@
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NK4-Xp-zhw" secondAttribute="bottom" constant="20" symbolic="YES" id="Jg7-uq-gCN"/>
                                             <constraint firstItem="NK4-Xp-zhw" firstAttribute="centerX" secondItem="gMF-Ml-u3D" secondAttribute="centerX" id="Krl-XS-8YY"/>
                                             <constraint firstItem="NK4-Xp-zhw" firstAttribute="leading" secondItem="gMF-Ml-u3D" secondAttribute="leading" constant="20" symbolic="YES" id="lpI-r5-RNH"/>
+                                            <constraint firstItem="h3B-bE-sbw" firstAttribute="centerX" secondItem="gMF-Ml-u3D" secondAttribute="centerX" id="xBL-m2-B0Z"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -196,6 +223,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="wHK-tY-Rar"/>
                     <connections>
+                        <outlet property="autoErasureDatePicker" destination="h3B-bE-sbw" id="Csf-Ni-ADY"/>
+                        <outlet property="autoErasureSwitch" destination="9BO-at-Omr" id="iBm-gc-yqs"/>
                         <outlet property="contentTextView" destination="IS6-1a-vTe" id="7fa-so-E7K"/>
                         <outlet property="titleTextView" destination="IFt-la-fOK" id="Lwc-FL-2Iv"/>
                     </connections>

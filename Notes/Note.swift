@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
+// MARK: Main class
+
 public struct Note {
     
-    public static let defaultColor = UIColor(hexString: "#FFFFFF")!
+    public static let defaultColor = UIColor(hexString: "#ffffff")!
     
     public let uuid: String
     
@@ -37,20 +39,7 @@ public struct Note {
     }
 }
 
-extension Note: Equatable {
-    
-    public static func == (lhs: Note, rhs: Note) -> Bool {
-        return lhs.uuid == rhs.uuid &&
-            lhs.title == rhs.title &&
-            lhs.content == rhs.content &&
-            lhs.color == rhs.color &&
-            lhs.erasureDate == rhs.erasureDate
-    }
-    
-    public static func != (lhs: Note, rhs: Note) -> Bool {
-        return !(lhs == rhs)
-    }
-}
+// MARK: JSON conversion support
 
 public protocol JSONConvertable {
     
@@ -113,6 +102,23 @@ extension Note: JSONConvertable {
                         color: color, erasureDate: nil)
             
         }
+    }
+}
+
+// MARK: Additional handy protocols
+
+extension Note: Equatable {
+    
+    public static func == (lhs: Note, rhs: Note) -> Bool {
+        return lhs.uuid == rhs.uuid &&
+            lhs.title == rhs.title &&
+            lhs.content == rhs.content &&
+            lhs.color == rhs.color &&
+            lhs.erasureDate == rhs.erasureDate
+    }
+    
+    public static func != (lhs: Note, rhs: Note) -> Bool {
+        return !(lhs == rhs)
     }
 }
 

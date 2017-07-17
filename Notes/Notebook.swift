@@ -9,20 +9,22 @@
 import Foundation
 import CocoaLumberjack
 
-public protocol NoteCollection {
+public protocol NoteCollection : Sequence {
     
     var size: Int { get }
     
     subscript(index: Int) -> Note { get set }
     
-    func addNote(_ note: Note)
+    func add(note: Note)
     
-    func removeNote(uuid: String) throws -> Note
+    func update(note: Note)
     
-    func saveToFile(_ filename: String) throws -> String
+    func remove(with uuid: String) throws -> Note
     
-    static func loadFromFile(_ filename: String) -> Notebook?
+    func contains(with uuid: String) -> Bool
 }
+
+// MARK: Main class
 
 public class Notebook : NoteCollection {
     
@@ -42,13 +44,27 @@ public class Notebook : NoteCollection {
         set { notes[index] = newValue }
     }
     
-    public func addNote(_ note: Note) {
+    public func makeIterator() -> NoteGenerator {
+        return NoteGenerator(notes)
+    }
+    
+    // MARK: Basic manipulations
+
+    public func add(note: Note) {
         notes.append(note)
-        
         DDLogInfo("\(note) added to \(self)")
     }
     
-    public func removeNote(uuid: String) throws -> Note {
+    public func update(note: Note) {
+        for i in notes.indices {
+            if notes[i].uuid == note.uuid {
+                notes[i] = note
+                DDLogInfo("\(notes[i]) updated to \(note)")
+            }
+        }
+    }
+    
+    public func remove(with uuid: String) throws -> Note {
         for i in notes.indices {
             if notes[i].uuid == uuid {
                 DDLogInfo("\(notes[i]) removed from \(self)")
@@ -60,7 +76,39 @@ public class Notebook : NoteCollection {
         throw NotebookError.invalidUUID
     }
     
-    public func saveToFile(_ filename: String) throws -> String {
+    public func contains(with uuid: String) -> Bool {
+        return notes.contains { $0.uuid == uuid }
+    }
+}
+
+// MARK: Helper class for sequencing support
+
+public struct NoteGenerator: IteratorProtocol {
+    let array: [Note]
+    var currentIndex = 0
+    
+    init(_ array: [Note]) {
+        self.array = array
+    }
+    
+    mutating public func next() -> Note? {
+        currentIndex += 1
+        return currentIndex < array.count ? array[currentIndex] : nil
+    }
+}
+
+// MARK: Import/export support
+
+protocol FileStorageSupportable {
+    
+    func save(to filename: String) throws -> String
+    
+    static func load(from filename: String) -> Notebook?
+}
+
+extension Notebook : FileStorageSupportable {
+    
+    public func save(to filename: String) throws -> String {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
@@ -82,7 +130,7 @@ public class Notebook : NoteCollection {
         }
     }
     
-    public static func loadFromFile(_ filename: String) -> Notebook? {
+    public static func load(from filename: String) -> Notebook? {
         let filePath = getFilePath(filename: filename)
         
         if let path = filePath {
@@ -110,6 +158,16 @@ public class Notebook : NoteCollection {
     }
 }
 
+fileprivate func getFilePath(filename: String) -> String? {
+    guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
+        return nil
+    }
+    let path = "\(dir)/\(filename).plist"
+    return path
+}
+
+// MARK: Additional handy protocols
+
 extension Notebook: Equatable {
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.notes == rhs.notes
@@ -118,7 +176,7 @@ extension Notebook: Equatable {
     public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
         return !(lhs == rhs)
     }
-
+    
 }
 
 extension Notebook: CustomStringConvertible {
@@ -127,15 +185,9 @@ extension Notebook: CustomStringConvertible {
     }
 }
 
+// MARK: Custom error
+
 enum NotebookError : Error {
     case filesystemError
     case invalidUUID
-}
-
-fileprivate func getFilePath(filename: String) -> String? {
-    guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
-        return nil
-    }
-    let path = "\(dir)/\(filename).plist"
-    return path
 }
