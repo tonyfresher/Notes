@@ -16,13 +16,11 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var contentTextView: UITextView!
     
     @IBOutlet weak var autoErasureSwitch: UISwitch!
-    
     @IBAction func switchAutoErasureDatePicker(_ sender: UISwitch) {
         autoErasureDatePicker.isHidden = sender.isOn ? false : true
     }
     
     @IBOutlet weak var autoErasureDatePicker: UIDatePicker!
-    
     @IBAction func pickAutoErasureDate(_ sender: UIDatePicker, forEvent event: UIEvent) {
         note.erasureDate = sender.date
     }
@@ -76,6 +74,7 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func saveNote(sender: UIBarButtonItem) {
+        // MARK: NEED SOME KOSTYL
         DDLogInfo("\(note!) was saved to notebook")
         rootNavigationController?.popToRootViewController(animated: true)
     }

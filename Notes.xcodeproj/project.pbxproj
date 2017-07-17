@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		029186831F150FFB001099DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186821F150FFB001099DD /* AppDelegate.swift */; };
 		029186881F150FFB001099DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029186861F150FFB001099DD /* Main.storyboard */; };
-		0291868B1F150FFB001099DD /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 029186891F150FFB001099DD /* Notes.xcdatamodeld */; };
+		0291868B1F150FFB001099DD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 029186891F150FFB001099DD /* Model.xcdatamodeld */; };
 		0291868D1F150FFB001099DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0291868C1F150FFB001099DD /* Assets.xcassets */; };
 		029186901F150FFB001099DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0291868E1F150FFB001099DD /* LaunchScreen.storyboard */; };
 		0291869B1F150FFB001099DD /* NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291869A1F150FFB001099DD /* NoteTests.swift */; };
@@ -48,7 +48,7 @@
 		0291867F1F150FFB001099DD /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029186821F150FFB001099DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		029186871F150FFB001099DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0291868A1F150FFB001099DD /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
+		0291868A1F150FFB001099DD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0291868C1F150FFB001099DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0291868F1F150FFB001099DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		029186911F150FFB001099DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0227A6191F1CD37300CFF062 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				029186BA1F15F120001099DD /* FormationUtils.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		029186761F150FFB001099DD = {
 			isa = PBXGroup;
 			children = (
@@ -130,15 +138,15 @@
 		029186811F150FFB001099DD /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				029186BF1F164F41001099DD /* UI */,
 				029186B51F1554D9001099DD /* Model */,
+				029186BF1F164F41001099DD /* UI */,
+				0227A6191F1CD37300CFF062 /* Utils */,
 				029186821F150FFB001099DD /* AppDelegate.swift */,
+				0291868E1F150FFB001099DD /* LaunchScreen.storyboard */,
 				029186861F150FFB001099DD /* Main.storyboard */,
 				0291868C1F150FFB001099DD /* Assets.xcassets */,
-				0291868E1F150FFB001099DD /* LaunchScreen.storyboard */,
+				029186891F150FFB001099DD /* Model.xcdatamodeld */,
 				029186911F150FFB001099DD /* Info.plist */,
-				029186891F150FFB001099DD /* Notes.xcdatamodeld */,
-				029186BA1F15F120001099DD /* FormationUtils.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -489,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0291868B1F150FFB001099DD /* Notes.xcdatamodeld in Sources */,
+				0291868B1F150FFB001099DD /* Model.xcdatamodeld in Sources */,
 				029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */,
 				029186C31F165543001099DD /* NoteDetailViewController.swift in Sources */,
 				029186831F150FFB001099DD /* AppDelegate.swift in Sources */,
@@ -780,13 +788,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		029186891F150FFB001099DD /* Notes.xcdatamodeld */ = {
+		029186891F150FFB001099DD /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0291868A1F150FFB001099DD /* Notes.xcdatamodel */,
+				0291868A1F150FFB001099DD /* Model.xcdatamodel */,
 			);
-			currentVersion = 0291868A1F150FFB001099DD /* Notes.xcdatamodel */;
-			path = Notes.xcdatamodeld;
+			currentVersion = 0291868A1F150FFB001099DD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

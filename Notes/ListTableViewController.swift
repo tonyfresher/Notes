@@ -11,7 +11,9 @@ import CocoaLumberjack
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    private var notebook = Notebook(from: [Note(title: "Foo1asdasdasdasdasdasdasdasdasdasdasdasd", content: "Barasdasdasdsasdasdasdadesdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdadasdasdasdasdasdasdasd"), Note(title: "Foo2", content: "Bar")])
+    private var notebook = Notebook(from: [
+        Note(title: "Lorem ipsum", content: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+        Note(title: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", content: "Lorem ipsum")])
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,9 +63,9 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
             do {
                 _ = try notebook.remove(with: notebook[indexPath.row].uuid)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
                 DDLogWarn("Failed while deleting from \(notebook) with UUID: \(notebook[indexPath.row].uuid)")
             }

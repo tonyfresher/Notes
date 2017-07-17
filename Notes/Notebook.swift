@@ -52,14 +52,15 @@ public class Notebook : NoteCollection {
 
     public func add(note: Note) {
         notes.append(note)
-        DDLogInfo("\(note) added to \(self)")
+        DDLogInfo("\(note) was added to \(self)")
     }
     
     public func update(note: Note) {
         for i in notes.indices {
             if notes[i].uuid == note.uuid {
+                let previousVersion = notes[i]
                 notes[i] = note
-                DDLogInfo("\(notes[i]) updated to \(note)")
+                DDLogInfo("\(previousVersion) was updated to \(note)")
             }
         }
     }
@@ -67,8 +68,9 @@ public class Notebook : NoteCollection {
     public func remove(with uuid: String) throws -> Note {
         for i in notes.indices {
             if notes[i].uuid == uuid {
-                DDLogInfo("\(notes[i]) removed from \(self)")
-                return notes.remove(at: i)
+                let removed = notes.remove(at: i)
+                DDLogInfo("\(removed) was removed from \(self)")
+                return removed
             }
         }
         
@@ -85,15 +87,16 @@ public class Notebook : NoteCollection {
 
 public struct NoteGenerator: IteratorProtocol {
     let array: [Note]
-    var currentIndex = 0
+    var index = 0
     
     init(_ array: [Note]) {
         self.array = array
     }
     
     mutating public func next() -> Note? {
-        currentIndex += 1
-        return currentIndex < array.count ? array[currentIndex] : nil
+        let nextElement = index < array.count ? array[index] : nil
+        index += 1
+        return nextElement
     }
 }
 
