@@ -34,7 +34,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     private let editNoteIdentifier = "EditNote"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination.contents as? NoteDetailViewController {
+        if let detailViewController = segue.destination.contents as? DetailViewController {
             if segue.identifier == createNewIdentifier {
                 detailViewController.note = Note()
             } else if segue.identifier == editNoteIdentifier,
@@ -99,13 +99,17 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
                              onto primaryViewController: UIViewController) -> Bool {
         if primaryViewController.contents == self {
             if let noteDetailViewController =
-                secondaryViewController.contents as? NoteDetailViewController, noteDetailViewController.state == .blank {
+                secondaryViewController.contents as? DetailViewController, noteDetailViewController.state == .blank {
                 return true
             }
         }
         
         return false
     }
+    
+    // MARK: Core Data usage
+    
+    var coreDataManager: CoreDataManager!
 }
 
 extension UIViewController {

@@ -12,15 +12,13 @@ import CocoaLumberjack
 
 final class CoreDataManager {
     
+    typealias CoreDataManagerCompletion = () -> ()
+    
     // MARK: - Properties
     
     private let modelName: String
     
-    // MARK: - Initialization
-    
-    init(modelName: String) {
-        self.modelName = modelName
-    }
+    private let completion: CoreDataManagerCompletion?
     
     // MARK: - Core Data Stack
     
@@ -33,7 +31,6 @@ final class CoreDataManager {
     
     public private(set) lazy var mainManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        
         managedObjectContext.parent = self.privateManagedObjectContext
         
         return managedObjectContext
@@ -51,15 +48,40 @@ final class CoreDataManager {
         return managedObjectModel
     }()
     
-    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = { NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel) }()
+    
+    private var persistentStoreURL: URL {
+        let storeName = "\(modelName).sqlite"
         let fileManager = FileManager.default
-        let storeName = "\(self.modelName).sqlite"
         
         let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        let persistentStoreURL = documentsDirectoryURL.appendingPathComponent(storeName)
+        return documentsDirectoryURL.appendingPathComponent(storeName)
+    }
+    
+    // MARK: - Initialization
+    
+    init(modelName: String, completion: CoreDataManagerCompletion? = nil) {
+        self.modelName = modelName
+        self.completion = completion
+        
+        setup()
+    }
+    
+    // MARK: Supporting initialization methods
+    
+    private func setup() {
+        _ = mainManagedObjectContext.persistentStoreCoordinator
+        
+        DispatchQueue.global().async {
+            self.addPersistentStore()
+            
+            DispatchQueue.main.async { self.completion?() }
+        }
+    }
+    
+    private func addPersistentStore() {
+        let persistentStoreURL = self.persistentStoreURL
         
         do {
             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
@@ -69,12 +91,17 @@ final class CoreDataManager {
         } catch {
             fatalError("Unable to Load Persistent Store")
         }
+    }
+    
+    /// - Returns: a new private child context of main context
+    public func createPrivateChildManagedObjectContext() -> NSManagedObjectContext {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        managedObjectContext.parent = mainManagedObjectContext
         
-        return persistentStoreCoordinator
-    }()
+        return managedObjectContext
+    }
     
-    // MARK:
-    
+    /// Saves changes from main context with private context
     public func saveChanges() {
         mainManagedObjectContext.performAndWait {
             do {

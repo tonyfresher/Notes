@@ -42,7 +42,7 @@
         <!--List-->
         <scene sceneID="wZr-ZN-xy7">
             <objects>
-                <tableViewController title="List" id="FgM-ER-LSP" customClass="ListTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="List" title="List" id="FgM-ER-LSP" customClass="ListTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="8co-gP-KHw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
         <!--Detail-->
         <scene sceneID="C97-a8-9BY">
             <objects>
-                <viewController title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="9Hn-0O-jXv" customClass="NoteDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" title="Detail" automaticallyAdjustsScrollViewInsets="NO" id="9Hn-0O-jXv" customClass="DetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dwh-pZ-7cT"/>
                         <viewControllerLayoutGuide type="bottom" id="ssf-0i-7Mm"/>

@@ -1,5 +1,5 @@
 //
-//  NoteDetailViewController.swift
+//  DetailViewController.swift
 //  Notes
 //
 //  Created by Anton Fresher on 12.07.17.
@@ -9,7 +9,7 @@
 import UIKit
 import CocoaLumberjack
 
-class NoteDetailViewController: UIViewController, UITextViewDelegate {
+class DetailViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var titleTextView: UITextView!
     
@@ -25,6 +25,17 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         note.erasureDate = sender.date
     }
     
+    /// States of this controller
+    ///
+    /// - blank: empty view, no action is needed
+    /// - creation: creating new note
+    /// - editing: editing existing note
+    enum State {
+        case blank
+        case creation
+        case editing
+    }
+    
     var state: State = .blank
     
     var note: Note! {
@@ -35,20 +46,6 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
                 state = .editing
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if state != .blank {
-            navigationController?.topViewController?.navigationItem.rightBarButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(NoteDetailViewController.saveNote(sender:)))
-        }
-        
-        titleTextView?.delegate = self
-        contentTextView?.delegate = self
-        
-        autoErasureDatePicker.minimumDate = Date()
-        
-        initFromNote()
     }
     
     private func initFromNote() {
@@ -73,6 +70,22 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if state != .blank {
+            navigationController?.topViewController?.navigationItem.rightBarButtonItem =
+                UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(DetailViewController.saveNote(sender:)))
+        }
+        
+        titleTextView?.delegate = self
+        contentTextView?.delegate = self
+        
+        autoErasureDatePicker.minimumDate = Date()
+        
+        initFromNote()
+    }
+    
+    // MARK: UITextViewDelegate stuff
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == titleTextView {
             note.title = textView.text
@@ -81,22 +94,14 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: Core Data usage
+    
+    var coreDataManager: CoreDataManager!
+    
     @objc private func saveNote(sender: UIBarButtonItem) {
         // MARK: NEED SOME KOSTYL
         DDLogInfo("\(note!) was saved to notebook")
         rootNavigationController?.popToRootViewController(animated: true)
-    }
-    
-    
-    /// States of this controller
-    ///
-    /// - blank: empty view, no action is needed
-    /// - creation: creating new note
-    /// - editing: editing existing note
-    enum State {
-        case blank
-        case creation
-        case editing
     }
 }
 
