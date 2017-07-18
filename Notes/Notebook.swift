@@ -9,7 +9,7 @@
 import Foundation
 import CocoaLumberjack
 
-public protocol NoteCollection : Sequence {
+public protocol NoteCollection: Sequence {
     
     var size: Int { get }
     
@@ -26,7 +26,7 @@ public protocol NoteCollection : Sequence {
 
 // MARK: Notebook DTO
 
-public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
+public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     private var notes: [Note]
     

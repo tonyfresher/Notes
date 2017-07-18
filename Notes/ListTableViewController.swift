@@ -19,20 +19,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         super.awakeFromNib()
         self.splitViewController?.delegate = self
     }
-    
-    func splitViewController(_ splitViewController: UISplitViewController,
-                             collapseSecondary secondaryViewController: UIViewController,
-                             onto primaryViewController: UIViewController) -> Bool {
-        if primaryViewController.contents == self {
-            if let noteDetailViewController =
-                secondaryViewController.contents as? NoteDetailViewController, noteDetailViewController.state == .blank {
-                return true
-            }
-        }
-        
-        return false
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +28,23 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+    
+    private let createNewIdentifier = "CreateNote"
+    
+    private let editNoteIdentifier = "EditNote"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination.contents as? NoteDetailViewController {
+            if segue.identifier == createNewIdentifier {
+                detailViewController.note = Note()
+            } else if segue.identifier == editNoteIdentifier,
+                let noteIndex = tableView.indexPathForSelectedRow?.row {
+                detailViewController.note = notebook[noteIndex]
+            }
+        }
+    }
+    
+    // MARK: TableView stuff
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? notebook.size : 0
@@ -73,21 +77,6 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         }
     }
     
-    private let createNewIdentifier = "CreateNote"
-    
-    private let editNoteIdentifier = "EditNote"
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination.contents as? NoteDetailViewController {
-            if segue.identifier == createNewIdentifier {
-                detailViewController.note = Note()
-            } else if segue.identifier == editNoteIdentifier,
-                let noteIndex = tableView.indexPathForSelectedRow?.row {
-                detailViewController.note = notebook[noteIndex]
-            }
-        }
-    }
-    
     /*
      // Override to support rearranging the table view.
      override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -102,6 +91,21 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
      return true
      }
      */
+    
+    // MARK: SplitViewController stuff
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        if primaryViewController.contents == self {
+            if let noteDetailViewController =
+                secondaryViewController.contents as? NoteDetailViewController, noteDetailViewController.state == .blank {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 extension UIViewController {

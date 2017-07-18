@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: Note DTO
 
-public struct Note : Equatable, CustomStringConvertible {
+public struct Note: Equatable, CustomStringConvertible {
     
     public static let defaultColor = UIColor(hexString: "#ffffff")!
     

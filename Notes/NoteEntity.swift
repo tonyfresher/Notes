@@ -1,5 +1,5 @@
 //
-//  NotebookError.swift
+//  NoteEntity.swift
 //  Notes
 //
 //  Created by Anton Fresher on 18.07.17.
@@ -7,8 +7,8 @@
 //
 
 import Foundation
+import CoreData
 
-enum NotebookError: Error {
-    case noSuitablePath
-    case invalidUUID
+class NoteEntity: NSManagedObject {
+    
 }
