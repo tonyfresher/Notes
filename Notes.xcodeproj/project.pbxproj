@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */; };
+		024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */; };
+		024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05761F1DDD5B000FCD27 /* NotebookError.swift */; };
 		029186831F150FFB001099DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186821F150FFB001099DD /* AppDelegate.swift */; };
 		029186881F150FFB001099DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029186861F150FFB001099DD /* Main.storyboard */; };
 		0291868B1F150FFB001099DD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 029186891F150FFB001099DD /* Model.xcdatamodeld */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+JSONConvertable.swift"; sourceTree = "<group>"; };
+		024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notebook+FileStorageSupport.swift"; sourceTree = "<group>"; };
+		024E05761F1DDD5B000FCD27 /* NotebookError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookError.swift; sourceTree = "<group>"; };
 		0291867F1F150FFB001099DD /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029186821F150FFB001099DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		029186871F150FFB001099DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,6 +119,25 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		024E05781F1DDFF8000FCD27 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				029186B61F1554F9001099DD /* Note.swift */,
+				024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
+		024E05791F1DE003000FCD27 /* Notebook */ = {
+			isa = PBXGroup;
+			children = (
+				029186B81F15550A001099DD /* Notebook.swift */,
+				024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */,
+				024E05761F1DDD5B000FCD27 /* NotebookError.swift */,
+			);
+			name = Notebook;
+			sourceTree = "<group>";
+		};
 		029186761F150FFB001099DD = {
 			isa = PBXGroup;
 			children = (
@@ -174,8 +199,8 @@
 		029186B51F1554D9001099DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				029186B61F1554F9001099DD /* Note.swift */,
-				029186B81F15550A001099DD /* Notebook.swift */,
+				024E05781F1DDFF8000FCD27 /* Note */,
+				024E05791F1DE003000FCD27 /* Notebook */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -497,9 +522,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */,
 				0291868B1F150FFB001099DD /* Model.xcdatamodeld in Sources */,
 				029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */,
+				024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */,
 				029186C31F165543001099DD /* NoteDetailViewController.swift in Sources */,
+				024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */,
 				029186831F150FFB001099DD /* AppDelegate.swift in Sources */,
 				029186BB1F15F120001099DD /* FormationUtils.swift in Sources */,
 				029186B91F15550A001099DD /* Notebook.swift in Sources */,

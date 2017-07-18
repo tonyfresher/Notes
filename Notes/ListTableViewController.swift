@@ -106,7 +106,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
 
 extension UIViewController {
     
-    var contents: UIViewController {
+    fileprivate var contents: UIViewController {
         if let navigationController = self as? UINavigationController {
             return navigationController.visibleViewController ?? self
         } else {

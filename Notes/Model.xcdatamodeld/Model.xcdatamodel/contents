@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Note" representedClassName=".Note" syncable="YES" codeGenerationType="category">
-        <attribute name="color" optional="YES" attributeType="String" defaultValueString="#ffffff" syncable="YES"/>
-        <attribute name="content" attributeType="String" syncable="YES"/>
-        <attribute name="erasureDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
-        <attribute name="uuid" attributeType="String" syncable="YES"/>
-        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook" syncable="YES"/>
-    </entity>
-    <entity name="Notebook" representedClassName=".Notebook" syncable="YES" codeGenerationType="category">
-        <relationship name="notes" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note" syncable="YES"/>
-    </entity>
+    <entity name="NotebookEntity" representedClassName="NotebookEntity" syncable="YES" codeGenerationType="class"/>
+    <entity name="NoteEntity" representedClassName="NoteEntity" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="Note" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Notebook" positionX="117" positionY="-18" width="128" height="58"/>
+        <element name="NoteEntity" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="NotebookEntity" positionX="-54" positionY="-9" width="128" height="45"/>
     </elements>
 </model>

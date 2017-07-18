@@ -24,11 +24,11 @@ public protocol NoteCollection : Sequence {
     func contains(with uuid: String) -> Bool
 }
 
-// MARK: Main class
+// MARK: Notebook DTO
 
-public class Notebook : NoteCollection {
+public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
     
-    fileprivate var notes: [Note]
+    private var notes: [Note]
     
     init(from notes: [Note] = []) {
         self.notes = notes
@@ -44,8 +44,8 @@ public class Notebook : NoteCollection {
         set { notes[index] = newValue }
     }
     
-    public func makeIterator() -> NoteGenerator {
-        return NoteGenerator(notes)
+    public func makeIterator() -> NoteIterator {
+        return NoteIterator(notes)
     }
     
     // MARK: Basic manipulations
@@ -81,97 +81,9 @@ public class Notebook : NoteCollection {
     public func contains(with uuid: String) -> Bool {
         return notes.contains { $0.uuid == uuid }
     }
-}
-
-// MARK: Helper class for sequencing support
-
-public struct NoteGenerator: IteratorProtocol {
-    let array: [Note]
-    var index = 0
     
-    init(_ array: [Note]) {
-        self.array = array
-    }
+    // MARK: Equatable support
     
-    mutating public func next() -> Note? {
-        let nextElement = index < array.count ? array[index] : nil
-        index += 1
-        return nextElement
-    }
-}
-
-// MARK: Import/export support
-
-protocol FileStorageSupportable {
-    
-    func save(to filename: String) throws -> String
-    
-    static func load(from filename: String) -> Notebook?
-}
-
-extension Notebook : FileStorageSupportable {
-    
-    public func save(to filename: String) throws -> String {
-        let filePath = getFilePath(filename: filename)
-        
-        if let path = filePath {
-            do {
-                let notesInJSON = notes.map { $0.json }
-                try JSONSerialization
-                    .data(withJSONObject: notesInJSON, options: .prettyPrinted)
-                    .write(to: URL(fileURLWithPath: path))
-            } catch {
-                DDLogError(error.localizedDescription)
-                throw error
-            }
-            
-            DDLogInfo("\(self) saved to \(path)")
-            return path
-        } else {
-            DDLogError("Filesystem error while saving")
-            throw NotebookError.filesystemError
-        }
-    }
-    
-    public static func load(from filename: String) -> Notebook? {
-        let filePath = getFilePath(filename: filename)
-        
-        if let path = filePath {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path))
-                
-                var json: [[String: Any]]?
-                json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
-                
-                guard json != nil else {
-                    return nil
-                }
-                
-                let notes = json!.map { Note.parse($0)! }
-                
-                DDLogInfo("\(notes) loaded from \(path)")
-                return Notebook(from: notes)
-            } catch {
-                DDLogWarn("Failed while reading JSON from: \(path)\n\(error.localizedDescription)")
-                return nil
-            }
-        }
-        
-        return nil
-    }
-}
-
-fileprivate func getFilePath(filename: String) -> String? {
-    guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
-        return nil
-    }
-    let path = "\(dir)/\(filename).plist"
-    return path
-}
-
-// MARK: Additional handy protocols
-
-extension Notebook: Equatable {
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.notes == rhs.notes
     }
@@ -179,18 +91,28 @@ extension Notebook: Equatable {
     public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
         return !(lhs == rhs)
     }
-    
-}
 
-extension Notebook: CustomStringConvertible {
+    // MARK: CustomStringConvertible support
+    
     public var description: String {
         return String(describing: notes)
     }
-}
 
-// MARK: Custom error
 
-enum NotebookError : Error {
-    case filesystemError
-    case invalidUUID
+    // MARK: Generator struct for sequencing support
+    
+    public struct NoteIterator: IteratorProtocol {
+        let array: [Note]
+        var index = 0
+        
+        init(_ array: [Note]) {
+            self.array = array
+        }
+        
+        public mutating func next() -> Note? {
+            let nextElement = index < array.count ? array[index] : nil
+            index += 1
+            return nextElement
+        }
+    }
 }
