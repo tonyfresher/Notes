@@ -12,9 +12,11 @@ class ListTableViewCell: UITableViewCell {
 
     var note: Note! { didSet { updateUI() } }
 
-    @IBOutlet weak var cellTitleLabel: UILabel!
+    @IBOutlet weak var colorSpine: UIImageView!
     
-    @IBOutlet weak var cellContentLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +27,8 @@ class ListTableViewCell: UITableViewCell {
             return
         }
         
-        cellTitleLabel?.text = note.title
-        cellContentLabel?.text = note.content
-        backgroundColor = note.color
+        titleLabel?.text = note.title
+        contentLabel?.text = note.content
+        colorSpine?.backgroundColor = UIColor.red//note.color
     }
 }

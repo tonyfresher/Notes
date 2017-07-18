@@ -70,6 +70,8 @@ extension Notebook: FileStorageSupport {
     }
 }
 
+/// - Parameter filename: name of the file in document directory
+/// - Returns: path to this file
 fileprivate func getFilePath(filename: String) -> String? {
     guard let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .allDomainsMask, true).first else {
         return nil

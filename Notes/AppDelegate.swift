@@ -18,16 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let coreDataManager = CoreDataManager(modelName: "Notes")
+        
         DDLog.add(DDTTYLogger.sharedInstance)
         DDLog.add(DDASLLogger.sharedInstance)
+        
         return true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        //self.saveContext()
     }
 
-    // MARK: - Core Data stack
+    /*// MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
         /*
@@ -70,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
+    }*/
 
 }
 

@@ -28,17 +28,23 @@ public protocol NoteCollection: Sequence {
 
 public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
+    // MARK: - Properties
+    
     private var notes: [Note]
+    
+    public var size: Int { return notes.count }
+    
+    // MARK: Initialization
     
     init(from notes: [Note] = []) {
         self.notes = notes
     }
     
-    public var size: Int { return notes.count }
+    // MARK: Access control
     
     public subscript(index: Int) -> Note {
         get {
-            assert(index >= 0 && index < notes.count, "Index is out of bounds")
+            assert(index >= 0 && index < notes.count, "Notebook.subscript -- index is out of bounds")
             return notes[index]
         }
         set { notes[index] = newValue }
@@ -97,7 +103,6 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     public var description: String {
         return String(describing: notes)
     }
-
 
     // MARK: Generator struct for sequencing support
     

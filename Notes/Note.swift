@@ -13,7 +13,11 @@ import UIKit
 
 public struct Note: Equatable, CustomStringConvertible {
     
+    // MARK: - Constants
+    
     public static let defaultColor = UIColor(hexString: "#ffffff")!
+    
+    // MARK: - Properties
     
     public let uuid: String
     
@@ -21,6 +25,8 @@ public struct Note: Equatable, CustomStringConvertible {
     public var content: String
     public var color: UIColor
     public var erasureDate: Date?
+    
+    // MARK: - Initialization
     
     init(uuid: String = UUID().uuidString,
          title: String = "",

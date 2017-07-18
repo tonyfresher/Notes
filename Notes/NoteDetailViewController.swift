@@ -55,8 +55,16 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         guard note != nil else {
             return
         }
-        titleTextView.text = note.title
-        contentTextView.text = note.content
+        
+        switch state {
+        case .creation:
+            titleTextView.text = "Title"
+            contentTextView.text = "Content"
+        case .editing:
+            titleTextView.text = note.title
+            contentTextView.text = note.content
+        default: break
+        }
         
         if let date = note.erasureDate {
             autoErasureSwitch.isOn = true

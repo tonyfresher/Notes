@@ -12,8 +12,8 @@ import CocoaLumberjack
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
     private var notebook = Notebook(from: [
-        Note(title: "Lorem ipsum", content: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
-        Note(title: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", content: "Lorem ipsum")])
+        Note(title: "Lorem ipsum", content: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
+        Note(title: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", content: "Lorem ipsum")])
     
     override func awakeFromNib() {
         super.awakeFromNib()

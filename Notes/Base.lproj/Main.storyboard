@@ -62,33 +62,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VyZ-xq-oMH">
-                                            <rect key="frame" x="8" y="8" width="398" height="56"/>
+                                            <rect key="frame" x="15" y="8" width="391" height="56"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjE-dA-Fpd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="25.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="391" height="25.666666666666664"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvP-9q-FJg">
-                                                    <rect key="frame" x="0.0" y="35.666666666666657" width="398" height="20.333333333333336"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvP-9q-FJg">
+                                                    <rect key="frame" x="0.0" y="35.666666666666657" width="391" height="20.333333333333336"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdE-Sv-Fuh" userLabel="Color Spine">
+                                            <rect key="frame" x="0.0" y="0.0" width="5" height="72"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="5" id="HPd-cY-SXh"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="VyZ-xq-oMH" firstAttribute="leading" secondItem="K2u-ND-9FL" secondAttribute="leadingMargin" id="iAk-Xm-O2Y"/>
+                                        <constraint firstItem="VyZ-xq-oMH" firstAttribute="leading" secondItem="hdE-Sv-Fuh" secondAttribute="trailing" constant="10" id="S1q-ix-uRc"/>
+                                        <constraint firstAttribute="bottom" secondItem="hdE-Sv-Fuh" secondAttribute="bottom" id="c3y-6q-0yg"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="VyZ-xq-oMH" secondAttribute="trailing" id="iSF-8v-Kft"/>
+                                        <constraint firstItem="hdE-Sv-Fuh" firstAttribute="leading" secondItem="K2u-ND-9FL" secondAttribute="leading" id="iSc-Ct-Hzh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="VyZ-xq-oMH" secondAttribute="bottom" id="tX0-dQ-FmP"/>
                                         <constraint firstItem="VyZ-xq-oMH" firstAttribute="top" secondItem="K2u-ND-9FL" secondAttribute="topMargin" id="teG-xY-sAT"/>
+                                        <constraint firstItem="hdE-Sv-Fuh" firstAttribute="top" secondItem="K2u-ND-9FL" secondAttribute="top" id="wLb-z1-120"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="cellContentLabel" destination="mvP-9q-FJg" id="tPR-L1-fY7"/>
-                                    <outlet property="cellTitleLabel" destination="cjE-dA-Fpd" id="0qX-G8-uuF"/>
+                                    <outlet property="colorSpine" destination="hdE-Sv-Fuh" id="06h-ZA-Uuq"/>
+                                    <outlet property="contentLabel" destination="mvP-9q-FJg" id="AIv-q0-iyZ"/>
+                                    <outlet property="titleLabel" destination="cjE-dA-Fpd" id="m2x-aG-nDd"/>
                                     <segue destination="fc5-Jz-Sik" kind="showDetail" identifier="EditNote" id="wHC-lK-F51"/>
                                 </connections>
                             </tableViewCell>
@@ -235,6 +246,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ck3-tt-fjF"/>
+        <segue reference="wHC-lK-F51"/>
     </inferredMetricsTieBreakers>
 </document>
