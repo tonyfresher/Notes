@@ -25,7 +25,7 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         note.erasureDate = sender.date
     }
     
-    var state: NotesTableViewControllerStates = .blank
+    var state: State = .blank
     
     var note: Note! {
         didSet {
@@ -78,17 +78,23 @@ class NoteDetailViewController: UIViewController, UITextViewDelegate {
         DDLogInfo("\(note!) was saved to notebook")
         rootNavigationController?.popToRootViewController(animated: true)
     }
-}
-
-enum NotesTableViewControllerStates {
-    case blank
-    case creation
-    case editing
+    
+    
+    /// States of this controller
+    ///
+    /// - blank: empty view, no action is needed
+    /// - creation: creating new note
+    /// - editing: editing existing note
+    enum State {
+        case blank
+        case creation
+        case editing
+    }
 }
 
 extension UIViewController {
     
-    var rootNavigationController: UINavigationController? {
+    fileprivate var rootNavigationController: UINavigationController? {
         if navigationController == nil { return nil }
         
         var controller = navigationController!
