@@ -21,9 +21,9 @@ class FormationUtilsTests: XCTestCase {
     }
     
     func testColorConversion() {
-        let colorString = "#FFFFFF"
-        if let color = UIColor(hexString: colorString) {
-            XCTAssertEqual(colorString.lowercased(), color.hexString)
+        let colorString = "#FFFFFFFF"
+        if let color = UIColor(hex: colorString) {
+            XCTAssertEqual(colorString, color.hexString)
         } else {
             XCTFail()
         }

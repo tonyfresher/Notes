@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CocoaLumberjack
 
 final class CoreDataManager {
     
@@ -23,9 +24,17 @@ final class CoreDataManager {
     
     // MARK: - Core Data Stack
     
-    private(set) lazy var managedObjectContext: NSManagedObjectContext = {
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    private lazy var privateManagedObjectContext: NSManagedObjectContext = {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
+        
+        return managedObjectContext
+    }()
+    
+    public private(set) lazy var mainManagedObjectContext: NSManagedObjectContext = {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        
+        managedObjectContext.parent = self.privateManagedObjectContext
         
         return managedObjectContext
     }()
@@ -63,4 +72,28 @@ final class CoreDataManager {
         
         return persistentStoreCoordinator
     }()
+    
+    // MARK:
+    
+    public func saveChanges() {
+        mainManagedObjectContext.performAndWait {
+            do {
+                if self.mainManagedObjectContext.hasChanges {
+                    try self.mainManagedObjectContext.save()
+                }
+            } catch {
+                DDLogError("Unable to save changes of main managed object context\n\(error), \(error.localizedDescription)")
+            }
+        }
+        
+        privateManagedObjectContext.perform {
+            do {
+                if self.privateManagedObjectContext.hasChanges {
+                    try self.privateManagedObjectContext.save()
+                }
+            } catch {
+                DDLogError("Unable to save changes of private managed object context\n\(error), \(error.localizedDescription)")
+            }
+        }
+    }
 }

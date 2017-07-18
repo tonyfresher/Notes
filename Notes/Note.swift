@@ -15,7 +15,7 @@ public struct Note: Equatable, CustomStringConvertible {
     
     // MARK: - Constants
     
-    public static let defaultColor = UIColor(hexString: "#ffffff")!
+    public static let defaultColor = UIColor(hex: "#ffffff")!
     
     // MARK: - Properties
     

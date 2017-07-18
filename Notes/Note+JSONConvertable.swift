@@ -48,7 +48,7 @@ extension Note: JSONConvertable {
         let colorString = json["color"] as? String
         let color : UIColor
         if colorString != nil {
-            if let uiColor = UIColor(hexString: colorString!) {
+            if let uiColor = UIColor(hex: colorString!) {
                 color = uiColor
             } else {
                 return nil

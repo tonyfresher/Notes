@@ -47,15 +47,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search for notes" id="O5N-qh-zqj">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
-                        </searchBar>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="Note" rowHeight="72" id="mip-jz-YYx" customClass="ListTableViewCell" customModule="Notes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mip-jz-YYx" id="K2u-ND-9FL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="71.5"/>
@@ -95,7 +90,6 @@
                                         <constraint firstItem="hdE-Sv-Fuh" firstAttribute="top" secondItem="K2u-ND-9FL" secondAttribute="top" id="wLb-z1-120"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="colorSpine" destination="hdE-Sv-Fuh" id="06h-ZA-Uuq"/>
                                     <outlet property="contentLabel" destination="mvP-9q-FJg" id="AIv-q0-iyZ"/>
