@@ -138,6 +138,23 @@
 			name = Notebook;
 			sourceTree = "<group>";
 		};
+		024E057A1F1DE650000FCD27 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				029186C01F164F62001099DD /* ListTableViewController.swift */,
+				029186C61F16C704001099DD /* ListTableViewCell.swift */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		024E057B1F1DE69A000FCD27 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				029186C21F165543001099DD /* NoteDetailViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		029186761F150FFB001099DD = {
 			isa = PBXGroup;
 			children = (
@@ -164,13 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				029186B51F1554D9001099DD /* Model */,
+				029186891F150FFB001099DD /* Model.xcdatamodeld */,
 				029186BF1F164F41001099DD /* UI */,
 				0227A6191F1CD37300CFF062 /* Utils */,
 				029186821F150FFB001099DD /* AppDelegate.swift */,
-				0291868E1F150FFB001099DD /* LaunchScreen.storyboard */,
-				029186861F150FFB001099DD /* Main.storyboard */,
-				0291868C1F150FFB001099DD /* Assets.xcassets */,
-				029186891F150FFB001099DD /* Model.xcdatamodeld */,
 				029186911F150FFB001099DD /* Info.plist */,
 			);
 			path = Notes;
@@ -208,9 +222,11 @@
 		029186BF1F164F41001099DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				029186C01F164F62001099DD /* ListTableViewController.swift */,
-				029186C61F16C704001099DD /* ListTableViewCell.swift */,
-				029186C21F165543001099DD /* NoteDetailViewController.swift */,
+				024E057A1F1DE650000FCD27 /* List */,
+				024E057B1F1DE69A000FCD27 /* Detail */,
+				0291868E1F150FFB001099DD /* LaunchScreen.storyboard */,
+				029186861F150FFB001099DD /* Main.storyboard */,
+				0291868C1F150FFB001099DD /* Assets.xcassets */,
 			);
 			name = UI;
 			sourceTree = "<group>";
