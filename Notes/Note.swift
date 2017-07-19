@@ -15,7 +15,7 @@ public struct Note: Equatable, CustomStringConvertible {
     
     // MARK: - Constants
     
-    public static let defaultColor = UIColor(hex: "#ffffff")!
+    public static let defaultColor = UIColor(hex: "FFFFFFFF")!
     
     // MARK: - Properties
     
@@ -23,7 +23,10 @@ public struct Note: Equatable, CustomStringConvertible {
     
     public var title: String
     public var content: String
+    
     public var color: UIColor
+    
+    public var creationDate: Date
     public var erasureDate: Date?
     
     // MARK: - Initialization
@@ -32,12 +35,10 @@ public struct Note: Equatable, CustomStringConvertible {
          title: String = "",
          content: String = "",
          color: UIColor = defaultColor,
+         creationDate: Date = Date(),
          erasureDate: Date? = nil) {
-        self.uuid = uuid
-        self.title = title
-        self.content = content
-        self.color = color
-        self.erasureDate = erasureDate?.withZeroNanoseconds
+        (self.uuid, self.title, self.content, self.color, self.creationDate, self.erasureDate) =
+            (uuid, title, content, color, creationDate.withZeroNanoseconds, erasureDate?.withZeroNanoseconds)
     }
     
     public var isEmpty: Bool {
@@ -51,6 +52,7 @@ public struct Note: Equatable, CustomStringConvertible {
             lhs.title == rhs.title &&
             lhs.content == rhs.content &&
             lhs.color == rhs.color &&
+            lhs.creationDate == rhs.creationDate &&
             lhs.erasureDate == rhs.erasureDate
     }
     

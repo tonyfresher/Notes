@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-final class CoreDataManager {
+public class CoreDataManager {
     
     typealias CoreDataManagerCompletion = () -> ()
     
@@ -25,13 +25,6 @@ final class CoreDataManager {
     private lazy var privateManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
-        
-        return managedObjectContext
-    }()
-    
-    public private(set) lazy var mainManagedObjectContext: NSManagedObjectContext = {
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.parent = self.privateManagedObjectContext
         
         return managedObjectContext
     }()
@@ -71,7 +64,7 @@ final class CoreDataManager {
     // MARK: Supporting initialization methods
     
     private func setup() {
-        _ = mainManagedObjectContext.persistentStoreCoordinator
+        _ = privateManagedObjectContext.persistentStoreCoordinator
         
         DispatchQueue.global().async {
             self.addPersistentStore()
@@ -82,37 +75,31 @@ final class CoreDataManager {
     
     private func addPersistentStore() {
         let persistentStoreURL = self.persistentStoreURL
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true
+        ]
         
         do {
             try persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                               configurationName: nil,
                                                               at: persistentStoreURL,
-                                                              options: nil)
+                                                              options: options)
         } catch {
             fatalError("Unable to Load Persistent Store")
         }
     }
     
-    /// - Returns: a new private child context of main context
+    /// - Returns: a new private child context
     public func createPrivateChildManagedObjectContext() -> NSManagedObjectContext {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        managedObjectContext.parent = mainManagedObjectContext
+        managedObjectContext.parent = privateManagedObjectContext
         
         return managedObjectContext
     }
     
-    /// Saves changes from main context with private context
-    public func saveChanges() {
-        mainManagedObjectContext.performAndWait {
-            do {
-                if self.mainManagedObjectContext.hasChanges {
-                    try self.mainManagedObjectContext.save()
-                }
-            } catch {
-                DDLogError("Unable to save changes of main managed object context\n\(error), \(error.localizedDescription)")
-            }
-        }
-        
+    /// Saves changes in private context
+    public func saveChanges() {        
         privateManagedObjectContext.perform {
             do {
                 if self.privateManagedObjectContext.hasChanges {

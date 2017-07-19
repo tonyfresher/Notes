@@ -26,9 +26,13 @@ extension Note: JSONConvertable {
         result["uuid"] = uuid
         result["title"] = title
         result["content"] = content
+        
         if color != Note.defaultColor {
             result["color"] = color.hexString
         }
+        
+        result["creationDate"] = creationDate.iso8601String
+        
         if let date = erasureDate {
             result["erasureDate"] = date.iso8601String
         }
@@ -37,18 +41,23 @@ extension Note: JSONConvertable {
     }
     
     public static func parse(_ json: [String: Any]) -> Note? {
-        let uuid = json["uuid"] as? String
-        let title = json["title"] as? String
-        let content = json["content"] as? String
+        let uuidOptional = json["uuid"] as? String
+        let titleOptional = json["title"] as? String
+        let contentOptional = json["content"] as? String
+        let creationDateStringOptional = json["creationDate"] as? String
         
-        guard uuid != nil, title != nil, content != nil else {
-            return nil
+        guard let uuid = uuidOptional,
+            let title = titleOptional,
+            let content = contentOptional,
+            let creationDateString = creationDateStringOptional,
+            let creationDate = Date(iso8601String: creationDateString) else {
+                return nil
         }
         
         let colorString = json["color"] as? String
         let color : UIColor
-        if colorString != nil {
-            if let uiColor = UIColor(hex: colorString!) {
+        if let string = colorString {
+            if let uiColor = UIColor(hex: string) {
                 color = uiColor
             } else {
                 return nil
@@ -57,19 +66,18 @@ extension Note: JSONConvertable {
             color = Note.defaultColor
         }
         
-        let erasureDateString = json["erasureDate"] as? String
-        if erasureDateString != nil {
-            let erasureDate = Date(iso8601String: erasureDateString!)
-            guard erasureDate != nil else {
+        let erasureDateStringOptional = json["erasureDate"] as? String
+        if let erasureDateString = erasureDateStringOptional {
+            guard let erasureDate = Date(iso8601String: erasureDateString) else {
                 return nil
             }
-            return Note(uuid: uuid!,
-                        title: title!, content: content!,
-                        color: color, erasureDate: erasureDate!)
+            return Note(uuid: uuid,
+                        title: title, content: content, color: color,
+                        creationDate: creationDate, erasureDate: erasureDate)
         } else {
-            return Note(uuid: uuid!,
-                        title: title!, content: content!,
-                        color: color, erasureDate: nil)
+            return Note(uuid: uuid,
+                        title: title, content: content, color: color,
+                        creationDate: creationDate, erasureDate: nil)
             
         }
     }

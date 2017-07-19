@@ -14,18 +14,12 @@ class NotesTests: XCTestCase {
     private var notes: [Note] = []
     
     override func setUp() {
-        notes = [
-            Note(title: "Foo0", content: "Bar"),
-            Note(title: "Foo1", content: "Bar", color: Note.defaultColor),
-            Note(title: "Foo2", content: "Bar", color: UIColor(hex: "#000000")!),
-            Note(title: "Foo3", content: "Bar", erasureDate: Date()),
-            Note(title: "Foo4", content: "Bar", color: UIColor(hex: "#000000")!, erasureDate: Date())
-        ]
+        notes = Variables.notes
     }
     
     func testEquality() {
         let copies = notes.map { $0 }
-        XCTAssertEqual(copies, notes)
+        XCTAssertEqual(notes, copies)
     }
     
     func testJSON() {
