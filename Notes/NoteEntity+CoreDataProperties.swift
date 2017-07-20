@@ -28,5 +28,5 @@ extension NoteEntity {
     @NSManaged public var erasureDate: NSDate?
     
     @NSManaged public var notebook: NotebookEntity?
-
+    
 }

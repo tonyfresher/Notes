@@ -9,14 +9,18 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-
-    var note: Note! { didSet { updateUI() } }
+    
+    // MARK: UI
 
     @IBOutlet weak var colorSpine: UIImageView!
     
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var contentLabel: UILabel!
+    
+    static let reuseIdentifier = "Note"
+    
+    var note: Note! { didSet { updateUI() } }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,4 +35,5 @@ class ListTableViewCell: UITableViewCell {
         contentLabel?.text = note.content
         colorSpine?.backgroundColor = UIColor.red//note.color
     }
+    
 }

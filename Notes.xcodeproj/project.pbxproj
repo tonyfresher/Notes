@@ -92,6 +92,7 @@
 		02A3F7B11F1F82FC004DEF99 /* Variables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Notes 3.xcdatamodel"; sourceTree = "<group>"; };
 		02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Notes 2to3.xcmappingmodel"; sourceTree = "<group>"; };
+		02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Notes 4.xcdatamodel"; sourceTree = "<group>"; };
 		2CC92D00A970A5E280876990 /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		537F9F2465FEBC91A81EA97B /* Pods-NotesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotesTests/Pods-NotesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56359DAF8DA5EC339E5CFC30 /* Pods-NotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -881,11 +882,12 @@
 		02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */,
 				02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */,
 				02A3F7AE1F1F6A5C004DEF99 /* Notes 2.xcdatamodel */,
 				02A3F7AC1F1F6405004DEF99 /* Notes.xcdatamodel */,
 			);
-			currentVersion = 02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */;
+			currentVersion = 02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */;
 			path = Notes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

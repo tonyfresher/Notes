@@ -65,4 +65,5 @@ public struct Note: Equatable, CustomStringConvertible {
     public var description: String {
         return String(describing: json)
     }
+
 }

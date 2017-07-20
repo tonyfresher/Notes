@@ -21,11 +21,11 @@ public protocol JSONConvertable {
 extension Note: JSONConvertable {
     
     public var json: [String: Any] {
-        var result: [String: Any] = [:]
-        
-        result["uuid"] = uuid
-        result["title"] = title
-        result["content"] = content
+        var result: [String: Any] = [
+            "uuid": uuid,
+            "title": title,
+            "content": content
+        ]
         
         if color != Note.defaultColor {
             result["color"] = color.hexString
@@ -40,16 +40,11 @@ extension Note: JSONConvertable {
         return result
     }
     
-    public static func parse(_ json: [String: Any]) -> Note? {
-        let uuidOptional = json["uuid"] as? String
-        let titleOptional = json["title"] as? String
-        let contentOptional = json["content"] as? String
-        let creationDateStringOptional = json["creationDate"] as? String
-        
-        guard let uuid = uuidOptional,
-            let title = titleOptional,
-            let content = contentOptional,
-            let creationDateString = creationDateStringOptional,
+    public static func parse(_ json: [String: Any]) -> Note? {        
+        guard let uuid = json["uuid"] as? String,
+            let title = json["title"] as? String,
+            let content = json["content"] as? String,
+            let creationDateString = json["creationDate"] as? String,
             let creationDate = Date(iso8601String: creationDateString) else {
                 return nil
         }
@@ -81,4 +76,5 @@ extension Note: JSONConvertable {
             
         }
     }
+
 }

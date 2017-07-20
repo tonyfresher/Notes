@@ -16,6 +16,7 @@ protocol FileStorageSupport {
     func save(to filename: String) throws -> String
     
     static func load(from filename: String) -> Notebook?
+
 }
 
 extension Notebook: FileStorageSupport {
@@ -25,9 +26,13 @@ extension Notebook: FileStorageSupport {
         
         if let path = filePath {
             do {
-                let notesInJSON = self.map { $0.json }
+                let notesJSON = self.map { $0.json }
+                let notebookJSON: [String : Any]  = [
+                    "uuid": uuid,
+                    "notes": notesJSON
+                ]
                 try JSONSerialization
-                    .data(withJSONObject: notesInJSON, options: .prettyPrinted)
+                    .data(withJSONObject: notebookJSON, options: .prettyPrinted)
                     .write(to: URL(fileURLWithPath: path))
             } catch {
                 DDLogError(error.localizedDescription)
@@ -49,17 +54,16 @@ extension Notebook: FileStorageSupport {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 
-                var json: [[String: Any]]?
-                json = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
-                
-                guard json != nil else {
+                guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+                    let uuid = json["uuid"] as? String,
+                    let notesArray = json["notes"] as? [[String: Any]] else {
                     return nil
                 }
                 
-                let notes = json!.map { Note.parse($0)! }
+                let notes = notesArray.map { Note.parse($0)! }
                 
                 DDLogInfo("\(notes) loaded from \(path)")
-                return Notebook(from: notes)
+                return Notebook(uuid: uuid, from: notes)
             } catch {
                 DDLogWarn("Failed while reading JSON from: \(path)\n\(error.localizedDescription)")
                 return nil
@@ -68,6 +72,7 @@ extension Notebook: FileStorageSupport {
         
         return nil
     }
+
 }
 
 /// - Parameter filename: name of the file in document directory

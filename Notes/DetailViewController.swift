@@ -11,6 +11,8 @@ import CocoaLumberjack
 
 class DetailViewController: UIViewController, UITextViewDelegate {
     
+    // MARK: UI
+    
     @IBOutlet weak var titleTextView: UITextView!
     
     @IBOutlet weak var contentTextView: UITextView!
@@ -103,6 +105,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         DDLogInfo("\(note!) was saved to notebook")
         rootNavigationController?.popToRootViewController(animated: true)
     }
+
 }
 
 extension UIViewController {
@@ -117,4 +120,5 @@ extension UIViewController {
         
         return controller
     }
+
 }

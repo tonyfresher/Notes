@@ -8,10 +8,17 @@
 
 import UIKit
 import CocoaLumberjack
+import CoreData
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
+    // MARK: UI
+    
     @IBOutlet var listTableView: UITableView!
+    
+    // MARK: - Properties
+    
+    private let notebookUUID = "3392911E-D663-46AE-85A9-F1CAA702AFE0"
     
     private var notebook = Notebook(from: [
         Note(title: "Lorem ipsum", content: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."),
@@ -31,29 +38,29 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    private let createNewIdentifier = "CreateNote"
-    
-    private let editNoteIdentifier = "EditNote"
+    static let createNoteSegueIdentifier = "CreateNote"
+
+    static let editNoteSegueIdentifier = "EditNote"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination.contents as? DetailViewController {
-            if segue.identifier == createNewIdentifier {
+            if segue.identifier == ListTableViewController.createNoteSegueIdentifier {
                 detailViewController.note = Note()
-            } else if segue.identifier == editNoteIdentifier,
+            } else if segue.identifier == ListTableViewController.editNoteSegueIdentifier,
                 let noteIndex = tableView.indexPathForSelectedRow?.row {
                 detailViewController.note = notebook[noteIndex]
             }
         }
     }
     
-    // MARK: TableView stuff
+    // MARK: UITableViewDataSource implementation
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? notebook.size : 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Note", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.reuseIdentifier, for: indexPath)
         
         if let noteCell = cell as? ListTableViewCell {
             noteCell.note = notebook[indexPath.row]
@@ -94,7 +101,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
      }
      */
     
-    // MARK: SplitViewController stuff
+    // MARK: UISplitViewController stuff
     
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
@@ -112,6 +119,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     // MARK: Core Data usage
     
     var coreDataManager: CoreDataManager!
+
 }
 
 extension UIViewController {
@@ -123,4 +131,5 @@ extension UIViewController {
             return self
         }
     }
+
 }

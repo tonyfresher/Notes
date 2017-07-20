@@ -16,8 +16,10 @@ extension NotebookEntity {
         return NSFetchRequest<NotebookEntity>(entityName: "NotebookEntity")
     }
 
+    @NSManaged public var uuid: String?
+    
     @NSManaged public var notes: NSSet?
-
+    
 }
 
 // MARK: Generated accessors for notes

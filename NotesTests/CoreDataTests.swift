@@ -22,7 +22,7 @@ class CoreDataTests: XCTestCase {
     
     func testNoteToNoteEntityConversion() {
         let notes = Variables.notes
-        let noteEntities = notes.map { NoteEntity(context: context, from: $0) }
+        let noteEntities = notes.map { try! NoteEntity.findOrCreateNoteEntity(matching: $0, in: context) }
         
         let notesFromNoteEntities = noteEntities.map { $0.toNote()! }
         
@@ -31,7 +31,7 @@ class CoreDataTests: XCTestCase {
     
     func testNotebookToNotebookEntityConversion() {
         let notebook = Variables.notebook
-        let notebookEntity = NotebookEntity(context: context, from: notebook)
+        let notebookEntity = try! NotebookEntity.findOrCreateNotebookEntity(matching: notebook, in: context)
         
         let notebookFromNotebookEntityOptional = notebookEntity.toNotebook()
         
@@ -43,4 +43,5 @@ class CoreDataTests: XCTestCase {
         for note in notebook { XCTAssertTrue(notebookFromNotebookEntity.contains(note)) }
         for note in notebookFromNotebookEntity { XCTAssertTrue(notebook.contains(note)) }
     }
+
 }

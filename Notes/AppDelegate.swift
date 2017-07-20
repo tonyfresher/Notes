@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coreDataManager = CoreDataManager(modelName: "Notes", completion: nil)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // MARK: Injecting Core Data manager to ViewControllers
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         if let viewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListTableViewController {
@@ -45,5 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         coreDataManager.saveChanges()
     }
+
 }
 

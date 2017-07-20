@@ -9,6 +9,9 @@
 import Foundation
 
 enum NotebookError: Error {
+    
     case noSuitablePath
+    
     case invalidUUID
+    
 }

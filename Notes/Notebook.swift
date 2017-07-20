@@ -22,21 +22,24 @@ public protocol NoteCollection: Sequence {
     func remove(with uuid: String) throws -> Note
     
     func contains(with uuid: String) -> Bool
+    
 }
 
 // MARK: Notebook DTO
-
 public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     // MARK: - Properties
+    
+    public let uuid: String
     
     private var notes: [Note]
     
     public var size: Int { return notes.count }
     
-    // MARK: Initialization
+    // MARK: - Initialization
     
-    init(from notes: [Note] = []) {
+    init(uuid: String = UUID().uuidString, from notes: [Note] = []) {
+        self.uuid = uuid
         self.notes = notes
     }
     
@@ -71,9 +74,9 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         }
     }
     
-    public func remove(with uuid: String) throws -> Note {
+    public func remove(with noteUUID: String) throws -> Note {
         for i in notes.indices {
-            if notes[i].uuid == uuid {
+            if notes[i].uuid == noteUUID {
                 let removed = notes.remove(at: i)
                 DDLogInfo("\(removed) was removed from \(self)")
                 return removed
@@ -84,14 +87,14 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         throw NotebookError.invalidUUID
     }
     
-    public func contains(with uuid: String) -> Bool {
-        return notes.contains { $0.uuid == uuid }
+    public func contains(with noteUUID: String) -> Bool {
+        return notes.contains { $0.uuid == noteUUID }
     }
     
     // MARK: Equatable support
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
-        return lhs.notes == rhs.notes
+        return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
     }
     
     public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
@@ -120,4 +123,5 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
             return nextElement
         }
     }
+
 }
