@@ -29,6 +29,7 @@ extension Notebook: FileStorageSupport {
                 let notesJSON = self.map { $0.json }
                 let notebookJSON: [String : Any]  = [
                     "uuid": uuid,
+                    "creationDate": creationDate.iso8601String,
                     "notes": notesJSON
                 ]
                 try JSONSerialization
@@ -56,6 +57,8 @@ extension Notebook: FileStorageSupport {
                 
                 guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let uuid = json["uuid"] as? String,
+                    let creationDateString = json["creationDate"] as? String,
+                    let creationDate = Date(iso8601String: creationDateString),
                     let notesArray = json["notes"] as? [[String: Any]] else {
                     return nil
                 }
@@ -63,7 +66,7 @@ extension Notebook: FileStorageSupport {
                 let notes = notesArray.map { Note.parse($0)! }
                 
                 DDLogInfo("\(notes) loaded from \(path)")
-                return Notebook(uuid: uuid, from: notes)
+                return Notebook(uuid: uuid, creationDate: creationDate, from: notes)
             } catch {
                 DDLogWarn("Failed while reading JSON from: \(path)\n\(error.localizedDescription)")
                 return nil

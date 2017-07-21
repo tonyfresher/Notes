@@ -91,7 +91,7 @@ public class CoreDataManager {
     }
     
     /// - Returns: a new private child context
-    public func createPrivateChildManagedObjectContext() -> NSManagedObjectContext {
+    public func createChildManagedObjectContext() -> NSManagedObjectContext {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         managedObjectContext.parent = privateManagedObjectContext
         

@@ -8,8 +8,9 @@
 
 import UIKit
 import CocoaLumberjack
+import CoreData
 
-class DetailViewController: UIViewController, UITextViewDelegate {
+class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     // MARK: UI
     
@@ -38,6 +39,8 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         case editing
     }
     
+    // MARK: Properties
+    
     var state: State = .blank
     
     var note: Note! {
@@ -50,10 +53,8 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func initFromNote() {
-        guard note != nil else {
-            return
-        }
+    private func initUI() {
+        guard note != nil else { return }
         
         switch state {
         case .creation:
@@ -72,10 +73,24 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: Injectable implementation
+    
+    func assertDependencies() {
+        assert(note != nil)
+    }
+    
+    // MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        assertDependencies()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        if state != .blank {
-            navigationController?.topViewController?.navigationItem.rightBarButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(DetailViewController.saveNote(sender:)))
+        if state == .blank {
+            navigationController?.topViewController?.navigationItem.rightBarButtonItem = nil
+            navigationController?.topViewController?.navigationItem.leftBarButtonItem = nil
         }
         
         titleTextView?.delegate = self
@@ -83,7 +98,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         
         autoErasureDatePicker.minimumDate = Date()
         
-        initFromNote()
+        initUI()
     }
     
     // MARK: UITextViewDelegate stuff
@@ -98,12 +113,24 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Core Data usage
     
-    var coreDataManager: CoreDataManager!
-    
-    @objc private func saveNote(sender: UIBarButtonItem) {
-        // MARK: NEED SOME KOSTYL
+    @IBAction func saveNote(from segue: UIStoryboardSegue) {
+        guard !note.isEmpty,
+            let listViewController = segue.destination as? ListTableViewController else { return }
+        
+        switch state {
+        case .creation:
+            listViewController.add(note: note)
+        case .editing:
+            if let indexPath = listViewController.tableView.indexPathForSelectedRow {
+                listViewController.update(note: note, on: indexPath)
+            }
+        default: break
+        }
+        
+        presentingViewController?.dismiss(animated: true)
+        //rootNavigationController?.popToRootViewController(animated: true)
+        
         DDLogInfo("\(note!) was saved to notebook")
-        rootNavigationController?.popToRootViewController(animated: true)
     }
 
 }

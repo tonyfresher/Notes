@@ -10,6 +10,7 @@
 		024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */; };
 		024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */; };
 		024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05761F1DDD5B000FCD27 /* NotebookError.swift */; };
+		027042A51F21DAD90041D96B /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042A41F21DAD90041D96B /* Injectable.swift */; };
 		0275505F1F1DEFA3007E483F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275505E1F1DEFA3007E483F /* CoreDataManager.swift */; };
 		029186831F150FFB001099DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186821F150FFB001099DD /* AppDelegate.swift */; };
 		029186881F150FFB001099DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 029186861F150FFB001099DD /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+JSONConvertable.swift"; sourceTree = "<group>"; };
 		024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notebook+FileStorageSupport.swift"; sourceTree = "<group>"; };
 		024E05761F1DDD5B000FCD27 /* NotebookError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookError.swift; sourceTree = "<group>"; };
+		027042A31F2096810041D96B /* Notes 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Notes 5.xcdatamodel"; sourceTree = "<group>"; };
+		027042A41F21DAD90041D96B /* Injectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		0275505E1F1DEFA3007E483F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0291867F1F150FFB001099DD /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029186821F150FFB001099DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 			children = (
 				02A3F78E1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift */,
 				02A3F7901F1E28F4004DEF99 /* Date+ISO8601Conversion.swift */,
+				027042A41F21DAD90041D96B /* Injectable.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				029186B51F1554D9001099DD /* Model */,
+				024E05801F1DE83C000FCD27 /* Core Data */,
 				029186BF1F164F41001099DD /* UI */,
 				0227A6191F1CD37300CFF062 /* Utils */,
 				029186821F150FFB001099DD /* AppDelegate.swift */,
@@ -252,7 +257,6 @@
 			children = (
 				024E05781F1DDFF8000FCD27 /* Note */,
 				024E05791F1DE003000FCD27 /* Notebook */,
-				024E05801F1DE83C000FCD27 /* Core Data */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -589,6 +593,7 @@
 				029186C31F165543001099DD /* DetailViewController.swift in Sources */,
 				024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */,
 				029186831F150FFB001099DD /* AppDelegate.swift in Sources */,
+				027042A51F21DAD90041D96B /* Injectable.swift in Sources */,
 				02A3F7971F1F3C7C004DEF99 /* NotebookEntity+CoreDataClass.swift in Sources */,
 				029186B91F15550A001099DD /* Notebook.swift in Sources */,
 				02A3F7981F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift in Sources */,
@@ -882,12 +887,13 @@
 		02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				027042A31F2096810041D96B /* Notes 5.xcdatamodel */,
 				02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */,
 				02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */,
 				02A3F7AE1F1F6A5C004DEF99 /* Notes 2.xcdatamodel */,
 				02A3F7AC1F1F6405004DEF99 /* Notes.xcdatamodel */,
 			);
-			currentVersion = 02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */;
+			currentVersion = 027042A31F2096810041D96B /* Notes 5.xcdatamodel */;
 			path = Notes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

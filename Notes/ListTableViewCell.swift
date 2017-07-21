@@ -18,18 +18,14 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     
+    // MARK: Properties
+    
     static let reuseIdentifier = "Note"
     
     var note: Note! { didSet { updateUI() } }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     private func updateUI() {
-        guard note != nil else {
-            return
-        }
+        guard note != nil else { return }
         
         titleLabel?.text = note.title
         contentLabel?.text = note.content

@@ -17,6 +17,7 @@ extension NotebookEntity {
     }
 
     @NSManaged public var uuid: String?
+    @NSManaged public var creationDate: NSDate?
     
     @NSManaged public var notes: NSSet?
     

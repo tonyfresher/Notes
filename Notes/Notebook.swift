@@ -21,6 +21,8 @@ public protocol NoteCollection: Sequence {
     
     func remove(with uuid: String) throws -> Note
     
+    func remove(at index: Int) -> Note
+    
     func contains(with uuid: String) -> Bool
     
 }
@@ -31,16 +33,21 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     // MARK: - Properties
     
     public let uuid: String
-    
+    public var creationDate: Date
     private var notes: [Note]
     
     public var size: Int { return notes.count }
     
     // MARK: - Initialization
     
-    init(uuid: String = UUID().uuidString, from notes: [Note] = []) {
+    init(uuid: String = UUID().uuidString,
+         creationDate: Date = Date(),
+         from notes: [Note] = []) {
         self.uuid = uuid
+        self.creationDate = creationDate
         self.notes = notes
+        var a = [1,2]
+        a.remove(at: 1)
     }
     
     // MARK: Access control
@@ -85,6 +92,10 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         
         DDLogError("Failed while finding note in notebook with such UUID: ")
         throw NotebookError.invalidUUID
+    }
+    
+    public func remove(at index: Int) -> Note {
+        return notes.remove(at: index)
     }
     
     public func contains(with noteUUID: String) -> Bool {

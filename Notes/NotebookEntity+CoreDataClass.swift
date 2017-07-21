@@ -30,6 +30,7 @@ public class NotebookEntity: NSManagedObject {
         
         let notebookEntity = NotebookEntity(context: context)
         notebookEntity.uuid = notebookInfo.uuid
+        notebookEntity.creationDate = notebookInfo.creationDate as NSDate
         do {
             let noteEntities = try notebookInfo.map { (noteInfo) -> NoteEntity in
                 do {
@@ -46,16 +47,18 @@ public class NotebookEntity: NSManagedObject {
     }
     
     public func toNotebook() -> Notebook? {
-        let byDateSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
-        
-        guard let notesSet = notes else {
-            return nil
+        guard let notesUnboxed = self.notes,
+            let uuidUnboxed = self.uuid,
+            let creationDateUnboxed = creationDate else {
+                return nil
         }
         
-        let noteEntities = notesSet.sortedArray(using: [byDateSortDescriptor]) as! [NoteEntity]
+        let sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        let noteEntities = notesUnboxed.sortedArray(using: sortDescriptors) as! [NoteEntity]
         let notesArray = noteEntities.map { $0.toNote()! }
         
-        return Notebook(from: notesArray)
+        return Notebook(uuid: uuidUnboxed, creationDate: creationDateUnboxed as Date, from: notesArray)
     }
     
 }
