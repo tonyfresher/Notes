@@ -14,6 +14,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     // MARK: UI
     
+    @IBAction func cancel(_ sender: Any) {
+        rootNavigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBOutlet weak var titleTextView: UITextView!
     
     @IBOutlet weak var contentTextView: UITextView!
@@ -55,15 +59,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     private func initUI() {
         guard note != nil else { return }
-        
-        switch state {
-        case .creation:
-            titleTextView.text = "Title"
-            contentTextView.text = "Content"
-        case .editing:
+        // TODO: PLACEHOLDEEEEERS
+        if state == .editing {
             titleTextView.text = note.title
             contentTextView.text = note.content
-        default: break
         }
         
         if let date = note.erasureDate {
@@ -71,6 +70,16 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
             autoErasureDatePicker.isHidden = false
             autoErasureDatePicker.setDate(date, animated: false)
         }
+    }
+    
+    private func saveData() {
+        note.title = titleTextView.text
+        note.content = contentTextView.text
+        // note.color =
+    }
+    
+    @IBAction func saveDate(_ sender: UIDatePicker) {
+        note.erasureDate = autoErasureDatePicker.date
     }
     
     // MARK: Injectable implementation
@@ -101,6 +110,21 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         initUI()
     }
     
+    // MARK: Segues handling
+    
+    private static let saveNoteSegueIdentifier = "Save Note"
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        saveData()
+        
+        if identifier == DetailViewController.saveNoteSegueIdentifier &&
+            note.isEmpty {
+            // TODO: SHOW POPUP
+            return false
+        }
+        return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+    }
+    
     // MARK: UITextViewDelegate stuff
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -109,28 +133,6 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         } else if textView == contentTextView {
             note.content = textView.text
         }
-    }
-    
-    // MARK: Core Data usage
-    
-    @IBAction func saveNote(from segue: UIStoryboardSegue) {
-        guard !note.isEmpty,
-            let listViewController = segue.destination as? ListTableViewController else { return }
-        
-        switch state {
-        case .creation:
-            listViewController.add(note: note)
-        case .editing:
-            if let indexPath = listViewController.tableView.indexPathForSelectedRow {
-                listViewController.update(note: note, on: indexPath)
-            }
-        default: break
-        }
-        
-        presentingViewController?.dismiss(animated: true)
-        //rootNavigationController?.popToRootViewController(animated: true)
-        
-        DDLogInfo("\(note!) was saved to notebook")
     }
 
 }

@@ -17,7 +17,7 @@ class CoreDataTests: XCTestCase {
     private var context: NSManagedObjectContext!
     
     override func setUp() {
-        context = manager.createPrivateChildManagedObjectContext()
+        context = manager.createChildManagedObjectContext()
     }
     
     func testNoteToNoteEntityConversion() {

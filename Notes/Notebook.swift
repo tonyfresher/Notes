@@ -9,24 +9,6 @@
 import Foundation
 import CocoaLumberjack
 
-public protocol NoteCollection: Sequence {
-    
-    var size: Int { get }
-    
-    subscript(index: Int) -> Note { get set }
-    
-    func add(note: Note)
-    
-    func update(note: Note)
-    
-    func remove(with uuid: String) throws -> Note
-    
-    func remove(at index: Int) -> Note
-    
-    func contains(with uuid: String) -> Bool
-    
-}
-
 // MARK: Notebook DTO
 public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
@@ -34,6 +16,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     public let uuid: String
     public var creationDate: Date
+    
     private var notes: [Note]
     
     public var size: Int { return notes.count }
@@ -46,8 +29,6 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         self.uuid = uuid
         self.creationDate = creationDate
         self.notes = notes
-        var a = [1,2]
-        a.remove(at: 1)
     }
     
     // MARK: Access control

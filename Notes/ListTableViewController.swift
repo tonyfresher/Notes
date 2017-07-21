@@ -12,10 +12,6 @@ import CoreData
 
 class ListTableViewController: UITableViewController, UISplitViewControllerDelegate, NSFetchedResultsControllerDelegate {
     
-    // MARK: UI
-    
-    @IBOutlet var listTableView: UITableView!
-    
     // MARK: - Properties
     
     private var notebook = Notebook()
@@ -43,10 +39,9 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     
     private var backgroundManagedObjectContext: NSManagedObjectContext!
     
-    private func updateNotebook() {
+    private func fetchNotebook() {
         fetchedResultsController.managedObjectContext.perform {
             do {
-                print(NSHomeDirectory())
                 try self.fetchedResultsController.performFetch()
                 guard let notebookEntitiy = self.fetchedResultsController.fetchedObjects?[0],
                     let notebook = notebookEntitiy.toNotebook() else {
@@ -54,27 +49,65 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
                 }
                 self.notebook = notebook
             } catch {
-                // MARK: NEED HANDLING
+                // TODO: NEED HANDLING
                 DDLogError("Error while fetching NotebookEntity: \(error.localizedDescription)")
             }
         }
     }
     
-    func add(note: Note) {
-        notebook.add(note: note)
-        
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
-        self.tableView.endUpdates()
+    // TODO: ADD "add", "update" and "remove"
+    private func pushNotebook() {
+        fetchedResultsController.managedObjectContext.perform {
+            do {
+                let context = self.fetchedResultsController.managedObjectContext
+                
+                let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: self.notebook, in: context)
+                
+                let noteEntities = try self.notebook.map { (noteInfo) -> NoteEntity in
+                    do {
+                        return try NoteEntity.findOrCreateNoteEntity(matching: noteInfo, in: context)
+                    } catch { throw error }
+                }
+                
+                notebookEntity.notes = Set(noteEntities) as NSSet
+            } catch {
+                // TODO: NEED HANDLING
+                DDLogError("Error while pushing NotebookEntity: \(error.localizedDescription)")
+            }
+        }
     }
     
-    func update(note: Note, on indexPath: IndexPath) {
+    @IBAction private func saveNote(from segue: UIStoryboardSegue) {
+        guard let detail = segue.source as? DetailViewController else { return }
+        
+        switch detail.state {
+        case .creation:
+            add(note: detail.note)
+        case .editing:
+            if let indexPath = tableView.indexPathForSelectedRow {
+                update(note: detail.note, on: indexPath)
+            }
+        default: break
+        }
+        
+        DDLogInfo("\(detail.note!) was saved to notebook")
+    }
+    
+    private func add(note: Note) {
+        notebook.add(note: note)
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+        tableView.endUpdates()
+    }
+    
+    private func update(note: Note, on indexPath: IndexPath) {
         
         notebook[indexPath.row] = note
         
-        self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [indexPath], with: .fade)
-        self.tableView.endUpdates()
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
     }
     
     // MARK: Lifecycle
@@ -97,18 +130,14 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        updateNotebook()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        fetchNotebook()
     }
     
     // MARK: Segues control
     
-    static let createNoteSegueIdentifier = "CreateNote"
+    static let createNoteSegueIdentifier = "Create Note"
     
-    static let editNoteSegueIdentifier = "EditNote"
+    static let editNoteSegueIdentifier = "Edit Note"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination.contents as? DetailViewController {
@@ -144,27 +173,12 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             tableView.beginUpdates()
-            // _ = notebook.remove(at: indexPath.row)
+            _ = notebook.remove(at: indexPath.row)
             // TODO: MAKE POPUP VIEW
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
     }
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     // MARK: UISplitViewController stuff
     
