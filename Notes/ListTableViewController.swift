@@ -84,30 +84,30 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         case .creation:
             add(note: detail.note)
         case .editing:
-            if let indexPath = tableView.indexPathForSelectedRow {
-                update(note: detail.note, on: indexPath)
-            }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            update(note: detail.note, on: indexPath)
         default: break
         }
-        
-        DDLogInfo("\(detail.note!) was saved to notebook")
     }
     
     private func add(note: Note) {
         notebook.add(note: note)
         
         tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+        tableView.insertRows(at: [IndexPath(row: notebook.size - 1, section: 0)], with: .fade)
         tableView.endUpdates()
+        
+        DDLogDebug("\(note) was saved to notebook")
     }
     
     private func update(note: Note, on indexPath: IndexPath) {
-        
         notebook[indexPath.row] = note
         
         tableView.beginUpdates()
         tableView.reloadRows(at: [indexPath], with: .fade)
         tableView.endUpdates()
+        
+        DDLogDebug("\(note) was updated")
     }
     
     // MARK: Lifecycle
@@ -142,9 +142,11 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination.contents as? DetailViewController {
             if segue.identifier == ListTableViewController.createNoteSegueIdentifier {
+                detailViewController.state = .creation
                 detailViewController.note = Note()
             } else if segue.identifier == ListTableViewController.editNoteSegueIdentifier,
                 let noteIndex = tableView.indexPathForSelectedRow?.row {
+                detailViewController.state = .editing
                 detailViewController.note = notebook[noteIndex]
             }
         }
@@ -161,7 +163,6 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         
         guard let noteCell = cell as? ListTableViewCell else { return cell }
         
-        // MARK: Reverse list due to optimisation
         noteCell.note = notebook[indexPath.row]
         return cell
     }
@@ -172,9 +173,10 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            tableView.beginUpdates()
+            // TODO: MAKE POPUP VIEW TO ASK IF THE USER SURE
             _ = notebook.remove(at: indexPath.row)
-            // TODO: MAKE POPUP VIEW
+            
+            tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }

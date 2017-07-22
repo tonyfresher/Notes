@@ -198,6 +198,13 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		027042AC1F239AEA0041D96B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		029186761F150FFB001099DD = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +230,7 @@
 		029186811F150FFB001099DD /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				027042AC1F239AEA0041D96B /* Operations */,
 				029186B51F1554D9001099DD /* Model */,
 				024E05801F1DE83C000FCD27 /* Core Data */,
 				029186BF1F164F41001099DD /* UI */,

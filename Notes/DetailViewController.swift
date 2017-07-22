@@ -47,22 +47,19 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     var state: State = .blank
     
-    var note: Note! {
-        didSet {
-            if note.isEmpty {
-                state = .creation
-            } else {
-                state = .editing
-            }
-        }
-    }
+    var note: Note!
     
     private func initUI() {
         guard note != nil else { return }
-        // TODO: PLACEHOLDEEEEERS
-        if state == .editing {
+        
+        switch state {
+        case .creation:
+            titleTextView.text = "Title"
+            contentTextView.text = "Content"
+        case .editing:
             titleTextView.text = note.title
             contentTextView.text = note.content
+        default: break
         }
         
         if let date = note.erasureDate {
