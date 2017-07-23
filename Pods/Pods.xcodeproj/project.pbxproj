@@ -7,172 +7,195 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01294EAF223856AA181E3DD6D9E8EC65 /* HRColorMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2B135C1A63327CC2038365930EAC67 /* HRColorMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		01630B2CDB6B45477072484503523233 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = B5B41652911BD0832CF3C400AB6DBE2A /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0227A6181F17F2E100CFF062 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227A6171F17F2E100CFF062 /* CocoaLumberjack.swift */; };
-		06270CD9D8C26C49505C5F53FF11D927 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F9797081C5696B4F11F177BEA5D3AA8B /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		068059FE5E4242E1C19DEBD05F883933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		08284B0947FEECE865742912B045BCCF /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = DF91B6993B539490688C195F578DCF5A /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		115F824F0E2805E3359CE03964891A15 /* HRHSVColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = D145A99AA290B73908546D3FB3DF7821 /* HRHSVColorUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1437647AF7C88C65998EFA2A2C2B4C01 /* DDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A685BA81E5CF7D30718C51D339B105B8 /* DDOSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17733B655FC40BC4B0F752218434447A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		1FE784EA6C983CCFADBBC32B77159FAE /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AFBDEB7839EC18B848FB97007F297E0 /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23C7A95FE6B5FD3E1663F19998E29053 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E8B10978ADBAF1BB0100464581DF6C3 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		28DDFF25768E01F1890BCFA79B2DDCE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		2D6831565C6AC2326A80C8D659E362DD /* Pods-Notes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD8C2BDFF79D7AFDF9071C04CFDE9935 /* Pods-Notes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2DBA4141D7B052E43958C96F3466FA6E /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E154269FAA9D573F554E8AD4042D52A6 /* DDLog.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		318A2BBB61154F1C07101169EC70A4E3 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6231D6C9459CB17AF00C4202EC3BD8 /* HRColorCursor.m */; };
-		34ADF6CEA813D96341D2C4ED247D0DFD /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B2393CF6E01FD1F5C91DA5A755DBA /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3649BA151D71326A383604AAAAB5D33D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		381685FA8A1867BFBA1812E8D793DC93 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0738D277C81DB4B7FADC66F7427F55 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		01294EAF223856AA181E3DD6D9E8EC65 /* HRColorMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC1C695FD33E82070CCEFEDF5BE37A4 /* HRColorMapView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01630B2CDB6B45477072484503523233 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 63943DB7E86F96DA062BD64C2D9B381F /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		027042AB1F2248980041D96B /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042AA1F2248980041D96B /* CocoaLumberjack.swift */; };
+		06270CD9D8C26C49505C5F53FF11D927 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = FD56F57CC1B2AA4C682A377751CF2B5D /* DDTTYLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		068059FE5E4242E1C19DEBD05F883933 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		08284B0947FEECE865742912B045BCCF /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74BEE23E043FCC6AEE49CF897EB13733 /* DDMultiFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		10C7786CD31C7B657401C4D93C9833A2 /* Pods-Notes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FD8C2BDFF79D7AFDF9071C04CFDE9935 /* Pods-Notes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		115F824F0E2805E3359CE03964891A15 /* HRHSVColorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DC43010E6567D16CB4244D5B2BFA2750 /* HRHSVColorUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1437647AF7C88C65998EFA2A2C2B4C01 /* DDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4296B96097557A0440CA030DFD16E5C2 /* DDOSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17733B655FC40BC4B0F752218434447A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		1C4BEE19D1B2AF6C6E4D98DB242C9A53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		1FE784EA6C983CCFADBBC32B77159FAE /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E2208596552877703BEE18D322161052 /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23C7A95FE6B5FD3E1663F19998E29053 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E9CCD1BFCC818C41793C165809BBC8 /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28DDFF25768E01F1890BCFA79B2DDCE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		2DBA4141D7B052E43958C96F3466FA6E /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBCF4AE9C27AA9FEABF08D5E3E6DA7C /* DDLog.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		318A2BBB61154F1C07101169EC70A4E3 /* HRColorCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D94234B35E1E1D194B7106714C6CC2 /* HRColorCursor.m */; };
+		34ADF6CEA813D96341D2C4ED247D0DFD /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = E0708F4AEF58A5DA4F3D25FEF405ED81 /* DDASLLogCapture.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3649BA151D71326A383604AAAAB5D33D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		381685FA8A1867BFBA1812E8D793DC93 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0148975E4391BFE235FB2C4C5CED90 /* DDFileLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		3BDFBF4D4826F50DE3CDEF4411C40B6A /* Pods-NotesTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26629B9D2F0961AD4F7C51B8DAD603B3 /* Pods-NotesTests-dummy.m */; };
-		3E0FDC779516CC4FA0CE85EEAEA0A9AF /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB5093450740B368FFF7102E4444A1 /* HRBrightnessCursor.m */; };
-		3FFB518D11A6E10939ADC380F61245E9 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB6F644A7BAAF3015EE95F604A2C72D /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42364581B3C9360862FE47A1C2502069 /* Color-Picker-for-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91C485C0168A4B92572026D57AE0C413 /* Color-Picker-for-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		439AF6A4B4435633A358FD1D9D60B58E /* HRBrightnessCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 68B278F4DB78507BFFF743FBE341DB04 /* HRBrightnessCursor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		466560586F04FC7219636C25771ADAB7 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B0EF830E5E4901EBEEF080CBECD182 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49795EFB9BBAC6216B1996DBC068F006 /* HRColorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C82BF26B8ED74793C2FC92692640DCDE /* HRColorInfoView.m */; };
-		567C2C9AB63B4D965B060CA1DA9D9B33 /* HRColorCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B774540E213288C8ACABB2A17C4291 /* HRColorCursor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5E599C00A8EFEE7929240153AAABFC83 /* HRBrightnessSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 663DCD14323271F79A514BF29FBBFD79 /* HRBrightnessSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		64355F5F2F5C159B9F8B7259D9428584 /* UIImage+CoreGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 882719449DB516E01B21814D2532DE01 /* UIImage+CoreGraphics.m */; };
-		670B2BAAE9BCE7C9DFD43132089ECA71 /* HRHSVColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 224B36570D068C192B9453B579C5E4EE /* HRHSVColorUtil.m */; };
-		68F274887D25303A29329ADA692F35D9 /* Color-Picker-for-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F307EC5AADADFEB3177B22510E2FDCA /* Color-Picker-for-iOS-dummy.m */; };
-		7163FCA57C02C890435DFA2A4F3AE4C8 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA278991EB69920BA4CE9C69DFE8C65 /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		75CC69BC081384EA3033F3AB5CF97E29 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 371D70198206DE9E94DCCDE03B2E900A /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		77F55DA1292F4A23365745071EF0B667 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BA920FD528FE9389BACB2D22836459 /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		78D703BBB33BB9678A9075D3E7C27AC3 /* HRColorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E059EA4008C62A32661922B6F1A3797 /* HRColorMapView.m */; };
-		9ECDFDB4B9829BBB0E369F85D240B8AE /* CocoaLumberjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E30AD011E6AB3BB910092F16FE7E5016 /* CocoaLumberjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E0FDC779516CC4FA0CE85EEAEA0A9AF /* HRBrightnessCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 28957FC97B7BF08F9E8F47DADF15B60B /* HRBrightnessCursor.m */; };
+		3FFB518D11A6E10939ADC380F61245E9 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = E666F41C89285095F42BD31317571341 /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42364581B3C9360862FE47A1C2502069 /* Color-Picker-for-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E30C0DA5AAA52D99D6D04184AA54F69A /* Color-Picker-for-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		439AF6A4B4435633A358FD1D9D60B58E /* HRBrightnessCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = B8D66E83382B2C3823B26FEDA30BE2F3 /* HRBrightnessCursor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		466560586F04FC7219636C25771ADAB7 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 776B64C30B27B0C49FD45754DA60F869 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49795EFB9BBAC6216B1996DBC068F006 /* HRColorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EC9A6FACD27F08EF5180B2E3A08F64 /* HRColorInfoView.m */; };
+		55C3A1E79AAF301FA6B0D24212BEFB7A /* Pods-Notes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0774DB483212F551F2CD1D0A8C65D24 /* Pods-Notes-dummy.m */; };
+		567C2C9AB63B4D965B060CA1DA9D9B33 /* HRColorCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = D89104E098BC03E1641FCF26DC7500CB /* HRColorCursor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E599C00A8EFEE7929240153AAABFC83 /* HRBrightnessSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = BC5F2DB457EFA339267C3E0969CE2861 /* HRBrightnessSlider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64355F5F2F5C159B9F8B7259D9428584 /* UIImage+CoreGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DCF0EF12F0C0062EBB0C365C657D8 /* UIImage+CoreGraphics.m */; };
+		670B2BAAE9BCE7C9DFD43132089ECA71 /* HRHSVColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BDB2A6C9E3D7E05497D4DD00DDA1ED /* HRHSVColorUtil.m */; };
+		68F274887D25303A29329ADA692F35D9 /* Color-Picker-for-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB831FCFD3170C8FB204EA2E834D4DD7 /* Color-Picker-for-iOS-dummy.m */; };
+		7163FCA57C02C890435DFA2A4F3AE4C8 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 366893420DDBC2CAC9E47A0357E464EC /* DDContextFilterLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		75CC69BC081384EA3033F3AB5CF97E29 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 76FF921BEFB58954D5C635B2B432B763 /* DDASLLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		77F55DA1292F4A23365745071EF0B667 /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427818BE94D99923B4757B46EC36F13 /* DDDispatchQueueLogFormatter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		78D703BBB33BB9678A9075D3E7C27AC3 /* HRColorMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41310EC31A126B31EB8FDE3A21943CC /* HRColorMapView.m */; };
+		9ECDFDB4B9829BBB0E369F85D240B8AE /* CocoaLumberjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6B0E72A0E78C28E2861AC7130095915 /* CocoaLumberjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FBC8A1877557648CFFE11FE63ED290D /* Pods-NotesUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82FD3DE14655CE666933BED1FBB40A91 /* Pods-NotesUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A38FD606BF174D0485A33F01074216FA /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C9429FCE86A4E7D749F54A357DD7306F /* DDOSLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A38FD606BF174D0485A33F01074216FA /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A43FCF87FB65285173CE5306C5C77 /* DDOSLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B4FC17E56C15CDAFF1B33379B22125C6 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 697DAD30747FFD251F2BCF752D09889C /* UITextView+Placeholder.m */; };
 		B8A98D136B44AA2FF4E917F17779025D /* Pods-NotesTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8FC0189322FC784A2BC3D110574A7B8 /* Pods-NotesTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B8D00D039135E8ABE6417C5D2E3D6C9E /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = C7497EDD57F39BE86EF6ABE7980CC169 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C592821D9C86A16075F492CDDD7EBFA0 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DC9A1C7F8A36E2137C4FCED9B052A23 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8D00D039135E8ABE6417C5D2E3D6C9E /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = E0FC7DFBDCD28DA2DFD8AB730E2D0E59 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C592821D9C86A16075F492CDDD7EBFA0 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 48085941D89CBCED1792C8ADB4C693A3 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5DB0F4F20B690720E40BBB6360AD794 /* Pods-NotesUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D29BF7999E9BA51EFF8E62E64E05A6A9 /* Pods-NotesUITests-dummy.m */; };
-		C5FA65B20F9BCBDD86592B4036F2A69C /* UIImage+CoreGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 519936971186B7AB9315FA7DBFB723D8 /* UIImage+CoreGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C6DDC840836592382565874D9FDC2613 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 086D9167033E482AE52F097F96EA2AF3 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C6F8F9FD9146C80B8913691FE1C62D7B /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F1B54B24F37E778FEEA69AC6FA27CAB2 /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C966B983E62ECE8068F66FD16A14D4D8 /* HRBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FF4AF620A4699DF472C43B414AC36 /* HRBrightnessSlider.m */; };
-		CC870D61CBE8FD2A0D24A3A3D8CE5C62 /* CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E907B9E0B3127B9A333912E5988FB8 /* CocoaLumberjack-dummy.m */; };
-		CE0DDEB478F72FC416E2C6C52D0C2B29 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 412279AB1C1CCE9B8D61E4862364030E /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D00D3957D07F1213461BC0B7EE367979 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 962E59A7886DC60ECD7BBE5C6926B992 /* HRColorPickerView.m */; };
-		D5D4A699779F1796A4F24BFE1FB94E20 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B472B76009C2AFBB53A0C8AD956D05 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		DA9B436408E2C274B67172AFA5CA8BC8 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = 540C3ADD029C28EB520C61C7087F4B36 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E3C5456FB49A749739230C235355D473 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D83D8F3A6C90E72DD411CA0726ABC2E /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EFB11D4EB44015CE0D13AF52E437D577 /* Pods-Notes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0774DB483212F551F2CD1D0A8C65D24 /* Pods-Notes-dummy.m */; };
-		F17D3D26ADE94380EAEE45707FDED798 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D4E6AE0C1B276C6B2D713A988EF1029 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F55AC0651CF175205E1F7CDD7BBEC84F /* HRColorInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = F3A5DB61B4518C86D6D8E318B7DBB1B8 /* HRColorInfoView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FC1615ACE4FF20081559149DCA6FB73A /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 60F4722DAA26BEBCB69A14B2EBC65044 /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE540AB638176ECBADC41A9AFEF56B96 /* HRColorPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 56485B2CFEF1C8A95AD3E700FB93DA0E /* HRColorPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFBFFBACE36D334B0C9ABAA712479A89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		C5FA65B20F9BCBDD86592B4036F2A69C /* UIImage+CoreGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 92CB9F761FB6B8CE8C87A280913BE4D4 /* UIImage+CoreGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6DDC840836592382565874D9FDC2613 /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = C26CBF90AA020A9F8378C65721020760 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6F8F9FD9146C80B8913691FE1C62D7B /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEFDCB6971B9A9E633A8C2D4CA45B4F /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C966B983E62ECE8068F66FD16A14D4D8 /* HRBrightnessSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97721ED640CE61DEF0B0E0262DC4ED37 /* HRBrightnessSlider.m */; };
+		CC870D61CBE8FD2A0D24A3A3D8CE5C62 /* CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1276822B9731F0888ECF42564164AAF /* CocoaLumberjack-dummy.m */; };
+		CE0DDEB478F72FC416E2C6C52D0C2B29 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = C9B2455A3B8DD68E3749FD73C8CA5C44 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D00D3957D07F1213461BC0B7EE367979 /* HRColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 092FF9147DD1DA96360BEC72174C5965 /* HRColorPickerView.m */; };
+		D5D4A699779F1796A4F24BFE1FB94E20 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C08E57C7C6239B037A22903963E876 /* DDAbstractDatabaseLogger.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D6A542E44915283AF26FA25DB5339D2E /* UITextView+Placeholder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BC1AFA5B6EDC621426CF483ED907C9A /* UITextView+Placeholder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA9B436408E2C274B67172AFA5CA8BC8 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = E4BB541B332832E496E5A4D679E5E903 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E25FC8ADB83FC53871ED1525334F74D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
+		E3C5456FB49A749739230C235355D473 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 3557398B49746E626C9D5BA0804F67D6 /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F17D3D26ADE94380EAEE45707FDED798 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 13A6970860D3D0D4C398CFEFB52E0726 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F55AC0651CF175205E1F7CDD7BBEC84F /* HRColorInfoView.h in Headers */ = {isa = PBXBuildFile; fileRef = A0D88DAE30E16F723CC93E5E6A8541B9 /* HRColorInfoView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6A45E579F7402798A301FAAD68F4F27 /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3825E62FFAE24B850A66043C7C9EC193 /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA8631B38E845A88E40193AE8CED5EB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
+		FBC36BF914A8A00B05B70CCED1721BE8 /* UITextView+Placeholder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2ED51BA5583F84B8F41314EA876773 /* UITextView+Placeholder-dummy.m */; };
+		FC1615ACE4FF20081559149DCA6FB73A /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F54841D46518A11524CAE8DB5CCB442E /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE540AB638176ECBADC41A9AFEF56B96 /* HRColorPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E8AC369EA1DFCB66864FBB369DA16E45 /* HRColorPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7D66CDB5DE53BB2656EA55640E5E09DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3B25E1601C445A6A75E55543DB48D091;
-			remoteInfo = "Color-Picker-for-iOS";
-		};
-		91CA1D436759DBE02D7866D7A38A438B /* PBXContainerItemProxy */ = {
+		46B26255533B0F684E3E20DDE37D5ADE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA2A920A891C4D3535867E5C3EF3D793;
 			remoteInfo = CocoaLumberjack;
 		};
+		6654C6BBFBC3F470166DB0F511465B8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B25E1601C445A6A75E55543DB48D091;
+			remoteInfo = "Color-Picker-for-iOS";
+		};
+		DA28D556E79C6CBEA0E5830314694468 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBBDCECF30F469499E51965D1A0E5518;
+			remoteInfo = "UITextView+Placeholder";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0227A6171F17F2E100CFF062 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaLumberjack.swift; path = Classes/CocoaLumberjack.swift; sourceTree = "<group>"; };
+		0124D241486B8E39BE47FB0C1189A5F2 /* Pods_NotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		027042AA1F2248980041D96B /* CocoaLumberjack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CocoaLumberjack.swift; path = Classes/CocoaLumberjack.swift; sourceTree = "<group>"; };
 		063FCF5BD5B6E44C11E1FF3EB452889A /* Pods-NotesUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NotesUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		086D9167033E482AE52F097F96EA2AF3 /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Classes/DDLog+LOGV.h"; sourceTree = "<group>"; };
-		0C0738D277C81DB4B7FADC66F7427F55 /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Classes/DDFileLogger.m; sourceTree = "<group>"; };
-		0DCACDC798C7729D1F72B328513CC9EE /* Color-Picker-for-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Color-Picker-for-iOS.xcconfig"; sourceTree = "<group>"; };
+		092FF9147DD1DA96360BEC72174C5965 /* HRColorPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorPickerView.m; path = ColorPicker/HRColorPickerView.m; sourceTree = "<group>"; };
+		0BC1AFA5B6EDC621426CF483ED907C9A /* UITextView+Placeholder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder-umbrella.h"; sourceTree = "<group>"; };
 		137CD4A8233F59B2AC2F06AE3B634FCE /* Pods-NotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		1C9E3079D0DD7F64F53B49BDD3334CD7 /* CocoaLumberjack.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.xcconfig; sourceTree = "<group>"; };
-		20FB3E8F7DC85AC53D86EA1EBABD75A4 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		224B36570D068C192B9453B579C5E4EE /* HRHSVColorUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRHSVColorUtil.m; path = ColorPicker/HRHSVColorUtil.m; sourceTree = "<group>"; };
+		13A6970860D3D0D4C398CFEFB52E0726 /* DDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = Classes/DDASLLogger.h; sourceTree = "<group>"; };
+		18FC1C6DAE16F24190D0F9FF93C8D9EE /* Color-Picker-for-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Color-Picker-for-iOS.xcconfig"; sourceTree = "<group>"; };
+		1E12C562CFE0FE376AE7443CB49C6A53 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F1B6E4335B12278953FC14AD105EE52 /* Color-Picker-for-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Color-Picker-for-iOS-prefix.pch"; sourceTree = "<group>"; };
+		20EC9A6FACD27F08EF5180B2E3A08F64 /* HRColorInfoView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorInfoView.m; path = ColorPicker/HRColorInfoView.m; sourceTree = "<group>"; };
 		25990A4F22BAAEE9BFF690054C4D9D02 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25D7437F9DA2C6ADDBACF21806156382 /* Pods-NotesTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NotesTests-frameworks.sh"; sourceTree = "<group>"; };
 		26629B9D2F0961AD4F7C51B8DAD603B3 /* Pods-NotesTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NotesTests-dummy.m"; sourceTree = "<group>"; };
-		2B0DB3B1217B5A524BB6BC232A55215A /* Color-Picker-for-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Color-Picker-for-iOS-prefix.pch"; sourceTree = "<group>"; };
-		2BACAFD6A33657539638D663AF9E0834 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28957FC97B7BF08F9E8F47DADF15B60B /* HRBrightnessCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRBrightnessCursor.m; path = ColorPicker/HRBrightnessCursor.m; sourceTree = "<group>"; };
+		2A8360DB99F91501A02CB1F1E789D086 /* CocoaLumberjack.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.xcconfig; sourceTree = "<group>"; };
+		2F2ED51BA5583F84B8F41314EA876773 /* UITextView+Placeholder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder-dummy.m"; sourceTree = "<group>"; };
 		321BDAA132C5F5BDF710F3B9C712C598 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34BDB2A6C9E3D7E05497D4DD00DDA1ED /* HRHSVColorUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRHSVColorUtil.m; path = ColorPicker/HRHSVColorUtil.m; sourceTree = "<group>"; };
+		3557398B49746E626C9D5BA0804F67D6 /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Classes/DDTTYLogger.h; sourceTree = "<group>"; };
 		364103AD4F9D005FD1B85ACDE8B7C2CF /* Pods-NotesTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NotesTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		371D70198206DE9E94DCCDE03B2E900A /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Classes/DDASLLogger.m; sourceTree = "<group>"; };
+		366893420DDBC2CAC9E47A0357E464EC /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Classes/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		3825E62FFAE24B850A66043C7C9EC193 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+Placeholder.h"; path = "Sources/UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		3AC90A27ECB61CCF3AA1E66E689DC6CD /* Pods-NotesUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NotesUITests-resources.sh"; sourceTree = "<group>"; };
-		3E059EA4008C62A32661922B6F1A3797 /* HRColorMapView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorMapView.m; path = ColorPicker/HRColorMapView.m; sourceTree = "<group>"; };
-		412279AB1C1CCE9B8D61E4862364030E /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Classes/Extensions/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		41BA920FD528FE9389BACB2D22836459 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Classes/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		3EBCF4AE9C27AA9FEABF08D5E3E6DA7C /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Classes/DDLog.m; sourceTree = "<group>"; };
+		42680A75191FFA80ADC049151129F811 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4296B96097557A0440CA030DFD16E5C2 /* DDOSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDOSLogger.h; path = Classes/DDOSLogger.h; sourceTree = "<group>"; };
+		45D94234B35E1E1D194B7106714C6CC2 /* HRColorCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorCursor.m; path = ColorPicker/HRColorCursor.m; sourceTree = "<group>"; };
 		471B1DEE5485840F2BCA56ECF08D5F2E /* Pods-NotesUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NotesUITests-frameworks.sh"; sourceTree = "<group>"; };
+		48085941D89CBCED1792C8ADB4C693A3 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Classes/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		4ACC7B3EB010AFBDB06EF226816D6BDB /* Pods-NotesTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NotesTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		4BC219A8637E7685D7231ADD74B9CBE1 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
-		519936971186B7AB9315FA7DBFB723D8 /* UIImage+CoreGraphics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+CoreGraphics.h"; path = "ColorPicker/UIImage+CoreGraphics.h"; sourceTree = "<group>"; };
-		540C3ADD029C28EB520C61C7087F4B36 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = Classes/CocoaLumberjack.h; sourceTree = "<group>"; };
+		4F0DCF0EF12F0C0062EBB0C365C657D8 /* UIImage+CoreGraphics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CoreGraphics.m"; path = "ColorPicker/UIImage+CoreGraphics.m"; sourceTree = "<group>"; };
+		51C81BAF733939F915015755BB3E320F /* UITextView_Placeholder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UITextView_Placeholder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55212745900880BE1B952595204D7667 /* Pods-NotesTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NotesTests-resources.sh"; sourceTree = "<group>"; };
-		55B472B76009C2AFBB53A0C8AD956D05 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Classes/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		56485B2CFEF1C8A95AD3E700FB93DA0E /* HRColorPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorPickerView.h; path = ColorPicker/HRColorPickerView.h; sourceTree = "<group>"; };
+		5571A946F230CA50D68D397867402C78 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		597AA22864D725B56235C49F446F525C /* Pods-NotesTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NotesTests.modulemap"; sourceTree = "<group>"; };
-		5D83D8F3A6C90E72DD411CA0726ABC2E /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Classes/DDTTYLogger.h; sourceTree = "<group>"; };
+		5A14BE45AA4636C5E836037AE34812C0 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0197ECFC3323289FC60EF5D90C39E9 /* Pods-Notes-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Notes-frameworks.sh"; sourceTree = "<group>"; };
-		5E8B10978ADBAF1BB0100464581DF6C3 /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Classes/DDLog.h; sourceTree = "<group>"; };
-		5F307EC5AADADFEB3177B22510E2FDCA /* Color-Picker-for-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Color-Picker-for-iOS-dummy.m"; sourceTree = "<group>"; };
-		60F4722DAA26BEBCB69A14B2EBC65044 /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Classes/DDFileLogger.h; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		663DCD14323271F79A514BF29FBBFD79 /* HRBrightnessSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRBrightnessSlider.h; path = ColorPicker/HRBrightnessSlider.h; sourceTree = "<group>"; };
-		67B0EF830E5E4901EBEEF080CBECD182 /* DDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLegacyMacros.h; path = Classes/DDLegacyMacros.h; sourceTree = "<group>"; };
-		68B278F4DB78507BFFF743FBE341DB04 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRBrightnessCursor.h; path = ColorPicker/HRBrightnessCursor.h; sourceTree = "<group>"; };
-		69B774540E213288C8ACABB2A17C4291 /* HRColorCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorCursor.h; path = ColorPicker/HRColorCursor.h; sourceTree = "<group>"; };
+		63943DB7E86F96DA062BD64C2D9B381F /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Classes/DDASLLogCapture.h; sourceTree = "<group>"; };
+		66C08E57C7C6239B037A22903963E876 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Classes/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		66E9CCD1BFCC818C41793C165809BBC8 /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Classes/DDLog.h; sourceTree = "<group>"; };
+		697DAD30747FFD251F2BCF752D09889C /* UITextView+Placeholder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextView+Placeholder.m"; path = "Sources/UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		6CA5D70C2749E39F86A3746A6DA1BABB /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6D4E6AE0C1B276C6B2D713A988EF1029 /* DDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = Classes/DDASLLogger.h; sourceTree = "<group>"; };
-		6DC9A1C7F8A36E2137C4FCED9B052A23 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Classes/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		6DEFB0377F680F0D2B3633DD553CC51D /* Color_Picker_for_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Color_Picker_for_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E4B2393CF6E01FD1F5C91DA5A755DBA /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Classes/DDASLLogCapture.m; sourceTree = "<group>"; };
-		716074BAAC0CED6E8CADACDE9A90E456 /* Pods_NotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721B25EE2A74FB3C5223207215D0E6C1 /* Pods-NotesUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-NotesUITests.modulemap"; sourceTree = "<group>"; };
+		74BEE23E043FCC6AEE49CF897EB13733 /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Classes/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
+		761EA9C550D5481CD8010E300CDA95C6 /* UITextView+Placeholder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "UITextView+Placeholder.modulemap"; sourceTree = "<group>"; };
+		76FF921BEFB58954D5C635B2B432B763 /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Classes/DDASLLogger.m; sourceTree = "<group>"; };
+		776B64C30B27B0C49FD45754DA60F869 /* DDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLegacyMacros.h; path = Classes/DDLegacyMacros.h; sourceTree = "<group>"; };
 		7FB0E6C3368E9EFC76D49E654F7489C2 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
+		7FC1C695FD33E82070CCEFEDF5BE37A4 /* HRColorMapView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorMapView.h; path = ColorPicker/HRColorMapView.h; sourceTree = "<group>"; };
 		82FD3DE14655CE666933BED1FBB40A91 /* Pods-NotesUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NotesUITests-umbrella.h"; sourceTree = "<group>"; };
+		8427818BE94D99923B4757B46EC36F13 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Classes/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		881FE398E1792679772460BAFAABC6D4 /* Pods-Notes-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Notes-acknowledgements.plist"; sourceTree = "<group>"; };
-		882719449DB516E01B21814D2532DE01 /* UIImage+CoreGraphics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CoreGraphics.m"; path = "ColorPicker/UIImage+CoreGraphics.m"; sourceTree = "<group>"; };
 		909B710EACBD465DFAF3314A01160DC6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		91C485C0168A4B92572026D57AE0C413 /* Color-Picker-for-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Color-Picker-for-iOS-umbrella.h"; sourceTree = "<group>"; };
+		92CB9F761FB6B8CE8C87A280913BE4D4 /* UIImage+CoreGraphics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+CoreGraphics.h"; path = "ColorPicker/UIImage+CoreGraphics.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		962E59A7886DC60ECD7BBE5C6926B992 /* HRColorPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorPickerView.m; path = ColorPicker/HRColorPickerView.m; sourceTree = "<group>"; };
+		97721ED640CE61DEF0B0E0262DC4ED37 /* HRBrightnessSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRBrightnessSlider.m; path = ColorPicker/HRBrightnessSlider.m; sourceTree = "<group>"; };
 		9824D6CB54742781634BE8B1C734AD0A /* Pods-NotesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesTests.release.xcconfig"; sourceTree = "<group>"; };
-		9AFBDEB7839EC18B848FB97007F297E0 /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Classes/Extensions/DDMultiFormatter.h; sourceTree = "<group>"; };
-		9E6231D6C9459CB17AF00C4202EC3BD8 /* HRColorCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorCursor.m; path = ColorPicker/HRColorCursor.m; sourceTree = "<group>"; };
+		9E9357548E179C8072C22C6354B42A70 /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
 		9F88B9E2D41C452FEAFF04F1054E4F08 /* Pods-Notes-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Notes-resources.sh"; sourceTree = "<group>"; };
-		A2EB5093450740B368FFF7102E4444A1 /* HRBrightnessCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRBrightnessCursor.m; path = ColorPicker/HRBrightnessCursor.m; sourceTree = "<group>"; };
-		A685BA81E5CF7D30718C51D339B105B8 /* DDOSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDOSLogger.h; path = Classes/DDOSLogger.h; sourceTree = "<group>"; };
-		B5B41652911BD0832CF3C400AB6DBE2A /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Classes/DDASLLogCapture.h; sourceTree = "<group>"; };
-		B96FF4AF620A4699DF472C43B414AC36 /* HRBrightnessSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRBrightnessSlider.m; path = ColorPicker/HRBrightnessSlider.m; sourceTree = "<group>"; };
-		B9E907B9E0B3127B9A333912E5988FB8 /* CocoaLumberjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaLumberjack-dummy.m"; sourceTree = "<group>"; };
+		A0D88DAE30E16F723CC93E5E6A8541B9 /* HRColorInfoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorInfoView.h; path = ColorPicker/HRColorInfoView.h; sourceTree = "<group>"; };
+		A6C5565C017BE8515A64C3467F9BDA9E /* UITextView+Placeholder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder-prefix.pch"; sourceTree = "<group>"; };
+		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B8D66E83382B2C3823B26FEDA30BE2F3 /* HRBrightnessCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRBrightnessCursor.h; path = ColorPicker/HRBrightnessCursor.h; sourceTree = "<group>"; };
+		BC5F2DB457EFA339267C3E0969CE2861 /* HRBrightnessSlider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRBrightnessSlider.h; path = ColorPicker/HRBrightnessSlider.h; sourceTree = "<group>"; };
 		C0774DB483212F551F2CD1D0A8C65D24 /* Pods-Notes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Notes-dummy.m"; sourceTree = "<group>"; };
-		C7497EDD57F39BE86EF6ABE7980CC169 /* DDLogMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLogMacros.h; path = Classes/DDLogMacros.h; sourceTree = "<group>"; };
-		C82BF26B8ED74793C2FC92692640DCDE /* HRColorInfoView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorInfoView.m; path = ColorPicker/HRColorInfoView.m; sourceTree = "<group>"; };
-		C9429FCE86A4E7D749F54A357DD7306F /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Classes/DDOSLogger.m; sourceTree = "<group>"; };
-		CCB6F644A7BAAF3015EE95F604A2C72D /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Classes/DDAssertMacros.h; sourceTree = "<group>"; };
-		CD5A1F5675EB87CD2C4F8788DB4445B1 /* CocoaLumberjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CocoaLumberjack.modulemap; sourceTree = "<group>"; };
-		D145A99AA290B73908546D3FB3DF7821 /* HRHSVColorUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRHSVColorUtil.h; path = ColorPicker/HRHSVColorUtil.h; sourceTree = "<group>"; };
+		C1276822B9731F0888ECF42564164AAF /* CocoaLumberjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaLumberjack-dummy.m"; sourceTree = "<group>"; };
+		C26CBF90AA020A9F8378C65721020760 /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Classes/DDLog+LOGV.h"; sourceTree = "<group>"; };
+		C80FA81FE06BEE6E8579B63BF2AE207C /* UITextView+Placeholder.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UITextView+Placeholder.xcconfig"; sourceTree = "<group>"; };
+		C9B2455A3B8DD68E3749FD73C8CA5C44 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Classes/Extensions/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		D0CF07BDB15248F028C42A051B5A8B7E /* Color_Picker_for_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Color_Picker_for_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29BF7999E9BA51EFF8E62E64E05A6A9 /* Pods-NotesUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NotesUITests-dummy.m"; sourceTree = "<group>"; };
-		D2D1344065E9A1CE08B259CCCE05EF0A /* Color-Picker-for-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Color-Picker-for-iOS.modulemap"; sourceTree = "<group>"; };
+		D4C2BE6A670DD8B9911DB8F2354D152C /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D89104E098BC03E1641FCF26DC7500CB /* HRColorCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorCursor.h; path = ColorPicker/HRColorCursor.h; sourceTree = "<group>"; };
 		D8FC0189322FC784A2BC3D110574A7B8 /* Pods-NotesTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NotesTests-umbrella.h"; sourceTree = "<group>"; };
-		DF2B135C1A63327CC2038365930EAC67 /* HRColorMapView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorMapView.h; path = ColorPicker/HRColorMapView.h; sourceTree = "<group>"; };
-		DF91B6993B539490688C195F578DCF5A /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Classes/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
-		E00E92A37A356084F49D066E7C4D1EFD /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
-		E154269FAA9D573F554E8AD4042D52A6 /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Classes/DDLog.m; sourceTree = "<group>"; };
-		E30AD011E6AB3BB910092F16FE7E5016 /* CocoaLumberjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-umbrella.h"; sourceTree = "<group>"; };
-		E5B2A509E56707CCD2EAB330CCA59244 /* Pods_NotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBA278991EB69920BA4CE9C69DFE8C65 /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Classes/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		F1B54B24F37E778FEEA69AC6FA27CAB2 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Classes/Extensions/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		F3A5DB61B4518C86D6D8E318B7DBB1B8 /* HRColorInfoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorInfoView.h; path = ColorPicker/HRColorInfoView.h; sourceTree = "<group>"; };
+		D9CDB4B4682B835BFFD3E1814EA902E8 /* CocoaLumberjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CocoaLumberjack.modulemap; sourceTree = "<group>"; };
+		DC43010E6567D16CB4244D5B2BFA2750 /* HRHSVColorUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRHSVColorUtil.h; path = ColorPicker/HRHSVColorUtil.h; sourceTree = "<group>"; };
+		E0708F4AEF58A5DA4F3D25FEF405ED81 /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Classes/DDASLLogCapture.m; sourceTree = "<group>"; };
+		E0FC7DFBDCD28DA2DFD8AB730E2D0E59 /* DDLogMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLogMacros.h; path = Classes/DDLogMacros.h; sourceTree = "<group>"; };
+		E1A09187E7D6B68165F898E6DAEE82EE /* Color-Picker-for-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Color-Picker-for-iOS.modulemap"; sourceTree = "<group>"; };
+		E2208596552877703BEE18D322161052 /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Classes/Extensions/DDMultiFormatter.h; sourceTree = "<group>"; };
+		E30C0DA5AAA52D99D6D04184AA54F69A /* Color-Picker-for-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Color-Picker-for-iOS-umbrella.h"; sourceTree = "<group>"; };
+		E41310EC31A126B31EB8FDE3A21943CC /* HRColorMapView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HRColorMapView.m; path = ColorPicker/HRColorMapView.m; sourceTree = "<group>"; };
+		E4BB541B332832E496E5A4D679E5E903 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = Classes/CocoaLumberjack.h; sourceTree = "<group>"; };
+		E666F41C89285095F42BD31317571341 /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Classes/DDAssertMacros.h; sourceTree = "<group>"; };
+		E6B0E72A0E78C28E2861AC7130095915 /* CocoaLumberjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-umbrella.h"; sourceTree = "<group>"; };
+		E8AC369EA1DFCB66864FBB369DA16E45 /* HRColorPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HRColorPickerView.h; path = ColorPicker/HRColorPickerView.h; sourceTree = "<group>"; };
+		EA0148975E4391BFE235FB2C4C5CED90 /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Classes/DDFileLogger.m; sourceTree = "<group>"; };
+		F04A43FCF87FB65285173CE5306C5C77 /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Classes/DDOSLogger.m; sourceTree = "<group>"; };
+		F15752B6061F0B0868CC831F31A43B06 /* Pods_NotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B86B0D2BC3C3A6537ECFF3D3B847D0 /* Pods-NotesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NotesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F54841D46518A11524CAE8DB5CCB442E /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Classes/DDFileLogger.h; sourceTree = "<group>"; };
 		F5502055F3D04DB9E9448CAE4BBB9388 /* Pods-Notes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Notes.modulemap"; sourceTree = "<group>"; };
 		F6AFAE518B6FC9BF0B77B35C6617DCC5 /* Pods-Notes-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Notes-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F761087B6D28AC441D86637D10277792 /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9797081C5696B4F11F177BEA5D3AA8B /* DDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Classes/DDTTYLogger.m; sourceTree = "<group>"; };
-		FC2C1DF67B4249DDF18BCD1E7D90C85A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAEFDCB6971B9A9E633A8C2D4CA45B4F /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Classes/Extensions/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		FB831FCFD3170C8FB204EA2E834D4DD7 /* Color-Picker-for-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Color-Picker-for-iOS-dummy.m"; sourceTree = "<group>"; };
+		FD56F57CC1B2AA4C682A377751CF2B5D /* DDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Classes/DDTTYLogger.m; sourceTree = "<group>"; };
 		FD8C2BDFF79D7AFDF9071C04CFDE9935 /* Pods-Notes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Notes-umbrella.h"; sourceTree = "<group>"; };
 		FEF1AA2529DEF26680BA99F3616218DB /* Pods-NotesUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NotesUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +206,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3649BA151D71326A383604AAAAB5D33D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5289569C773DDB0A9D37E9D5B2F5FB35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E25FC8ADB83FC53871ED1525334F74D6 /* Foundation.framework in Frameworks */,
+				FA8631B38E845A88E40193AE8CED5EB1 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,14 +234,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		954B85D9394F41A1174B171B39FF0E47 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFBFFBACE36D334B0C9ABAA712479A89 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B9FD4CED3816CF42D5F2B7F1F8103D26 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,23 +242,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BEF20BDD4A0254D4B92B91F23088979B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C4BEE19D1B2AF6C6E4D98DB242C9A53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		086AD7BA9848A7A5AB7624CDC85E22C6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D2D1344065E9A1CE08B259CCCE05EF0A /* Color-Picker-for-iOS.modulemap */,
-				0DCACDC798C7729D1F72B328513CC9EE /* Color-Picker-for-iOS.xcconfig */,
-				5F307EC5AADADFEB3177B22510E2FDCA /* Color-Picker-for-iOS-dummy.m */,
-				2B0DB3B1217B5A524BB6BC232A55215A /* Color-Picker-for-iOS-prefix.pch */,
-				91C485C0168A4B92572026D57AE0C413 /* Color-Picker-for-iOS-umbrella.h */,
-				2BACAFD6A33657539638D663AF9E0834 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Color-Picker-for-iOS";
-			sourceTree = "<group>";
-		};
 		0E45676BF379B4E5B4AAAB5119C5BD6D /* Pods-Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +271,30 @@
 			path = "Target Support Files/Pods-Notes";
 			sourceTree = "<group>";
 		};
+		1FE6BED9E595FFCAE7D0F475ABBDA995 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9CDB4B4682B835BFFD3E1814EA902E8 /* CocoaLumberjack.modulemap */,
+				2A8360DB99F91501A02CB1F1E789D086 /* CocoaLumberjack.xcconfig */,
+				C1276822B9731F0888ECF42564164AAF /* CocoaLumberjack-dummy.m */,
+				9E9357548E179C8072C22C6354B42A70 /* CocoaLumberjack-prefix.pch */,
+				E6B0E72A0E78C28E2861AC7130095915 /* CocoaLumberjack-umbrella.h */,
+				5571A946F230CA50D68D397867402C78 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CocoaLumberjack";
+			sourceTree = "<group>";
+		};
+		2A93A82C00D8193BFDCB26FB18A13E01 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				C4BAA444B316AF9D281B61360E24B8FA /* Default */,
+				DC80EBF7B6B388FFEDC9CA2370516B46 /* Extensions */,
+				1FE6BED9E595FFCAE7D0F475ABBDA995 /* Support Files */,
+			);
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
 		34F5E1F0EE32CB5B4DC0C91E332C1C7E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,31 +305,21 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		443AE06A9B8FE16109C369CC59D5939D /* Support Files */ = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD5A1F5675EB87CD2C4F8788DB4445B1 /* CocoaLumberjack.modulemap */,
-				1C9E3079D0DD7F64F53B49BDD3334CD7 /* CocoaLumberjack.xcconfig */,
-				B9E907B9E0B3127B9A333912E5988FB8 /* CocoaLumberjack-dummy.m */,
-				E00E92A37A356084F49D066E7C4D1EFD /* CocoaLumberjack-prefix.pch */,
-				E30AD011E6AB3BB910092F16FE7E5016 /* CocoaLumberjack-umbrella.h */,
-				FC2C1DF67B4249DDF18BCD1E7D90C85A /* Info.plist */,
+				438B396F6B4147076630CAEFE34282C1 /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/CocoaLumberjack";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49BE442B33CCFD64D3DF1A19F7879403 /* Extensions */ = {
+		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F1B54B24F37E778FEEA69AC6FA27CAB2 /* DDContextFilterLogFormatter.h */,
-				EBA278991EB69920BA4CE9C69DFE8C65 /* DDContextFilterLogFormatter.m */,
-				412279AB1C1CCE9B8D61E4862364030E /* DDDispatchQueueLogFormatter.h */,
-				41BA920FD528FE9389BACB2D22836459 /* DDDispatchQueueLogFormatter.m */,
-				9AFBDEB7839EC18B848FB97007F297E0 /* DDMultiFormatter.h */,
-				DF91B6993B539490688C195F578DCF5A /* DDMultiFormatter.m */,
+				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
+				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
 			);
-			name = Extensions;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		4C8CBCF0972475626AFAB0C88F963209 /* Pods-NotesTests */ = {
@@ -308,34 +340,67 @@
 			path = "Target Support Files/Pods-NotesTests";
 			sourceTree = "<group>";
 		};
-		6865AF9F23598AAA6D614472315B8BB2 /* Pods */ = {
+		4DC0314BF304272C2886FF700CC13F29 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9D460B2F3A5C7336ECCFA423AF855EEC /* CocoaLumberjack */,
-				BCAFCA09A4396EEAB70B294E36F6C0F0 /* Color-Picker-for-iOS */,
+				1E12C562CFE0FE376AE7443CB49C6A53 /* Info.plist */,
+				761EA9C550D5481CD8010E300CDA95C6 /* UITextView+Placeholder.modulemap */,
+				C80FA81FE06BEE6E8579B63BF2AE207C /* UITextView+Placeholder.xcconfig */,
+				2F2ED51BA5583F84B8F41314EA876773 /* UITextView+Placeholder-dummy.m */,
+				A6C5565C017BE8515A64C3467F9BDA9E /* UITextView+Placeholder-prefix.pch */,
+				0BC1AFA5B6EDC621426CF483ED907C9A /* UITextView+Placeholder-umbrella.h */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/UITextView+Placeholder";
+			sourceTree = "<group>";
+		};
+		4E49071194439F0A56CBA68EFB267665 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1A09187E7D6B68165F898E6DAEE82EE /* Color-Picker-for-iOS.modulemap */,
+				18FC1C6DAE16F24190D0F9FF93C8D9EE /* Color-Picker-for-iOS.xcconfig */,
+				FB831FCFD3170C8FB204EA2E834D4DD7 /* Color-Picker-for-iOS-dummy.m */,
+				1F1B6E4335B12278953FC14AD105EE52 /* Color-Picker-for-iOS-prefix.pch */,
+				E30C0DA5AAA52D99D6D04184AA54F69A /* Color-Picker-for-iOS-umbrella.h */,
+				42680A75191FFA80ADC049151129F811 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Color-Picker-for-iOS";
+			sourceTree = "<group>";
+		};
+		5DD54806B1DDEA01BF48790FD8E0D7DF /* Color-Picker-for-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B8D66E83382B2C3823B26FEDA30BE2F3 /* HRBrightnessCursor.h */,
+				28957FC97B7BF08F9E8F47DADF15B60B /* HRBrightnessCursor.m */,
+				BC5F2DB457EFA339267C3E0969CE2861 /* HRBrightnessSlider.h */,
+				97721ED640CE61DEF0B0E0262DC4ED37 /* HRBrightnessSlider.m */,
+				D89104E098BC03E1641FCF26DC7500CB /* HRColorCursor.h */,
+				45D94234B35E1E1D194B7106714C6CC2 /* HRColorCursor.m */,
+				A0D88DAE30E16F723CC93E5E6A8541B9 /* HRColorInfoView.h */,
+				20EC9A6FACD27F08EF5180B2E3A08F64 /* HRColorInfoView.m */,
+				7FC1C695FD33E82070CCEFEDF5BE37A4 /* HRColorMapView.h */,
+				E41310EC31A126B31EB8FDE3A21943CC /* HRColorMapView.m */,
+				E8AC369EA1DFCB66864FBB369DA16E45 /* HRColorPickerView.h */,
+				092FF9147DD1DA96360BEC72174C5965 /* HRColorPickerView.m */,
+				DC43010E6567D16CB4244D5B2BFA2750 /* HRHSVColorUtil.h */,
+				34BDB2A6C9E3D7E05497D4DD00DDA1ED /* HRHSVColorUtil.m */,
+				92CB9F761FB6B8CE8C87A280913BE4D4 /* UIImage+CoreGraphics.h */,
+				4F0DCF0EF12F0C0062EBB0C365C657D8 /* UIImage+CoreGraphics.m */,
+				4E49071194439F0A56CBA68EFB267665 /* Support Files */,
+			);
+			path = "Color-Picker-for-iOS";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				6865AF9F23598AAA6D614472315B8BB2 /* Pods */,
-				C0A0B7EE8F10033137CC9B61F08BEEE0 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				BA10E2C4A36C22B240EC4A04E0223390 /* Pods */,
+				E4F106B814487ED4EF818954A828E13C /* Products */,
 				34F5E1F0EE32CB5B4DC0C91E332C1C7E /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9D460B2F3A5C7336ECCFA423AF855EEC /* CocoaLumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				BAF4A2F086EE6351EC1400B481BD5259 /* Default */,
-				49BE442B33CCFD64D3DF1A19F7879403 /* Extensions */,
-				443AE06A9B8FE16109C369CC59D5939D /* Support Files */,
-			);
-			path = CocoaLumberjack;
 			sourceTree = "<group>";
 		};
 		A7005BD8974DBFBC4201E380D6E2236F /* Pods-NotesUITests */ = {
@@ -356,88 +421,91 @@
 			path = "Target Support Files/Pods-NotesUITests";
 			sourceTree = "<group>";
 		};
-		BAF4A2F086EE6351EC1400B481BD5259 /* Default */ = {
+		BA10E2C4A36C22B240EC4A04E0223390 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0227A6171F17F2E100CFF062 /* CocoaLumberjack.swift */,
-				540C3ADD029C28EB520C61C7087F4B36 /* CocoaLumberjack.h */,
-				6DC9A1C7F8A36E2137C4FCED9B052A23 /* DDAbstractDatabaseLogger.h */,
-				55B472B76009C2AFBB53A0C8AD956D05 /* DDAbstractDatabaseLogger.m */,
-				B5B41652911BD0832CF3C400AB6DBE2A /* DDASLLogCapture.h */,
-				6E4B2393CF6E01FD1F5C91DA5A755DBA /* DDASLLogCapture.m */,
-				6D4E6AE0C1B276C6B2D713A988EF1029 /* DDASLLogger.h */,
-				371D70198206DE9E94DCCDE03B2E900A /* DDASLLogger.m */,
-				CCB6F644A7BAAF3015EE95F604A2C72D /* DDAssertMacros.h */,
-				60F4722DAA26BEBCB69A14B2EBC65044 /* DDFileLogger.h */,
-				0C0738D277C81DB4B7FADC66F7427F55 /* DDFileLogger.m */,
-				67B0EF830E5E4901EBEEF080CBECD182 /* DDLegacyMacros.h */,
-				5E8B10978ADBAF1BB0100464581DF6C3 /* DDLog.h */,
-				E154269FAA9D573F554E8AD4042D52A6 /* DDLog.m */,
-				086D9167033E482AE52F097F96EA2AF3 /* DDLog+LOGV.h */,
-				C7497EDD57F39BE86EF6ABE7980CC169 /* DDLogMacros.h */,
-				A685BA81E5CF7D30718C51D339B105B8 /* DDOSLogger.h */,
-				C9429FCE86A4E7D749F54A357DD7306F /* DDOSLogger.m */,
-				5D83D8F3A6C90E72DD411CA0726ABC2E /* DDTTYLogger.h */,
-				F9797081C5696B4F11F177BEA5D3AA8B /* DDTTYLogger.m */,
+				2A93A82C00D8193BFDCB26FB18A13E01 /* CocoaLumberjack */,
+				5DD54806B1DDEA01BF48790FD8E0D7DF /* Color-Picker-for-iOS */,
+				EEE59BD0514EA0F7CB63E49F1A9A3711 /* UITextView+Placeholder */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C4BAA444B316AF9D281B61360E24B8FA /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				027042AA1F2248980041D96B /* CocoaLumberjack.swift */,
+				E4BB541B332832E496E5A4D679E5E903 /* CocoaLumberjack.h */,
+				48085941D89CBCED1792C8ADB4C693A3 /* DDAbstractDatabaseLogger.h */,
+				66C08E57C7C6239B037A22903963E876 /* DDAbstractDatabaseLogger.m */,
+				63943DB7E86F96DA062BD64C2D9B381F /* DDASLLogCapture.h */,
+				E0708F4AEF58A5DA4F3D25FEF405ED81 /* DDASLLogCapture.m */,
+				13A6970860D3D0D4C398CFEFB52E0726 /* DDASLLogger.h */,
+				76FF921BEFB58954D5C635B2B432B763 /* DDASLLogger.m */,
+				E666F41C89285095F42BD31317571341 /* DDAssertMacros.h */,
+				F54841D46518A11524CAE8DB5CCB442E /* DDFileLogger.h */,
+				EA0148975E4391BFE235FB2C4C5CED90 /* DDFileLogger.m */,
+				776B64C30B27B0C49FD45754DA60F869 /* DDLegacyMacros.h */,
+				66E9CCD1BFCC818C41793C165809BBC8 /* DDLog.h */,
+				3EBCF4AE9C27AA9FEABF08D5E3E6DA7C /* DDLog.m */,
+				C26CBF90AA020A9F8378C65721020760 /* DDLog+LOGV.h */,
+				E0FC7DFBDCD28DA2DFD8AB730E2D0E59 /* DDLogMacros.h */,
+				4296B96097557A0440CA030DFD16E5C2 /* DDOSLogger.h */,
+				F04A43FCF87FB65285173CE5306C5C77 /* DDOSLogger.m */,
+				3557398B49746E626C9D5BA0804F67D6 /* DDTTYLogger.h */,
+				FD56F57CC1B2AA4C682A377751CF2B5D /* DDTTYLogger.m */,
 			);
 			name = Default;
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		DC80EBF7B6B388FFEDC9CA2370516B46 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				FAEFDCB6971B9A9E633A8C2D4CA45B4F /* DDContextFilterLogFormatter.h */,
+				366893420DDBC2CAC9E47A0357E464EC /* DDContextFilterLogFormatter.m */,
+				C9B2455A3B8DD68E3749FD73C8CA5C44 /* DDDispatchQueueLogFormatter.h */,
+				8427818BE94D99923B4757B46EC36F13 /* DDDispatchQueueLogFormatter.m */,
+				E2208596552877703BEE18D322161052 /* DDMultiFormatter.h */,
+				74BEE23E043FCC6AEE49CF897EB13733 /* DDMultiFormatter.m */,
 			);
-			name = Frameworks;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
-		BCAFCA09A4396EEAB70B294E36F6C0F0 /* Color-Picker-for-iOS */ = {
+		E4F106B814487ED4EF818954A828E13C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68B278F4DB78507BFFF743FBE341DB04 /* HRBrightnessCursor.h */,
-				A2EB5093450740B368FFF7102E4444A1 /* HRBrightnessCursor.m */,
-				663DCD14323271F79A514BF29FBBFD79 /* HRBrightnessSlider.h */,
-				B96FF4AF620A4699DF472C43B414AC36 /* HRBrightnessSlider.m */,
-				69B774540E213288C8ACABB2A17C4291 /* HRColorCursor.h */,
-				9E6231D6C9459CB17AF00C4202EC3BD8 /* HRColorCursor.m */,
-				F3A5DB61B4518C86D6D8E318B7DBB1B8 /* HRColorInfoView.h */,
-				C82BF26B8ED74793C2FC92692640DCDE /* HRColorInfoView.m */,
-				DF2B135C1A63327CC2038365930EAC67 /* HRColorMapView.h */,
-				3E059EA4008C62A32661922B6F1A3797 /* HRColorMapView.m */,
-				56485B2CFEF1C8A95AD3E700FB93DA0E /* HRColorPickerView.h */,
-				962E59A7886DC60ECD7BBE5C6926B992 /* HRColorPickerView.m */,
-				D145A99AA290B73908546D3FB3DF7821 /* HRHSVColorUtil.h */,
-				224B36570D068C192B9453B579C5E4EE /* HRHSVColorUtil.m */,
-				519936971186B7AB9315FA7DBFB723D8 /* UIImage+CoreGraphics.h */,
-				882719449DB516E01B21814D2532DE01 /* UIImage+CoreGraphics.m */,
-				086AD7BA9848A7A5AB7624CDC85E22C6 /* Support Files */,
-			);
-			path = "Color-Picker-for-iOS";
-			sourceTree = "<group>";
-		};
-		C0A0B7EE8F10033137CC9B61F08BEEE0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				20FB3E8F7DC85AC53D86EA1EBABD75A4 /* CocoaLumberjack.framework */,
-				6DEFB0377F680F0D2B3633DD553CC51D /* Color_Picker_for_iOS.framework */,
-				F761087B6D28AC441D86637D10277792 /* Pods_Notes.framework */,
-				716074BAAC0CED6E8CADACDE9A90E456 /* Pods_NotesTests.framework */,
-				E5B2A509E56707CCD2EAB330CCA59244 /* Pods_NotesUITests.framework */,
+				5A14BE45AA4636C5E836037AE34812C0 /* CocoaLumberjack.framework */,
+				D0CF07BDB15248F028C42A051B5A8B7E /* Color_Picker_for_iOS.framework */,
+				D4C2BE6A670DD8B9911DB8F2354D152C /* Pods_Notes.framework */,
+				F15752B6061F0B0868CC831F31A43B06 /* Pods_NotesTests.framework */,
+				0124D241486B8E39BE47FB0C1189A5F2 /* Pods_NotesUITests.framework */,
+				51C81BAF733939F915015755BB3E320F /* UITextView_Placeholder.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		EEE59BD0514EA0F7CB63E49F1A9A3711 /* UITextView+Placeholder */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				3825E62FFAE24B850A66043C7C9EC193 /* UITextView+Placeholder.h */,
+				697DAD30747FFD251F2BCF752D09889C /* UITextView+Placeholder.m */,
+				4DC0314BF304272C2886FF700CC13F29 /* Support Files */,
 			);
-			name = iOS;
+			path = "UITextView+Placeholder";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		330D6C2A2B13D8B8B27D80F09CA7C3ED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6A542E44915283AF26FA25DB5339D2E /* UITextView+Placeholder-umbrella.h in Headers */,
+				F6A45E579F7402798A301FAAD68F4F27 /* UITextView+Placeholder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		471E2DC1212320926615B22CE0A1A66F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,11 +561,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35EA5808A652A0C3C720A497A3C11E2 /* Headers */ = {
+		BA0EC012035AE0A57B7EBBEEF0241B8F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D6831565C6AC2326A80C8D659E362DD /* Pods-Notes-umbrella.h in Headers */,
+				10C7786CD31C7B657401C4D93C9833A2 /* Pods-Notes-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +586,27 @@
 			);
 			name = "Color-Picker-for-iOS";
 			productName = "Color-Picker-for-iOS";
-			productReference = 6DEFB0377F680F0D2B3633DD553CC51D /* Color_Picker_for_iOS.framework */;
+			productReference = D0CF07BDB15248F028C42A051B5A8B7E /* Color_Picker_for_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5125B9670265EBDF484150E0AB884581 /* Pods-Notes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 830F6FA321023219C5141E0ED2B92496 /* Build configuration list for PBXNativeTarget "Pods-Notes" */;
+			buildPhases = (
+				933131765D4D906A6D7363A586EEA690 /* Sources */,
+				BEF20BDD4A0254D4B92B91F23088979B /* Frameworks */,
+				BA0EC012035AE0A57B7EBBEEF0241B8F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86FA938F48AC9EB248774309A6BB6448 /* PBXTargetDependency */,
+				F6C629944C4FCCC769BDDCC7289E80D3 /* PBXTargetDependency */,
+				A7130B97C9A4FEAAF117D9C7C4E705D5 /* PBXTargetDependency */,
+			);
+			name = "Pods-Notes";
+			productName = "Pods-Notes";
+			productReference = D4C2BE6A670DD8B9911DB8F2354D152C /* Pods_Notes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7F4E8928D82E5963ED3EB754CD644419 /* Pods-NotesTests */ = {
@@ -535,7 +623,7 @@
 			);
 			name = "Pods-NotesTests";
 			productName = "Pods-NotesTests";
-			productReference = 716074BAAC0CED6E8CADACDE9A90E456 /* Pods_NotesTests.framework */;
+			productReference = F15752B6061F0B0868CC831F31A43B06 /* Pods_NotesTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A1E0A9FE5C218A594F58182FDFF2E58B /* Pods-NotesUITests */ = {
@@ -552,26 +640,24 @@
 			);
 			name = "Pods-NotesUITests";
 			productName = "Pods-NotesUITests";
-			productReference = E5B2A509E56707CCD2EAB330CCA59244 /* Pods_NotesUITests.framework */;
+			productReference = 0124D241486B8E39BE47FB0C1189A5F2 /* Pods_NotesUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A589E0EBA46376BB514E671F7249F2F7 /* Pods-Notes */ = {
+		CBBDCECF30F469499E51965D1A0E5518 /* UITextView+Placeholder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 93FD38079355C9931A5E8FCD1C321CF7 /* Build configuration list for PBXNativeTarget "Pods-Notes" */;
+			buildConfigurationList = 1C9A40D5ABDE5BD39501BB34F1654465 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */;
 			buildPhases = (
-				ABA408324A3C07967A9205406B079BD6 /* Sources */,
-				954B85D9394F41A1174B171B39FF0E47 /* Frameworks */,
-				D35EA5808A652A0C3C720A497A3C11E2 /* Headers */,
+				25D7B8AE78B5B509C6D6964F37B5649A /* Sources */,
+				5289569C773DDB0A9D37E9D5B2F5FB35 /* Frameworks */,
+				330D6C2A2B13D8B8B27D80F09CA7C3ED /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				282F2BA515AA26A894A0B63FCFD3A3F3 /* PBXTargetDependency */,
-				4E95611E882E202AC899C304FE152655 /* PBXTargetDependency */,
 			);
-			name = "Pods-Notes";
-			productName = "Pods-Notes";
-			productReference = F761087B6D28AC441D86637D10277792 /* Pods_Notes.framework */;
+			name = "UITextView+Placeholder";
+			productName = "UITextView+Placeholder";
+			productReference = 51C81BAF733939F915015755BB3E320F /* UITextView_Placeholder.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EA2A920A891C4D3535867E5C3EF3D793 /* CocoaLumberjack */ = {
@@ -588,7 +674,7 @@
 			);
 			name = CocoaLumberjack;
 			productName = CocoaLumberjack;
-			productReference = 20FB3E8F7DC85AC53D86EA1EBABD75A4 /* CocoaLumberjack.framework */;
+			productReference = 5A14BE45AA4636C5E836037AE34812C0 /* CocoaLumberjack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -613,15 +699,16 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = C0A0B7EE8F10033137CC9B61F08BEEE0 /* Products */;
+			productRefGroup = E4F106B814487ED4EF818954A828E13C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EA2A920A891C4D3535867E5C3EF3D793 /* CocoaLumberjack */,
 				3B25E1601C445A6A75E55543DB48D091 /* Color-Picker-for-iOS */,
-				A589E0EBA46376BB514E671F7249F2F7 /* Pods-Notes */,
+				5125B9670265EBDF484150E0AB884581 /* Pods-Notes */,
 				7F4E8928D82E5963ED3EB754CD644419 /* Pods-NotesTests */,
 				A1E0A9FE5C218A594F58182FDFF2E58B /* Pods-NotesUITests */,
+				CBBDCECF30F469499E51965D1A0E5518 /* UITextView+Placeholder */,
 			);
 		};
 /* End PBXProject section */
@@ -643,12 +730,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25D7B8AE78B5B509C6D6964F37B5649A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBC36BF914A8A00B05B70CCED1721BE8 /* UITextView+Placeholder-dummy.m in Sources */,
+				B4FC17E56C15CDAFF1B33379B22125C6 /* UITextView+Placeholder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		374141C071FACD1CB06C808E77341DD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CC870D61CBE8FD2A0D24A3A3D8CE5C62 /* CocoaLumberjack-dummy.m in Sources */,
-				0227A6181F17F2E100CFF062 /* CocoaLumberjack.swift in Sources */,
+				027042AB1F2248980041D96B /* CocoaLumberjack.swift in Sources */,
 				D5D4A699779F1796A4F24BFE1FB94E20 /* DDAbstractDatabaseLogger.m in Sources */,
 				34ADF6CEA813D96341D2C4ED247D0DFD /* DDASLLogCapture.m in Sources */,
 				75CC69BC081384EA3033F3AB5CF97E29 /* DDASLLogger.m in Sources */,
@@ -662,11 +758,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABA408324A3C07967A9205406B079BD6 /* Sources */ = {
+		933131765D4D906A6D7363A586EEA690 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFB11D4EB44015CE0D13AF52E437D577 /* Pods-Notes-dummy.m in Sources */,
+				55C3A1E79AAF301FA6B0D24212BEFB7A /* Pods-Notes-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,24 +785,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		282F2BA515AA26A894A0B63FCFD3A3F3 /* PBXTargetDependency */ = {
+		86FA938F48AC9EB248774309A6BB6448 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaLumberjack;
 			target = EA2A920A891C4D3535867E5C3EF3D793 /* CocoaLumberjack */;
-			targetProxy = 91CA1D436759DBE02D7866D7A38A438B /* PBXContainerItemProxy */;
+			targetProxy = 46B26255533B0F684E3E20DDE37D5ADE /* PBXContainerItemProxy */;
 		};
-		4E95611E882E202AC899C304FE152655 /* PBXTargetDependency */ = {
+		A7130B97C9A4FEAAF117D9C7C4E705D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UITextView+Placeholder";
+			target = CBBDCECF30F469499E51965D1A0E5518 /* UITextView+Placeholder */;
+			targetProxy = DA28D556E79C6CBEA0E5830314694468 /* PBXContainerItemProxy */;
+		};
+		F6C629944C4FCCC769BDDCC7289E80D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Color-Picker-for-iOS";
 			target = 3B25E1601C445A6A75E55543DB48D091 /* Color-Picker-for-iOS */;
-			targetProxy = 7D66CDB5DE53BB2656EA55640E5E09DB /* PBXContainerItemProxy */;
+			targetProxy = 6654C6BBFBC3F470166DB0F511465B8C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		27B41F4FAB558F60FC964F4E01236063 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DCACDC798C7729D1F72B328513CC9EE /* Color-Picker-for-iOS.xcconfig */;
+			baseConfigurationReference = 18FC1C6DAE16F24190D0F9FF93C8D9EE /* Color-Picker-for-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -739,7 +841,7 @@
 		};
 		2EC66FDC4791B8E5ABEB4A46162C3707 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C9E3079D0DD7F64F53B49BDD3334CD7 /* CocoaLumberjack.xcconfig */;
+			baseConfigurationReference = 2A8360DB99F91501A02CB1F1E789D086 /* CocoaLumberjack.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -853,7 +955,7 @@
 		};
 		449827B9B91E4FAEE802FB9C69F7817F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C9E3079D0DD7F64F53B49BDD3334CD7 /* CocoaLumberjack.xcconfig */;
+			baseConfigurationReference = 2A8360DB99F91501A02CB1F1E789D086 /* CocoaLumberjack.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -886,9 +988,9 @@
 			};
 			name = Debug;
 		};
-		4B35257F226057F320184191908FD8FE /* Release */ = {
+		49333C452D6E3AA1FC8AE1502C99A431 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FB0E6C3368E9EFC76D49E654F7489C2 /* Pods-Notes.release.xcconfig */;
+			baseConfigurationReference = C80FA81FE06BEE6E8579B63BF2AE207C /* UITextView+Placeholder.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -902,27 +1004,24 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Notes/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UITextView+Placeholder/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Notes/Pods-Notes.modulemap";
+				MODULEMAP_FILE = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Notes;
+				PRODUCT_NAME = UITextView_Placeholder;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		65ECA70BE902902E6215E25F0AED88B2 /* Debug */ = {
+		56586C4966FEAF65EC4B7E9A7C9AFE1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4BC219A8637E7685D7231ADD74B9CBE1 /* Pods-Notes.debug.xcconfig */;
 			buildSettings = {
@@ -994,6 +1093,39 @@
 			};
 			name = Release;
 		};
+		6F9E198E6620511187321A72D223BFA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C80FA81FE06BEE6E8579B63BF2AE207C /* UITextView+Placeholder.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UITextView+Placeholder/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = UITextView_Placeholder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		72DD8125792AB9BEB96FAC6C6B2080EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA5D70C2749E39F86A3746A6DA1BABB /* Pods-NotesUITests.release.xcconfig */;
@@ -1032,7 +1164,7 @@
 		};
 		8A51E2A67874F9F103C7F026DB89379E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DCACDC798C7729D1F72B328513CC9EE /* Color-Picker-for-iOS.xcconfig */;
+			baseConfigurationReference = 18FC1C6DAE16F24190D0F9FF93C8D9EE /* Color-Picker-for-iOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1147,6 +1279,42 @@
 			};
 			name = Debug;
 		};
+		C328FA77D80695747ECE92CF1F5B5952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FB0E6C3368E9EFC76D49E654F7489C2 /* Pods-Notes.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Notes/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Notes/Pods-Notes.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Notes;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1155,6 +1323,15 @@
 			buildConfigurations = (
 				27B41F4FAB558F60FC964F4E01236063 /* Debug */,
 				8A51E2A67874F9F103C7F026DB89379E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C9A40D5ABDE5BD39501BB34F1654465 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F9E198E6620511187321A72D223BFA6 /* Debug */,
+				49333C452D6E3AA1FC8AE1502C99A431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1186,20 +1363,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		830F6FA321023219C5141E0ED2B92496 /* Build configuration list for PBXNativeTarget "Pods-Notes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56586C4966FEAF65EC4B7E9A7C9AFE1B /* Debug */,
+				C328FA77D80695747ECE92CF1F5B5952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		87025FCF10CA7BF645762429EB4AD8FF /* Build configuration list for PBXNativeTarget "Pods-NotesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				362A56F188BB57297F8CEC8868EE1593 /* Debug */,
 				72DD8125792AB9BEB96FAC6C6B2080EB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		93FD38079355C9931A5E8FCD1C321CF7 /* Build configuration list for PBXNativeTarget "Pods-Notes" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65ECA70BE902902E6215E25F0AED88B2 /* Debug */,
-				4B35257F226057F320184191908FD8FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,7 +8,10 @@
 
 import Foundation
 
-enum NotebookError : Error {
+enum NotebookError: Error {
+    
     case noSuitablePath
+    
     case invalidUUID
+    
 }

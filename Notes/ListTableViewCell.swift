@@ -9,24 +9,27 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
+    
+    // MARK: UI
 
+    @IBOutlet weak var colorSpine: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    // MARK: Properties
+    
+    static let reuseIdentifier = "Note"
+    
     var note: Note! { didSet { updateUI() } }
 
-    @IBOutlet weak var cellTitleLabel: UILabel!
-    
-    @IBOutlet weak var cellContentLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     private func updateUI() {
-        guard note != nil else {
-            return
-        }
+        guard note != nil else { return }
         
-        cellTitleLabel?.text = note.title
-        cellContentLabel?.text = note.content
-        backgroundColor = note.color
+        titleLabel?.text = note.title
+        contentLabel?.text = note.content
+        colorSpine?.backgroundColor = UIColor.red//note.color
     }
+    
 }

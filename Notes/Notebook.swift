@@ -9,36 +9,33 @@
 import Foundation
 import CocoaLumberjack
 
-public protocol NoteCollection : Sequence {
-    
-    var size: Int { get }
-    
-    subscript(index: Int) -> Note { get set }
-    
-    func add(note: Note)
-    
-    func update(note: Note)
-    
-    func remove(with uuid: String) throws -> Note
-    
-    func contains(with uuid: String) -> Bool
-}
-
 // MARK: Notebook DTO
-
-public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
+public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
+    
+    // MARK: - Properties
+    
+    public let uuid: String
+    public var creationDate: Date
     
     private var notes: [Note]
     
-    init(from notes: [Note] = []) {
+    public var size: Int { return notes.count }
+    
+    // MARK: - Initialization
+    
+    init(uuid: String = UUID().uuidString,
+         creationDate: Date = Date(),
+         from notes: [Note] = []) {
+        self.uuid = uuid
+        self.creationDate = creationDate
         self.notes = notes
     }
     
-    public var size: Int { return notes.count }
+    // MARK: Access control
     
     public subscript(index: Int) -> Note {
         get {
-            assert(index >= 0 && index < notes.count, "Index is out of bounds")
+            assert(index >= 0 && index < notes.count, "Notebook.subscript -- index is out of bounds")
             return notes[index]
         }
         set { notes[index] = newValue }
@@ -65,9 +62,9 @@ public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
         }
     }
     
-    public func remove(with uuid: String) throws -> Note {
+    public func remove(with noteUUID: String) throws -> Note {
         for i in notes.indices {
-            if notes[i].uuid == uuid {
+            if notes[i].uuid == noteUUID {
                 let removed = notes.remove(at: i)
                 DDLogInfo("\(removed) was removed from \(self)")
                 return removed
@@ -78,14 +75,18 @@ public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
         throw NotebookError.invalidUUID
     }
     
-    public func contains(with uuid: String) -> Bool {
-        return notes.contains { $0.uuid == uuid }
+    public func remove(at index: Int) -> Note {
+        return notes.remove(at: index)
+    }
+    
+    public func contains(with noteUUID: String) -> Bool {
+        return notes.contains { $0.uuid == noteUUID }
     }
     
     // MARK: Equatable support
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
-        return lhs.notes == rhs.notes
+        return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
     }
     
     public static func != (lhs: Notebook, rhs: Notebook) -> Bool {
@@ -97,7 +98,6 @@ public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
     public var description: String {
         return String(describing: notes)
     }
-
 
     // MARK: Generator struct for sequencing support
     
@@ -115,4 +115,5 @@ public class Notebook : NoteCollection, Equatable, CustomStringConvertible {
             return nextElement
         }
     }
+
 }
