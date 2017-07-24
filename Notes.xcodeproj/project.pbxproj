@@ -10,6 +10,7 @@
 		023D3D541F25D4BB00A889EC /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D3D531F25D4BB00A889EC /* Dispatcher.swift */; };
 		023D3D561F25E51C00A889EC /* FetchNotebookOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D3D551F25E51C00A889EC /* FetchNotebookOperation.swift */; };
 		023D3D631F26010000A889EC /* UITableViewOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D3D621F26010000A889EC /* UITableViewOperations.swift */; };
+		023D3D671F262F7B00A889EC /* EraseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D3D661F262F7B00A889EC /* EraseOperation.swift */; };
 		024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */; };
 		024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */; };
 		024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024E05761F1DDD5B000FCD27 /* NotebookError.swift */; };
@@ -70,6 +71,7 @@
 		023D3D531F25D4BB00A889EC /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		023D3D551F25E51C00A889EC /* FetchNotebookOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchNotebookOperation.swift; sourceTree = "<group>"; };
 		023D3D621F26010000A889EC /* UITableViewOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewOperations.swift; sourceTree = "<group>"; };
+		023D3D661F262F7B00A889EC /* EraseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraseOperation.swift; sourceTree = "<group>"; };
 		024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+JSONConvertable.swift"; sourceTree = "<group>"; };
 		024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notebook+FileStorageSupport.swift"; sourceTree = "<group>"; };
 		024E05761F1DDD5B000FCD27 /* NotebookError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookError.swift; sourceTree = "<group>"; };
@@ -159,16 +161,43 @@
 				02A3F78E1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift */,
 				02A3F7901F1E28F4004DEF99 /* Date+ISO8601Conversion.swift */,
 				027042A41F21DAD90041D96B /* Injectable.swift */,
+				027042AD1F2514020041D96B /* AsyncOperation.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		023D3D5B1F25FAEC00A889EC /* UI Operations */ = {
+		023D3D681F26362900A889EC /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				023D3D661F262F7B00A889EC /* EraseOperation.swift */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
+		023D3D691F26383C00A889EC /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				023D3D6A1F26387E00A889EC /* UI */,
+				023D3D681F26362900A889EC /* Background */,
+				027042B71F25D2130041D96B /* Core Data */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		023D3D6A1F26387E00A889EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				023D3D621F26010000A889EC /* UITableViewOperations.swift */,
 			);
-			name = "UI Operations";
+			name = UI;
+			sourceTree = "<group>";
+		};
+		023D3D6B1F26394600A889EC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				029186821F150FFB001099DD /* AppDelegate.swift */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 		024E05781F1DDFF8000FCD27 /* Note */ = {
@@ -222,18 +251,16 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
-		027042AC1F239AEA0041D96B /* Operations */ = {
+		027042AC1F239AEA0041D96B /* Dispatch */ = {
 			isa = PBXGroup;
 			children = (
-				027042AD1F2514020041D96B /* AsyncOperation.swift */,
+				023D3D691F26383C00A889EC /* Operations */,
 				023D3D531F25D4BB00A889EC /* Dispatcher.swift */,
-				027042B71F25D2130041D96B /* Core Data Operations */,
-				023D3D5B1F25FAEC00A889EC /* UI Operations */,
 			);
-			name = Operations;
+			name = Dispatch;
 			sourceTree = "<group>";
 		};
-		027042B71F25D2130041D96B /* Core Data Operations */ = {
+		027042B71F25D2130041D96B /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
 				027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */,
@@ -242,7 +269,7 @@
 				027042B31F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift */,
 				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 			);
-			name = "Core Data Operations";
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		029186761F150FFB001099DD = {
@@ -270,12 +297,12 @@
 		029186811F150FFB001099DD /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				027042AC1F239AEA0041D96B /* Operations */,
+				023D3D6B1F26394600A889EC /* Application */,
+				027042AC1F239AEA0041D96B /* Dispatch */,
 				029186B51F1554D9001099DD /* Model */,
 				024E05801F1DE83C000FCD27 /* Core Data */,
 				029186BF1F164F41001099DD /* UI */,
 				0227A6191F1CD37300CFF062 /* Utils */,
-				029186821F150FFB001099DD /* AppDelegate.swift */,
 				029186911F150FFB001099DD /* Info.plist */,
 			);
 			path = Notes;
@@ -648,6 +675,7 @@
 				02A3F7AD1F1F6405004DEF99 /* Notes.xcdatamodeld in Sources */,
 				02A3F7B91F1F888F004DEF99 /* Notes 2to3.xcmappingmodel in Sources */,
 				024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */,
+				023D3D671F262F7B00A889EC /* EraseOperation.swift in Sources */,
 				029186C31F165543001099DD /* DetailViewController.swift in Sources */,
 				024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */,
 				027042AE1F2514020041D96B /* AsyncOperation.swift in Sources */,

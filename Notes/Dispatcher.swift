@@ -14,12 +14,18 @@ class Dispatcher {
     
     private static let mainQueue = OperationQueue.main
     
+    private static let backgroundQueue = OperationQueue()
+    
     private static let coreDataQueue = OperationQueue(maxConcurrentOperationCount: 1)
     
-    // PART: - Dispatching
+    // PART: - Dispatch
 
     static func dispatchToMain(_ op: Operation) {
         mainQueue.addOperation(op)
+    }
+    
+    static func dispatchToBackground(_ op: Operation) {
+        backgroundQueue.addOperation(op)
     }
     
     static func dispatchToCoreData(_ op: Operation) {

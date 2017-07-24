@@ -66,12 +66,13 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         case .creation:
             notebook.add(note: note)
             
-            let indexPaths = [IndexPath(row: notebook.size - 1, section: 0)]
-            let updateUI = UITableViewOperations.insert(to: tableView, at: indexPaths)
-            Dispatcher.dispatchToMain(updateUI)
-            
             let updateCoreData = coreDataOperationsManager.add(note, to: notebook)
             Dispatcher.dispatchToCoreData(updateCoreData)
+            
+            let indexPaths = [IndexPath(row: notebook.size - 1, section: 0)]
+            let updateUI = UITableViewOperations.insert(to: tableView, at: indexPaths)
+            updateUI.addDependency(updateCoreData)
+            Dispatcher.dispatchToMain(updateUI)
             
             DDLogDebug("\(note) was saved to local notebook")
             
@@ -80,12 +81,12 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             
             notebook[indexPath.row] = note
             
-            let updateUI = UITableViewOperations.reload(in: tableView, at: [indexPath])
-            Dispatcher.dispatchToMain(updateUI)
-            
             let updateCoreData = coreDataOperationsManager.update(note)
             Dispatcher.dispatchToCoreData(updateCoreData)
-
+            
+            let updateUI = UITableViewOperations.reload(in: tableView, at: [indexPath])
+            updateUI.addDependency(updateCoreData)
+            Dispatcher.dispatchToMain(updateUI)
             
             DDLogDebug("\(note) was locally updated")
             
@@ -117,11 +118,12 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             // TODO: MAKE POPUP VIEW TO ASK IF THE USER SURE
             let note = notebook.remove(at: indexPath.row)
             
-            let deleteOperation = UITableViewOperations.delete(from: tableView, at: [indexPath])
-            Dispatcher.dispatchToMain(deleteOperation)
-            
             let updateCoreData = coreDataOperationsManager.remove(note, from: notebook)
             Dispatcher.dispatchToCoreData(updateCoreData)
+            
+            let updateUI = UITableViewOperations.delete(from: tableView, at: [indexPath])
+            updateUI.addDependency(updateCoreData)
+            Dispatcher.dispatchToMain(updateUI)
         }
     }
     
