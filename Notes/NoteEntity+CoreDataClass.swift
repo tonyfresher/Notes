@@ -37,16 +37,21 @@ public class NoteEntity: NSManagedObject {
         }
         
         let noteEntity = NoteEntity(context: context)
-        noteEntity.uuid = noteInfo.uuid
-        noteEntity.title = noteInfo.title
-        noteEntity.content = noteInfo.content
-        noteEntity.color = noteInfo.color.hexString
-        noteEntity.creationDate = noteInfo.creationDate as NSDate
-        noteEntity.erasureDate = noteInfo.erasureDate as NSDate?
+        noteEntity.update(from: noteInfo)
+        
         return noteEntity
     }
     
-    public func toNote() -> Note? {
+    func update(from noteInfo: Note) {
+        self.uuid = noteInfo.uuid
+        self.title = noteInfo.title
+        self.content = noteInfo.content
+        self.color = noteInfo.color.hexString
+        self.creationDate = noteInfo.creationDate as NSDate
+        self.erasureDate = noteInfo.erasureDate as NSDate?
+    }
+    
+    func toNote() -> Note? {
         let json: [String: Any] = [
             "uuid": uuid as Any,
             

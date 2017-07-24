@@ -18,7 +18,7 @@
 		027042AE1F2514020041D96B /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042AD1F2514020041D96B /* AsyncOperation.swift */; };
 		027042B01F25C11F0041D96B /* CoreDataOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */; };
 		027042B21F25C73A0041D96B /* AddNoteToNotebookOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042B11F25C73A0041D96B /* AddNoteToNotebookOperation.swift */; };
-		027042B41F25CC6E0041D96B /* RemoveNoteFromNotebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042B31F25CC6E0041D96B /* RemoveNoteFromNotebook.swift */; };
+		027042B41F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042B31F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift */; };
 		027042B61F25CCE80041D96B /* UpdateNoteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */; };
 		0275505F1F1DEFA3007E483F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275505E1F1DEFA3007E483F /* CoreDataManager.swift */; };
 		029186831F150FFB001099DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186821F150FFB001099DD /* AppDelegate.swift */; };
@@ -79,7 +79,7 @@
 		027042AD1F2514020041D96B /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperationsManager.swift; sourceTree = "<group>"; };
 		027042B11F25C73A0041D96B /* AddNoteToNotebookOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNoteToNotebookOperation.swift; sourceTree = "<group>"; };
-		027042B31F25CC6E0041D96B /* RemoveNoteFromNotebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveNoteFromNotebook.swift; sourceTree = "<group>"; };
+		027042B31F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveNoteFromNotebookOperation.swift; sourceTree = "<group>"; };
 		027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateNoteOperation.swift; sourceTree = "<group>"; };
 		0275505E1F1DEFA3007E483F /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0291867F1F150FFB001099DD /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,10 +237,10 @@
 			isa = PBXGroup;
 			children = (
 				027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */,
-				027042B11F25C73A0041D96B /* AddNoteToNotebookOperation.swift */,
-				027042B31F25CC6E0041D96B /* RemoveNoteFromNotebook.swift */,
-				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 				023D3D551F25E51C00A889EC /* FetchNotebookOperation.swift */,
+				027042B11F25C73A0041D96B /* AddNoteToNotebookOperation.swift */,
+				027042B31F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift */,
+				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 			);
 			name = "Core Data Operations";
 			sourceTree = "<group>";
@@ -632,7 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				023D3D541F25D4BB00A889EC /* Dispatcher.swift in Sources */,
-				027042B41F25CC6E0041D96B /* RemoveNoteFromNotebook.swift in Sources */,
+				027042B41F25CC6E0041D96B /* RemoveNoteFromNotebookOperation.swift in Sources */,
 				024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */,
 				027042B21F25C73A0041D96B /* AddNoteToNotebookOperation.swift in Sources */,
 				02A3F78F1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift in Sources */,

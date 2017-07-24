@@ -11,10 +11,10 @@ import UIKit
 
 class UITableViewOperations {
     
-    static func reload(tableView: UITableView) -> Operation {
+    static func reload(sections: IndexSet, in tableView: UITableView) -> Operation {
         return BlockOperation {
             tableView.beginUpdates()
-            tableView.reloadData()
+            tableView.reloadSections(sections, with: .none)
             tableView.endUpdates()
         }
     }

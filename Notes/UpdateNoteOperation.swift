@@ -32,7 +32,8 @@ class UpdateNoteOperation: AsyncOperation {
             guard let sself = self else { return }
             
             do {
-                _ = try NoteEntity.findOrCreateNoteEntity(matching: sself.note, in: sself.context)
+                let noteEntity = try NoteEntity.findOrCreateNoteEntity(matching: sself.note, in: sself.context)
+                noteEntity.update(from: sself.note)
                 
                 try sself.context.save()
             } catch {

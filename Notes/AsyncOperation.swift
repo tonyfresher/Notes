@@ -45,8 +45,9 @@ class AsyncOperation : Operation {
         didChangeValue(forKey: "isExecuting")
     }
     
+    // MARK: shoul be overriden
     override func main() {
-        // MARK: should be overriden
+        // ...
         finish()
     }
     

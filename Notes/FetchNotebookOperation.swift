@@ -35,9 +35,13 @@ class FetchNotebookOperation: AsyncOperation {
             guard let sself = self else { return }
             
             do {
-                _ = try NotebookEntity.findOrCreateNotebookEntity(matching: sself.notebook, in: sself.context)
-                
+                let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: sself.notebook, in: sself.context)
+
                 try sself.context.save()
+                
+                if let notebook = notebookEntity.toNotebook() {
+                    sself.fetchSuccess(notebook)
+                }
             } catch {
                 DDLogError("Error while fetching notebook(UUID: \(sself.notebook.uuid)): \(error.localizedDescription)")
                 sself.cancel()

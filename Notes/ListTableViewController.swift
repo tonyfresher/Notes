@@ -35,10 +35,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        // MARK: configuring data source
+        
         fetch()
     }
     
@@ -70,8 +67,11 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             notebook.add(note: note)
             
             let indexPaths = [IndexPath(row: notebook.size - 1, section: 0)]
-            let insertOperation = UITableViewOperations.insert(to: tableView, at: indexPaths)
-            Dispatcher.dispatchToMain(insertOperation)
+            let updateUI = UITableViewOperations.insert(to: tableView, at: indexPaths)
+            Dispatcher.dispatchToMain(updateUI)
+            
+            let updateCoreData = coreDataOperationsManager.add(note, to: notebook)
+            Dispatcher.dispatchToCoreData(updateCoreData)
             
             DDLogDebug("\(note) was saved to local notebook")
             
@@ -80,8 +80,12 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             
             notebook[indexPath.row] = note
             
-            let reloadOperation = UITableViewOperations.reload(in: tableView, at: [indexPath])
-            Dispatcher.dispatchToMain(reloadOperation)
+            let updateUI = UITableViewOperations.reload(in: tableView, at: [indexPath])
+            Dispatcher.dispatchToMain(updateUI)
+            
+            let updateCoreData = coreDataOperationsManager.update(note)
+            Dispatcher.dispatchToCoreData(updateCoreData)
+
             
             DDLogDebug("\(note) was locally updated")
             
@@ -111,10 +115,13 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // TODO: MAKE POPUP VIEW TO ASK IF THE USER SURE
-            _ = notebook.remove(at: indexPath.row)
+            let note = notebook.remove(at: indexPath.row)
             
             let deleteOperation = UITableViewOperations.delete(from: tableView, at: [indexPath])
             Dispatcher.dispatchToMain(deleteOperation)
+            
+            let updateCoreData = coreDataOperationsManager.remove(note, from: notebook)
+            Dispatcher.dispatchToCoreData(updateCoreData)
         }
     }
     
@@ -144,7 +151,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             sself.notebook = notebook
             
             // QUESTION: async?
-            let updateOperation = UITableViewOperations.reload(tableView: sself.tableView)
+            let updateOperation = UITableViewOperations.reload(sections: [0], in: sself.tableView)
             Dispatcher.dispatchToMain(updateOperation)
         }
         
