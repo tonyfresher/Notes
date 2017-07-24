@@ -12,30 +12,26 @@ class AsyncOperation : Operation {
     
     typealias Action = (() -> ())
     
-    var work: Action
-    
     var success: Action?
+    
+    // MARK: - Flags
+    
+    private var _executing = false
+    private var _finished = false
     
     override var isAsynchronous: Bool {
         return true
     }
     
-    private var _executing = false
-    
     override var isExecuting: Bool {
         return _executing
     }
-    
-    private var _finished = false
     
     override var isFinished: Bool {
         return _finished
     }
     
-    init(do work: @escaping Action, success: Action? = nil) {
-        self.work = work
-        self.success = success
-    }
+    // MARK: - Action
     
     override func start() {
         guard !isCancelled else {
@@ -45,16 +41,16 @@ class AsyncOperation : Operation {
         
         willChangeValue(forKey: "isExecuting")
         _executing = true
-        main()
+        main() // WHY: before didChangeValue?
         didChangeValue(forKey: "isExecuting")
     }
     
     override func main() {
-        work()
+        // MARK: should be overriden
         finish()
     }
     
-    private func finish() {
+    func finish() {
         success?()
         
         willChangeValue(forKey: "isFinished")

@@ -4,8 +4,7 @@ target 'Notes' do
 
   # Pods for Notes
   pod 'CocoaLumberjack'
-  pod "Color-Picker-for-iOS", "~> 2.0"
-  pod 'UITextView+Placeholder', '~> 1.2'
+  pod 'Color-Picker-for-iOS', "~> 2.0"
 
   target 'NotesTests' do
     inherit! :search_paths

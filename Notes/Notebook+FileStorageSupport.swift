@@ -9,8 +9,7 @@
 import Foundation
 import CocoaLumberjack
 
-// MARK: Import/export support
-
+// MARK: file as a storage usage support
 protocol FileStorageSupport {
     
     func save(to filename: String) throws -> String

@@ -61,7 +61,7 @@ public class CoreDataManager {
         setup()
     }
     
-    // MARK: Supporting initialization methods
+    // MARK: - Supporting initialization methods
     
     private func setup() {
         _ = privateManagedObjectContext.persistentStoreCoordinator

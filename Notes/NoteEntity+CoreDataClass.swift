@@ -14,6 +14,13 @@ import CocoaLumberjack
 @objc(NoteEntity)
 public class NoteEntity: NSManagedObject {
     
+    /// Finds note with certain UUID and updates its attributes or creates new note matching noteInfo in NSManagedContext
+    ///
+    /// - Parameters:
+    ///   - noteInfo: Note template for NoteEntity
+    ///   - context: NSManagedContext for manipulations
+    /// - Returns: updated or created NoteEntity
+    /// - Throws: if context is unable to fetch request for NoteEntity
     static func findOrCreateNoteEntity(matching noteInfo: Note, in context: NSManagedObjectContext) throws -> NoteEntity {
         let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()
         request.predicate = NSPredicate(format: "uuid = %@", noteInfo.uuid)

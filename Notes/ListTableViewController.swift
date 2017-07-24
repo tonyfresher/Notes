@@ -31,14 +31,6 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         return fetchedResultsController
     }()
     
-    // MARK: Core Data usage
-    
-    private var coreDataManager: CoreDataManager! {
-        didSet { backgroundManagedObjectContext = coreDataManager.createChildManagedObjectContext() }
-    }
-    
-    private var backgroundManagedObjectContext: NSManagedObjectContext!
-    
     private func fetchNotebook() {
         fetchedResultsController.managedObjectContext.perform {
             do {
@@ -53,6 +45,10 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
                 DDLogError("Error while fetching NotebookEntity: \(error.localizedDescription)")
             }
         }
+    }
+    
+    private func addNoteToNotebook(note: Note, notebook: Notebook) {
+        
     }
     
     // TODO: ADD "add", "update" and "remove"
@@ -110,7 +106,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         DDLogDebug("\(note) was updated")
     }
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -133,7 +129,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         fetchNotebook()
     }
     
-    // MARK: Segues control
+    // MARK: - Segues control
     
     static let createNoteSegueIdentifier = "Create Note"
     
@@ -152,7 +148,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         }
     }
     
-    // MARK: UITableViewDataSource implementation
+    // MARK: - UITableViewDataSource implementation
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? notebook.size : 0
@@ -182,7 +178,7 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         }
     }
     
-    // MARK: UISplitViewController stuff
+    // MARK: - UISplitViewController stuff
     
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,

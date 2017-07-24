@@ -9,7 +9,7 @@
 import Foundation
 import CocoaLumberjack
 
-// MARK: Notebook DTO
+// MARK: notebook DTO
 public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     // MARK: - Properties
@@ -31,7 +31,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         self.notes = notes
     }
     
-    // MARK: Access control
+    // MARK: - Access control
     
     public subscript(index: Int) -> Note {
         get {
@@ -45,7 +45,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return NoteIterator(notes)
     }
     
-    // MARK: Basic manipulations
+    // MARK: - Basic manipulations
 
     public func add(note: Note) {
         notes.append(note)
@@ -83,7 +83,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return notes.contains { $0.uuid == noteUUID }
     }
     
-    // MARK: Equatable support
+    // MARK: - Equatable implementation
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
@@ -93,14 +93,13 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return !(lhs == rhs)
     }
 
-    // MARK: CustomStringConvertible support
+    // MARK: - CustomStringConvertible implementation
     
     public var description: String {
         return String(describing: notes)
     }
 
-    // MARK: Generator struct for sequencing support
-    
+    // MARK: generator struct for sequencing
     public struct NoteIterator: IteratorProtocol {
         let array: [Note]
         var index = 0
