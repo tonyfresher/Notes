@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import CocoaLumberjack
 
-let ddloglevel = DDLogLevel.debug
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

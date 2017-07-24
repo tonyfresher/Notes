@@ -12,17 +12,23 @@ import CocoaLumberjack
 
 class RemoveNoteToNotebookOperation: AsyncOperation {
     
+    // PART: - Properties
+    
     let note: Note
     
     let notebook: Notebook
     
     let context: NSManagedObjectContext
     
+    // PART: - Initialization
+    
     init(note: Note, notebook: Notebook, context: NSManagedObjectContext) {
         self.note = note
         self.notebook = notebook
         self.context = context
     }
+    
+    // PART: - Work
     
     override func main() {
         context.perform { [weak self] in
@@ -36,7 +42,7 @@ class RemoveNoteToNotebookOperation: AsyncOperation {
                 
                 try sself.context.save()
             } catch {
-                DDLogError("Error while saving \(sself.note): \(error.localizedDescription)")
+                DDLogError("Error while removing \(sself.note): \(error.localizedDescription)")
                 sself.cancel()
             }
             

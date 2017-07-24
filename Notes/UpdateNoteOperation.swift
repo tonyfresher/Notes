@@ -12,14 +12,20 @@ import CocoaLumberjack
 
 class UpdateNoteOperation: AsyncOperation {
     
+    // PART: - Properties
+    
     let note: Note
     
     let context: NSManagedObjectContext
+    
+    // PART: - Initialization
     
     init(note: Note, context: NSManagedObjectContext) {
         self.note = note
         self.context = context
     }
+    
+    // PART: - Work
     
     override func main() {
         context.perform { [weak self] in
@@ -30,7 +36,7 @@ class UpdateNoteOperation: AsyncOperation {
                 
                 try sself.context.save()
             } catch {
-                DDLogError("Error while saving \(sself.note): \(error.localizedDescription)")
+                DDLogError("Error while updating \(sself.note): \(error.localizedDescription)")
                 sself.cancel()
             }
             

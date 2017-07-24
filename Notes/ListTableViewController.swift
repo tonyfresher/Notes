@@ -10,126 +10,39 @@ import UIKit
 import CocoaLumberjack
 import CoreData
 
-class ListTableViewController: UITableViewController, UISplitViewControllerDelegate, NSFetchedResultsControllerDelegate {
+class ListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    // MARK: - Properties
+    // PART: - Properties
     
-    private var notebook = Notebook()
+    private var notebook = Notebook(uuid: "3392911E-D663-46AE-85A9-F1CAA702AFE0")
     
-    private let notebookUUID = "3392911E-D663-46AE-85A9-F1CAA702AFE0"
-    
-    private lazy var fetchedResultsController: NSFetchedResultsController<NotebookEntity> = {
-        let fetchRequest: NSFetchRequest<NotebookEntity> = NotebookEntity.fetchRequest()
-        
-        fetchRequest.predicate = NSPredicate(format: "uuid = %@", self.notebookUUID)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                  managedObjectContext: self.backgroundManagedObjectContext,
-                                                                  sectionNameKeyPath: nil,
-                                                                  cacheName: nil)
-        return fetchedResultsController
-    }()
-    
-    private func fetchNotebook() {
-        fetchedResultsController.managedObjectContext.perform {
-            do {
-                try self.fetchedResultsController.performFetch()
-                guard let notebookEntitiy = self.fetchedResultsController.fetchedObjects?[0],
-                    let notebook = notebookEntitiy.toNotebook() else {
-                        fatalError("While loading data from database an error occured")
-                }
-                self.notebook = notebook
-            } catch {
-                // TODO: NEED HANDLING
-                DDLogError("Error while fetching NotebookEntity: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    private func addNoteToNotebook(note: Note, notebook: Notebook) {
-        
-    }
-    
-    // TODO: ADD "add", "update" and "remove"
-    private func pushNotebook() {
-        fetchedResultsController.managedObjectContext.perform {
-            do {
-                let context = self.fetchedResultsController.managedObjectContext
-                
-                let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: self.notebook, in: context)
-                
-                let noteEntities = try self.notebook.map { (noteInfo) -> NoteEntity in
-                    do {
-                        return try NoteEntity.findOrCreateNoteEntity(matching: noteInfo, in: context)
-                    } catch { throw error }
-                }
-                
-                notebookEntity.notes = Set(noteEntities) as NSSet
-            } catch {
-                // TODO: NEED HANDLING
-                DDLogError("Error while pushing NotebookEntity: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    @IBAction private func saveNote(from segue: UIStoryboardSegue) {
-        guard let detail = segue.source as? DetailViewController else { return }
-        
-        switch detail.state {
-        case .creation:
-            add(note: detail.note)
-        case .editing:
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            update(note: detail.note, on: indexPath)
-        default: break
-        }
-    }
-    
-    private func add(note: Note) {
-        notebook.add(note: note)
-        
-        tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: notebook.size - 1, section: 0)], with: .fade)
-        tableView.endUpdates()
-        
-        DDLogDebug("\(note) was saved to notebook")
-    }
-    
-    private func update(note: Note, on indexPath: IndexPath) {
-        notebook[indexPath.row] = note
-        
-        tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: .fade)
-        tableView.endUpdates()
-        
-        DDLogDebug("\(note) was updated")
-    }
-    
-    // MARK: - Lifecycle
+    // PART: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        coreDataManager = (UIApplication.shared.delegate as! AppDelegate).coreDataManager
+        let coreDataManager = (UIApplication.shared.delegate as! AppDelegate).coreDataManager        
+        coreDataOperationsManager = CoreDataOperationsManager(coreDataManager: coreDataManager)
         
         self.splitViewController?.delegate = self
-        self.fetchedResultsController.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MARK: Configuring UI
+        // MARK: configuring UI
         splitViewController?.preferredDisplayMode = UISplitViewControllerDisplayMode.allVisible
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        fetchNotebook()
     }
     
-    // MARK: - Segues control
+    override func viewWillAppear(_ animated: Bool) {
+        // MARK: configuring data source
+        fetch()
+    }
+    
+    // PART: - Segues handling
     
     static let createNoteSegueIdentifier = "Create Note"
     
@@ -148,7 +61,35 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         }
     }
     
-    // MARK: - UITableViewDataSource implementation
+    // MARK: unwind segue
+    @IBAction private func saveNoteAfterEditing(from segue: UIStoryboardSegue) {
+        guard let detail = segue.source as? DetailViewController, let note = detail.note else { return }
+        
+        switch detail.state {
+        case .creation:
+            notebook.add(note: note)
+            
+            let indexPaths = [IndexPath(row: notebook.size - 1, section: 0)]
+            let insertOperation = UITableViewOperations.insert(to: tableView, at: indexPaths)
+            Dispatcher.dispatchToMain(insertOperation)
+            
+            DDLogDebug("\(note) was saved to local notebook")
+            
+        case .editing:
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            notebook[indexPath.row] = note
+            
+            let reloadOperation = UITableViewOperations.reload(in: tableView, at: [indexPath])
+            Dispatcher.dispatchToMain(reloadOperation)
+            
+            DDLogDebug("\(note) was locally updated")
+            
+        default: break
+        }
+    }
+    
+    // PART: - UITableViewDataSource implementation
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? notebook.size : 0
@@ -172,13 +113,12 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
             // TODO: MAKE POPUP VIEW TO ASK IF THE USER SURE
             _ = notebook.remove(at: indexPath.row)
             
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
+            let deleteOperation = UITableViewOperations.delete(from: tableView, at: [indexPath])
+            Dispatcher.dispatchToMain(deleteOperation)
         }
     }
     
-    // MARK: - UISplitViewController stuff
+    // PART: - UISplitViewController stuff
     
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,
@@ -191,6 +131,39 @@ class ListTableViewController: UITableViewController, UISplitViewControllerDeleg
         }
         
         return false
+    }
+    
+    // PART: - Operations with Core Data
+    
+    private var coreDataOperationsManager: CoreDataOperationsManager!
+    
+    private func fetch() {
+        let operation = coreDataOperationsManager.fetch(notebook: notebook) { [weak self] notebook in
+            guard let sself = self else { return }
+            
+            sself.notebook = notebook
+            
+            // QUESTION: async?
+            let updateOperation = UITableViewOperations.reload(tableView: sself.tableView)
+            Dispatcher.dispatchToMain(updateOperation)
+        }
+        
+        Dispatcher.dispatchToCoreData(operation)
+    }
+    
+    private func add(_ note: Note, to notebook: Notebook) {
+        let operation = coreDataOperationsManager.add(note, to: notebook)
+        Dispatcher.dispatchToCoreData(operation)
+    }
+    
+    private func remove(_ note: Note, from notebook: Notebook) {
+        let operation = coreDataOperationsManager.remove(note, from: notebook)
+        Dispatcher.dispatchToCoreData(operation)
+    }
+    
+    private func update(_ note: Note) {
+        let operation = coreDataOperationsManager.update(note)
+        Dispatcher.dispatchToCoreData(operation)
     }
     
 }

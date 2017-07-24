@@ -12,7 +12,7 @@ import CocoaLumberjack
 // MARK: notebook DTO
 public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
-    // MARK: - Properties
+    // PART: - Properties
     
     public let uuid: String
     public var creationDate: Date
@@ -21,7 +21,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     public var size: Int { return notes.count }
     
-    // MARK: - Initialization
+    // PART: - Initialization
     
     init(uuid: String = UUID().uuidString,
          creationDate: Date = Date(),
@@ -31,7 +31,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         self.notes = notes
     }
     
-    // MARK: - Access control
+    // PART: - Access control
     
     public subscript(index: Int) -> Note {
         get {
@@ -45,7 +45,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return NoteIterator(notes)
     }
     
-    // MARK: - Basic manipulations
+    // PART: - Basic manipulations
 
     public func add(note: Note) {
         notes.append(note)
@@ -83,7 +83,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return notes.contains { $0.uuid == noteUUID }
     }
     
-    // MARK: - Equatable implementation
+    // PART: - Equatable implementation
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
@@ -93,7 +93,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return !(lhs == rhs)
     }
 
-    // MARK: - CustomStringConvertible implementation
+    // PART: - CustomStringConvertible implementation
     
     public var description: String {
         return String(describing: notes)

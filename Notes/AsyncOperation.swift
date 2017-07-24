@@ -14,7 +14,7 @@ class AsyncOperation : Operation {
     
     var success: Action?
     
-    // MARK: - Flags
+    // PART: - Flags
     
     private var _executing = false
     private var _finished = false
@@ -31,7 +31,7 @@ class AsyncOperation : Operation {
         return _finished
     }
     
-    // MARK: - Action
+    // PART: - Action
     
     override func start() {
         guard !isCancelled else {
@@ -41,7 +41,7 @@ class AsyncOperation : Operation {
         
         willChangeValue(forKey: "isExecuting")
         _executing = true
-        main() // WHY: before didChangeValue?
+        main() // QUESTION: whybefore didChangeValue?
         didChangeValue(forKey: "isExecuting")
     }
     

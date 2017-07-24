@@ -11,19 +11,26 @@ import CoreData
 
 class CoreDataOperationsManager {
     
+    // PART: - Properties
+
     private let coreDataManager: CoreDataManager
+    
     private let managedObjectContext: NSManagedObjectContext
     
-    private let queue: OperationQueue
-    
-    init(coreDataManager: CoreDataManager, queue: OperationQueue) {
+    // PART: - Initialization
+
+    init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
         self.managedObjectContext = coreDataManager.createChildManagedObjectContext()
-        
-        self.queue = queue
+    }
+
+    // PART: - Operations
+
+    func fetch(notebook: Notebook, success: @escaping (Notebook) -> ()) -> Operation {
+        return FetchNotebookOperation(notebook: notebook, context: managedObjectContext, success: success)
     }
     
-    func addNoteToNotebookOperation(note: Note, notebook: Notebook) -> Operation {
+    func add(_ note: Note, to notebook: Notebook) -> Operation {
         let operation = AddNoteToNotebookOperation(note: note, notebook: notebook, context: managedObjectContext)
         operation.success = { [weak self] in
             self?.coreDataManager.saveChanges()
@@ -31,7 +38,7 @@ class CoreDataOperationsManager {
         return operation
     }
     
-    func removeNoteFromNotebook(note: Note, notebook: Notebook) -> Operation {
+    func remove(_ note: Note, from notebook: Notebook) -> Operation {
         let operation = RemoveNoteToNotebookOperation(note: note, notebook: notebook, context: managedObjectContext)
         operation.success = { [weak self] in
             self?.coreDataManager.saveChanges()
@@ -39,7 +46,7 @@ class CoreDataOperationsManager {
         return operation
     }
     
-    func updateNoteOperation(note: Note, notebook: Notebook) -> Operation {
+    func update(_ note: Note) -> Operation {
         let operation = UpdateNoteOperation(note: note, context: managedObjectContext)
         operation.success = { [weak self] in
             self?.coreDataManager.saveChanges()

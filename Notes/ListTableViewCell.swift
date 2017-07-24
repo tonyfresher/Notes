@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    // MARK: UI
+    // PART: - UI
 
     @IBOutlet weak var colorSpine: UIImageView!
     
@@ -18,7 +18,7 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     
-    // MARK: Properties
+    // PART: - Properties
     
     static let reuseIdentifier = "Note"
     

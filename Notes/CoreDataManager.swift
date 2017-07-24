@@ -14,13 +14,13 @@ public class CoreDataManager {
     
     typealias CoreDataManagerCompletion = () -> ()
     
-    // MARK: - Properties
+    // PART: - Properties
     
     private let modelName: String
     
     private let completion: CoreDataManagerCompletion?
     
-    // MARK: - Core Data Stack
+    // PART: - Core Data Stack
     
     private lazy var privateManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -52,7 +52,7 @@ public class CoreDataManager {
         return documentsDirectoryURL.appendingPathComponent(storeName)
     }
     
-    // MARK: - Initialization
+    // PART: - Initialization
     
     init(modelName: String, completion: CoreDataManagerCompletion? = nil) {
         self.modelName = modelName
@@ -61,7 +61,7 @@ public class CoreDataManager {
         setup()
     }
     
-    // MARK: - Supporting initialization methods
+    // PART: - Supporting initialization methods
     
     private func setup() {
         _ = privateManagedObjectContext.persistentStoreCoordinator
