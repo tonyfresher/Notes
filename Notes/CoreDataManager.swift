@@ -12,13 +12,13 @@ import CocoaLumberjack
 
 public class CoreDataManager {
     
-    typealias CoreDataManagerCompletion = () -> ()
+    typealias Action = () -> ()
     
     // PART: - Properties
     
     private let modelName: String
     
-    private let completion: CoreDataManagerCompletion?
+    private let completion: Action?
     
     // PART: - Core Data Stack
     
@@ -54,7 +54,7 @@ public class CoreDataManager {
     
     // PART: - Initialization
     
-    init(modelName: String, completion: CoreDataManagerCompletion? = nil) {
+    init(modelName: String, completion: Action? = nil) {
         self.modelName = modelName
         self.completion = completion
         
