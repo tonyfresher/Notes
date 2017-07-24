@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class FetchNotebookOperation: AsyncOperation {
+class FetchNotebookOperation: AsyncOperation<Notebook> {
     
     // PART: - Properties
     
@@ -18,14 +18,15 @@ class FetchNotebookOperation: AsyncOperation {
     
     let context: NSManagedObjectContext
     
-    var fetchSuccess: (Notebook) -> ()
-    
     // PART: - Initialization
     
     init(notebook: Notebook, context: NSManagedObjectContext, success: @escaping (Notebook) -> ()) {
         self.notebook = notebook
         self.context = context
-        self.fetchSuccess = success
+        
+        super.init()
+        
+        self.success = success
     }
     
     // PART: - Work
@@ -40,7 +41,7 @@ class FetchNotebookOperation: AsyncOperation {
                 try sself.context.save()
                 
                 if let notebook = notebookEntity.toNotebook() {
-                    sself.fetchSuccess(notebook)
+                    sself.success?(notebook)
                 }
             } catch {
                 DDLogError("Error while fetching notebook(UUID: \(sself.notebook.uuid)): \(error.localizedDescription)")

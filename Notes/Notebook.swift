@@ -10,14 +10,14 @@ import Foundation
 import CocoaLumberjack
 
 // MARK: notebook DTO
-public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
+public class Notebook: NoteCollection {
     
     // PART: - Properties
     
     public let uuid: String
     public var creationDate: Date
     
-    private var notes: [Note]
+    fileprivate var notes: [Note]
     
     public var size: Int { return notes.count }
     
@@ -43,6 +43,24 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
     
     public func makeIterator() -> NoteIterator {
         return NoteIterator(notes)
+    }
+    
+    // MARK: iterator for sequencing
+    public struct NoteIterator: IteratorProtocol {
+        
+        let array: [Note]
+        var index = 0
+        
+        init(_ array: [Note]) {
+            self.array = array
+        }
+        
+        public mutating func next() -> Note? {
+            let nextElement = index < array.count ? array[index] : nil
+            index += 1
+            return nextElement
+        }
+        
     }
     
     // PART: - Basic manipulations
@@ -83,7 +101,9 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return notes.contains { $0.uuid == noteUUID }
     }
     
-    // PART: - Equatable implementation
+}
+
+extension Notebook: Equatable {
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
@@ -93,26 +113,12 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return !(lhs == rhs)
     }
 
-    // PART: - CustomStringConvertible implementation
+}
+
+extension Notebook: CustomStringConvertible {
     
     public var description: String {
         return String(describing: notes)
-    }
-
-    // MARK: generator struct for sequencing
-    public struct NoteIterator: IteratorProtocol {
-        let array: [Note]
-        var index = 0
-        
-        init(_ array: [Note]) {
-            self.array = array
-        }
-        
-        public mutating func next() -> Note? {
-            let nextElement = index < array.count ? array[index] : nil
-            index += 1
-            return nextElement
-        }
     }
 
 }

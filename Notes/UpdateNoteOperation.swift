@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class UpdateNoteOperation: AsyncOperation {
+class UpdateNoteOperation: AsyncOperation<Void> {
     
     // PART: - Properties
     

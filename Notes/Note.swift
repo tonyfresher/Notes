@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: note DTO
-public struct Note: Equatable, CustomStringConvertible {
+public struct Note {
     
     // PART: - Constants
     
@@ -44,7 +44,9 @@ public struct Note: Equatable, CustomStringConvertible {
         return title == "" && content == "" && color == Note.defaultColor && erasureDate == nil
     }
     
-    // PART: - Equatable implementation
+}
+
+extension Note: Equatable {
     
     public static func == (lhs: Note, rhs: Note) -> Bool {
         return lhs.uuid == rhs.uuid &&
@@ -59,7 +61,9 @@ public struct Note: Equatable, CustomStringConvertible {
         return !(lhs == rhs)
     }
     
-    // PART: - CustomStringConvertible implementation
+}
+
+extension Note: CustomStringConvertible {
     
     public var description: String {
         return String(describing: json)

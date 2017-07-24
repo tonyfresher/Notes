@@ -1,5 +1,5 @@
 //
-//  RemoveNoteFromNotebookOperation.swift
+//  RemoveNoteOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class RemoveNoteToNotebookOperation: AsyncOperation {
+class RemoveNoteOperation: AsyncOperation<Void> {
     
     // PART: - Properties
     

@@ -8,9 +8,9 @@
 
 import Foundation
 
-class AsyncOperation : Operation {
+class AsyncOperation<TResult>: Operation {
     
-    typealias Action = (() -> ())
+    typealias Action = ((TResult) -> ())
     
     var success: Action?
     
@@ -48,12 +48,11 @@ class AsyncOperation : Operation {
     // MARK: shoul be overriden
     override func main() {
         // ...
+        //success?()
         finish()
     }
     
     func finish() {
-        success?()
-        
         willChangeValue(forKey: "isFinished")
         _finished = true
         didChangeValue(forKey: "isFinished")
