@@ -30,10 +30,6 @@ class CoreDataOperationsManager {
         return FetchNotebookOperation(notebook: notebook, context: managedObjectContext, success: success)
     }
     
-    func eraseOutdatedNotes(in notebook: Notebook, success: @escaping (Notebook) -> ()) -> AsyncOperation<Notebook> {
-        return EraseOutdatedNotesOperation(notebook: notebook, manager: self, success: success)
-    }
-    
     func add(_ note: Note, to notebook: Notebook) -> AsyncOperation<Void> {
         let operation = AddNoteOperation(note: note, notebook: notebook, context: managedObjectContext)
         operation.success = { [weak self] in
