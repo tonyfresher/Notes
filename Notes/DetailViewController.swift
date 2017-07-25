@@ -12,7 +12,18 @@ import CoreData
 
 class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
-    // MARK: UI
+    /// States of this controller
+    ///
+    /// - blank: empty view, no action is needed
+    /// - creation: creating new note
+    /// - editing: editing existing note
+    enum State {
+        case blank
+        case creation
+        case editing
+    }
+    
+    // PART: - UI
     
     @IBAction func cancel(_ sender: Any) {
         rootNavigationController?.popToRootViewController(animated: true)
@@ -32,18 +43,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         note.erasureDate = sender.date
     }
     
-    /// States of this controller
-    ///
-    /// - blank: empty view, no action is needed
-    /// - creation: creating new note
-    /// - editing: editing existing note
-    enum State {
-        case blank
-        case creation
-        case editing
-    }
-    
-    // MARK: Properties
+    // MARK: - Properties
     
     var state: State = .blank
     
@@ -79,13 +79,13 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         note.erasureDate = autoErasureDatePicker.date
     }
     
-    // MARK: Injectable implementation
+    // PART: - Injectable implementation
     
     func assertDependencies() {
         assert(note != nil)
     }
     
-    // MARK: Lifecycle
+    // PART: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         initUI()
     }
     
-    // MARK: Segues handling
+    // PART: - Segues handling
     
     private static let saveNoteSegueIdentifier = "Save Note"
     
@@ -122,7 +122,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
     }
     
-    // MARK: UITextViewDelegate stuff
+    // PART: - UITextViewDelegate stuff
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == titleTextView {

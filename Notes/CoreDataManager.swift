@@ -12,15 +12,15 @@ import CocoaLumberjack
 
 public class CoreDataManager {
     
-    typealias CoreDataManagerCompletion = () -> ()
+    typealias Action = () -> ()
     
-    // MARK: - Properties
+    // PART: - Properties
     
     private let modelName: String
     
-    private let completion: CoreDataManagerCompletion?
+    private let completion: Action?
     
-    // MARK: - Core Data Stack
+    // PART: - Core Data Stack
     
     private lazy var privateManagedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -52,16 +52,16 @@ public class CoreDataManager {
         return documentsDirectoryURL.appendingPathComponent(storeName)
     }
     
-    // MARK: - Initialization
+    // PART: - Initialization
     
-    init(modelName: String, completion: CoreDataManagerCompletion? = nil) {
+    init(modelName: String, completion: Action? = nil) {
         self.modelName = modelName
         self.completion = completion
         
         setup()
     }
     
-    // MARK: Supporting initialization methods
+    // PART: - Supporting initialization methods
     
     private func setup() {
         _ = privateManagedObjectContext.persistentStoreCoordinator

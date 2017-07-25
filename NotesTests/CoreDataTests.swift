@@ -12,7 +12,7 @@ import CoreData
 
 class CoreDataTests: XCTestCase {
     
-    private var manager = CoreDataManager(modelName: "Notes", completion: nil)
+    private var manager = CoreDataManager(modelName: "Notes")
     
     private var context: NSManagedObjectContext!
     
@@ -22,26 +22,36 @@ class CoreDataTests: XCTestCase {
     
     func testNoteToNoteEntityConversion() {
         let notes = Variables.notes
-        let noteEntities = notes.map { try! NoteEntity.findOrCreateNoteEntity(matching: $0, in: context) }
         
-        let notesFromNoteEntities = noteEntities.map { $0.toNote()! }
-        
-        XCTAssertEqual(notes, notesFromNoteEntities)
+        context.perform { [weak self] in
+            guard let sself = self else { return }
+            
+            let noteEntities = notes.map { try! NoteEntity.findOrCreateNoteEntity(matching: $0, in: sself.context) }
+            
+            let notesFromNoteEntities = noteEntities.map { $0.toNote()! }
+            
+            XCTAssertEqual(notes, notesFromNoteEntities)
+        }
     }
     
     func testNotebookToNotebookEntityConversion() {
         let notebook = Variables.notebook
-        let notebookEntity = try! NotebookEntity.findOrCreateNotebookEntity(matching: notebook, in: context)
         
-        let notebookFromNotebookEntityOptional = notebookEntity.toNotebook()
-        
-        guard let notebookFromNotebookEntity = notebookFromNotebookEntityOptional else {
-            XCTFail()
-            return
+        context.perform { [weak self] in
+            guard let sself = self else { return }
+            
+            let notebookEntity = try! NotebookEntity.findOrCreateNotebookEntity(matching: notebook, in: sself.context)
+            
+            let notebookFromNotebookEntityOptional = notebookEntity.toNotebook()
+            
+            guard let notebookFromNotebookEntity = notebookFromNotebookEntityOptional else {
+                XCTFail()
+                return
+            }
+            
+            for note in notebook { XCTAssertTrue(notebookFromNotebookEntity.contains(note)) }
+            for note in notebookFromNotebookEntity { XCTAssertTrue(notebook.contains(note)) }
         }
-        
-        for note in notebook { XCTAssertTrue(notebookFromNotebookEntity.contains(note)) }
-        for note in notebookFromNotebookEntity { XCTAssertTrue(notebook.contains(note)) }
     }
 
 }

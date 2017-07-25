@@ -239,7 +239,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="abZ-fH-A4y">
                             <connections>
-                                <segue destination="git-hN-caZ" kind="unwind" identifier="Save Note" unwindAction="saveNoteFrom:" id="8Ra-ix-jgQ"/>
+                                <segue destination="git-hN-caZ" kind="unwind" unwindAction="saveNoteAfterEditingFrom:" id="TJm-oy-K8U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

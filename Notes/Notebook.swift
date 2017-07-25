@@ -9,19 +9,19 @@
 import Foundation
 import CocoaLumberjack
 
-// MARK: Notebook DTO
-public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
+// MARK: notebook DTO
+public class Notebook: NoteCollection {
     
-    // MARK: - Properties
+    // PART: - Properties
     
     public let uuid: String
     public var creationDate: Date
     
-    private var notes: [Note]
+    fileprivate var notes: [Note]
     
     public var size: Int { return notes.count }
     
-    // MARK: - Initialization
+    // PART: - Initialization
     
     init(uuid: String = UUID().uuidString,
          creationDate: Date = Date(),
@@ -31,7 +31,7 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         self.notes = notes
     }
     
-    // MARK: Access control
+    // PART: - Access control
     
     public subscript(index: Int) -> Note {
         get {
@@ -45,7 +45,25 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return NoteIterator(notes)
     }
     
-    // MARK: Basic manipulations
+    // MARK: iterator for sequencing
+    public struct NoteIterator: IteratorProtocol {
+        
+        let array: [Note]
+        var index = 0
+        
+        init(_ array: [Note]) {
+            self.array = array
+        }
+        
+        public mutating func next() -> Note? {
+            let nextElement = index < array.count ? array[index] : nil
+            index += 1
+            return nextElement
+        }
+        
+    }
+    
+    // PART: - Basic manipulations
 
     public func add(note: Note) {
         notes.append(note)
@@ -83,7 +101,9 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return notes.contains { $0.uuid == noteUUID }
     }
     
-    // MARK: Equatable support
+}
+
+extension Notebook: Equatable {
     
     public static func == (lhs: Notebook, rhs: Notebook) -> Bool {
         return lhs.uuid == rhs.uuid && lhs.notes == rhs.notes
@@ -93,27 +113,12 @@ public class Notebook: NoteCollection, Equatable, CustomStringConvertible {
         return !(lhs == rhs)
     }
 
-    // MARK: CustomStringConvertible support
+}
+
+extension Notebook: CustomStringConvertible {
     
     public var description: String {
         return String(describing: notes)
-    }
-
-    // MARK: Generator struct for sequencing support
-    
-    public struct NoteIterator: IteratorProtocol {
-        let array: [Note]
-        var index = 0
-        
-        init(_ array: [Note]) {
-            self.array = array
-        }
-        
-        public mutating func next() -> Note? {
-            let nextElement = index < array.count ? array[index] : nil
-            index += 1
-            return nextElement
-        }
     }
 
 }

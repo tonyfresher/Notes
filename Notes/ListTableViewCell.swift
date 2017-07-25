@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    // MARK: UI
+    // PART: - UI
 
     @IBOutlet weak var colorSpine: UIImageView!
     
@@ -18,7 +18,7 @@ class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     
-    // MARK: Properties
+    // PART: - Properties
     
     static let reuseIdentifier = "Note"
     
@@ -29,7 +29,7 @@ class ListTableViewCell: UITableViewCell {
         
         titleLabel?.text = note.title
         contentLabel?.text = note.content
-        colorSpine?.backgroundColor = UIColor.red//note.color
+        colorSpine?.backgroundColor = UIColor.red // MARK: change to note.color
     }
     
 }

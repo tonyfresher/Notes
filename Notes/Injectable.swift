@@ -10,5 +10,7 @@ import Foundation
 import UIKit
 
 protocol Injectable {
+
     func assertDependencies()
+
 }

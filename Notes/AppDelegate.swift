@@ -10,14 +10,12 @@ import UIKit
 import CoreData
 import CocoaLumberjack
 
-let ddloglevel = DDLogLevel.debug
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    // MARK: - Main manager of Core Data for application
+    // MARK: main manager of Core Data for application
     lazy var coreDataManager = { CoreDataManager(modelName: "Notes", completion: nil) }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
