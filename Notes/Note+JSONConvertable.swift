@@ -22,7 +22,7 @@ extension Note: JSONConvertable {
     
     public var json: [String: Any] {
         var result: [String: Any] = [
-            "uuid": uuid,
+            "uid": uuid,
             "title": title,
             "content": content
         ]
@@ -41,7 +41,7 @@ extension Note: JSONConvertable {
     }
     
     public static func parse(_ json: [String: Any]) -> Note? {        
-        guard let uuid = json["uuid"] as? String,
+        guard let uuid = json["uid"] as? String,
             let title = json["title"] as? String,
             let content = json["content"] as? String,
             let creationDateTimeInterval = json["creationDate"] as? TimeInterval else {

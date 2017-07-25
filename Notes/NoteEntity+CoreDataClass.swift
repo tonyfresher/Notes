@@ -53,7 +53,7 @@ public class NoteEntity: NSManagedObject {
     
     func toNote() -> Note? {
         let json: [String: Any] = [
-            "uuid": uuid as Any,
+            "uid": uuid as Any,
             
             "title": title as Any,
             "content": content as Any,

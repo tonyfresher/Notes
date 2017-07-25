@@ -30,7 +30,7 @@ class NotesTests: XCTestCase {
         }
         
         for noteJson in jsons {
-            XCTAssertTrue(noteJson.keys.contains("uuid"))
+            XCTAssertTrue(noteJson.keys.contains("uid"))
             XCTAssertTrue(noteJson.keys.contains("title"))
             XCTAssertTrue(noteJson.keys.contains("content"))
         }
