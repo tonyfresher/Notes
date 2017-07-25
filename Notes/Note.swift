@@ -14,7 +14,7 @@ public struct Note {
     
     // PART: - Constants
     
-    public static let defaultColor = UIColor(hex: "FFFFFFFF")!
+    public static let defaultColor = UIColor(hex: "#FFFFFFFF")!
     
     // PART: - Properties
     

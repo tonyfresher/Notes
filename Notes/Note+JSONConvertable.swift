@@ -31,10 +31,10 @@ extension Note: JSONConvertable {
             result["color"] = color.hexString
         }
         
-        result["creationDate"] = creationDate.iso8601String
+        result["creationDate"] = creationDate.timeIntervalSince1970
         
         if let date = erasureDate {
-            result["erasureDate"] = date.iso8601String
+            result["erasureDate"] = date.timeIntervalSince1970
         }
         
         return result
@@ -44,15 +44,15 @@ extension Note: JSONConvertable {
         guard let uuid = json["uuid"] as? String,
             let title = json["title"] as? String,
             let content = json["content"] as? String,
-            let creationDateString = json["creationDate"] as? String,
-            let creationDate = Date(iso8601String: creationDateString) else {
+            let creationDateTimeInterval = json["creationDate"] as? TimeInterval else {
                 return nil
         }
         
-        let colorString = json["color"] as? String
+        let creationDate = Date(timeIntervalSince1970: creationDateTimeInterval)
+        
         let color : UIColor
-        if let string = colorString {
-            if let uiColor = UIColor(hex: string) {
+        if let colorString = json["color"] as? String {
+            if let uiColor = UIColor(hex: colorString) {
                 color = uiColor
             } else {
                 return nil
@@ -61,20 +61,16 @@ extension Note: JSONConvertable {
             color = Note.defaultColor
         }
         
-        let erasureDateStringOptional = json["erasureDate"] as? String
-        if let erasureDateString = erasureDateStringOptional {
-            guard let erasureDate = Date(iso8601String: erasureDateString) else {
-                return nil
-            }
-            return Note(uuid: uuid,
-                        title: title, content: content, color: color,
-                        creationDate: creationDate, erasureDate: erasureDate)
+        let erasureDate: Date?
+        if let erasureDateTimeInterval = json["erasureDate"] as? TimeInterval {
+            erasureDate = Date(timeIntervalSince1970: erasureDateTimeInterval)
         } else {
-            return Note(uuid: uuid,
-                        title: title, content: content, color: color,
-                        creationDate: creationDate, erasureDate: nil)
-            
+            erasureDate = nil
         }
+        
+        return Note(uuid: uuid,
+                    title: title, content: content, color: color,
+                    creationDate: creationDate, erasureDate: erasureDate)
     }
 
 }

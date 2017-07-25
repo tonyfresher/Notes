@@ -34,9 +34,9 @@ class Dispatcher {
     
 }
 
-// MARK: for the ability to pass maximum count of concurrent operations during initialization
 extension OperationQueue {
     
+    // MARK: for the ability to pass maximum count of concurrent operations during initialization
     convenience init(maxConcurrentOperationCount: Int) {
         self.init()
         self.maxConcurrentOperationCount = maxConcurrentOperationCount

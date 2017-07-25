@@ -31,12 +31,12 @@
 		029186B41F154D8F001099DD /* NotebookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186B31F154D8F001099DD /* NotebookTests.swift */; };
 		029186B71F1554F9001099DD /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186B61F1554F9001099DD /* Note.swift */; };
 		029186B91F15550A001099DD /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186B81F15550A001099DD /* Notebook.swift */; };
-		029186BE1F1610E3001099DD /* FormationUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186BD1F1610E3001099DD /* FormationUtilsTests.swift */; };
+		029186BE1F1610E3001099DD /* UIColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186BD1F1610E3001099DD /* UIColorExtensionTests.swift */; };
 		029186C11F164F62001099DD /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C01F164F62001099DD /* ListTableViewController.swift */; };
 		029186C31F165543001099DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C21F165543001099DD /* DetailViewController.swift */; };
 		029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029186C61F16C704001099DD /* ListTableViewCell.swift */; };
-		02A3F78F1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F78E1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift */; };
-		02A3F7911F1E28F4004DEF99 /* Date+ISO8601Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7901F1E28F4004DEF99 /* Date+ISO8601Conversion.swift */; };
+		02A3F78F1F1E28A5004DEF99 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F78E1F1E28A5004DEF99 /* UIColorExtension.swift */; };
+		02A3F7911F1E28F4004DEF99 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7901F1E28F4004DEF99 /* DateExtension.swift */; };
 		02A3F7971F1F3C7C004DEF99 /* NotebookEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7931F1F3C7C004DEF99 /* NotebookEntity+CoreDataClass.swift */; };
 		02A3F7981F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7941F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift */; };
 		02A3F7991F1F3C7C004DEF99 /* NoteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7951F1F3C7C004DEF99 /* NoteEntity+CoreDataClass.swift */; };
@@ -99,12 +99,12 @@
 		029186B31F154D8F001099DD /* NotebookTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookTests.swift; sourceTree = "<group>"; };
 		029186B61F1554F9001099DD /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		029186B81F15550A001099DD /* Notebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
-		029186BD1F1610E3001099DD /* FormationUtilsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormationUtilsTests.swift; sourceTree = "<group>"; };
+		029186BD1F1610E3001099DD /* UIColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensionTests.swift; sourceTree = "<group>"; };
 		029186C01F164F62001099DD /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		029186C21F165543001099DD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		029186C61F16C704001099DD /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		02A3F78E1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexStringConversion.swift"; sourceTree = "<group>"; };
-		02A3F7901F1E28F4004DEF99 /* Date+ISO8601Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601Conversion.swift"; sourceTree = "<group>"; };
+		02A3F78E1F1E28A5004DEF99 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		02A3F7901F1E28F4004DEF99 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		02A3F7931F1F3C7C004DEF99 /* NotebookEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotebookEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		02A3F7941F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotebookEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		02A3F7951F1F3C7C004DEF99 /* NoteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -158,8 +158,8 @@
 		0227A6191F1CD37300CFF062 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				02A3F78E1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift */,
-				02A3F7901F1E28F4004DEF99 /* Date+ISO8601Conversion.swift */,
+				02A3F78E1F1E28A5004DEF99 /* UIColorExtension.swift */,
+				02A3F7901F1E28F4004DEF99 /* DateExtension.swift */,
 				027042A41F21DAD90041D96B /* Injectable.swift */,
 				027042AD1F2514020041D96B /* AsyncOperation.swift */,
 			);
@@ -198,6 +198,17 @@
 				029186821F150FFB001099DD /* AppDelegate.swift */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		023D3D6C1F271BEE00A889EC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0291869A1F150FFB001099DD /* NoteTests.swift */,
+				029186B31F154D8F001099DD /* NotebookTests.swift */,
+				02A3F7AF1F1F75FC004DEF99 /* CoreDataTests.swift */,
+				029186BD1F1610E3001099DD /* UIColorExtensionTests.swift */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		024E05781F1DDFF8000FCD27 /* Note */ = {
@@ -312,10 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				02A3F7B11F1F82FC004DEF99 /* Variables.swift */,
-				0291869A1F150FFB001099DD /* NoteTests.swift */,
-				029186B31F154D8F001099DD /* NotebookTests.swift */,
-				02A3F7AF1F1F75FC004DEF99 /* CoreDataTests.swift */,
-				029186BD1F1610E3001099DD /* FormationUtilsTests.swift */,
+				023D3D6C1F271BEE00A889EC /* Tests */,
 				0291869C1F150FFB001099DD /* Info.plist */,
 			);
 			path = NotesTests;
@@ -662,7 +670,7 @@
 				027042B41F25CC6E0041D96B /* RemoveNoteOperation.swift in Sources */,
 				024E05771F1DDD5B000FCD27 /* NotebookError.swift in Sources */,
 				027042B21F25C73A0041D96B /* AddNoteOperation.swift in Sources */,
-				02A3F78F1F1E28A5004DEF99 /* UIColor+HexStringConversion.swift in Sources */,
+				02A3F78F1F1E28A5004DEF99 /* UIColorExtension.swift in Sources */,
 				023D3D561F25E51C00A889EC /* FetchNotebookOperation.swift in Sources */,
 				027042B01F25C11F0041D96B /* CoreDataOperationsManager.swift in Sources */,
 				02A3F79A1F1F3C7C004DEF99 /* NoteEntity+CoreDataProperties.swift in Sources */,
@@ -671,7 +679,7 @@
 				029186C71F16C704001099DD /* ListTableViewCell.swift in Sources */,
 				027042A91F223F070041D96B /* NoteCollection.swift in Sources */,
 				02A3F7991F1F3C7C004DEF99 /* NoteEntity+CoreDataClass.swift in Sources */,
-				02A3F7911F1E28F4004DEF99 /* Date+ISO8601Conversion.swift in Sources */,
+				02A3F7911F1E28F4004DEF99 /* DateExtension.swift in Sources */,
 				02A3F7AD1F1F6405004DEF99 /* Notes.xcdatamodeld in Sources */,
 				02A3F7B91F1F888F004DEF99 /* Notes 2to3.xcmappingmodel in Sources */,
 				024E05751F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift in Sources */,
@@ -697,7 +705,7 @@
 				02A3F7B21F1F82FC004DEF99 /* Variables.swift in Sources */,
 				02A3F7B01F1F75FC004DEF99 /* CoreDataTests.swift in Sources */,
 				029186B41F154D8F001099DD /* NotebookTests.swift in Sources */,
-				029186BE1F1610E3001099DD /* FormationUtilsTests.swift in Sources */,
+				029186BE1F1610E3001099DD /* UIColorExtensionTests.swift in Sources */,
 				0291869B1F150FFB001099DD /* NoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  FormationUtilsTests.swift
+//  UIColorExtensionTests.swift
 //  NotesTests
 //
 //  Created by Anton Fresher on 12.07.17.
@@ -11,17 +11,10 @@ import UIKit
 @testable import Notes
 
 
-class FormationUtilsTests: XCTestCase {
-    
-    func testDateConversion() {
-        let date = Date().withZeroNanoseconds
-        let dateString = date.iso8601String
-        let dateFromString = Date(iso8601String: dateString)
-        XCTAssertEqual(date, dateFromString)
-    }
+class UIColorExtensionTests: XCTestCase {
     
     func testColorConversion() {
-        let colorString = "FFFFFFFF"
+        let colorString = "#FFFFFFFF"
         if let color = UIColor(hex: colorString) {
             XCTAssertEqual(colorString, color.hexString)
         } else {
