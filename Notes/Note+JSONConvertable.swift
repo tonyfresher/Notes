@@ -31,10 +31,10 @@ extension Note: JSONConvertable {
             result["color"] = color.hexString
         }
         
-        result["creationDate"] = creationDate.timeIntervalSince1970
+        result["creation_date"] = Int(creationDate.timeIntervalSince1970)
         
         if let date = erasureDate {
-            result["erasureDate"] = date.timeIntervalSince1970
+            result["destroy_date"] = Int(date.timeIntervalSince1970)
         }
         
         return result
@@ -44,7 +44,7 @@ extension Note: JSONConvertable {
         guard let uuid = json["uid"] as? String,
             let title = json["title"] as? String,
             let content = json["content"] as? String,
-            let creationDateTimeInterval = json["creationDate"] as? TimeInterval else {
+            let creationDateTimeInterval = json["creation_date"] as? TimeInterval else {
                 return nil
         }
         
@@ -62,7 +62,7 @@ extension Note: JSONConvertable {
         }
         
         let erasureDate: Date?
-        if let erasureDateTimeInterval = json["erasureDate"] as? TimeInterval {
+        if let erasureDateTimeInterval = json["destroy_date"] as? TimeInterval {
             erasureDate = Date(timeIntervalSince1970: erasureDateTimeInterval)
         } else {
             erasureDate = nil

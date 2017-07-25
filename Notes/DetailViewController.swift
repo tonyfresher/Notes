@@ -75,10 +75,6 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         // note.color =
     }
     
-    @IBAction func saveDate(_ sender: UIDatePicker) {
-        note.erasureDate = autoErasureDatePicker.date
-    }
-    
     // PART: - Injectable implementation
     
     func assertDependencies() {

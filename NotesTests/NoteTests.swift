@@ -44,7 +44,7 @@ class NotesTests: XCTestCase {
                 jsons[4].keys.contains(colorProperty)
         )
         
-        let erasureDateProperty = "erasureDate"
+        let erasureDateProperty = "destroy_date"
         XCTAssertTrue(
             !jsons[0].keys.contains(erasureDateProperty) &&
                 !jsons[1].keys.contains(erasureDateProperty) &&

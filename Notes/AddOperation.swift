@@ -1,5 +1,5 @@
 //
-//  AddNoteOperation.swift
+//  AddOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class AddNoteOperation: AsyncOperation<Void> {
-    
+class AddOperation: AsyncOperation<Void> {
+
     // PART: - Properties
-    
+
     let note: Note
     
     let notebook: Notebook

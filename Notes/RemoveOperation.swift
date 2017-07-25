@@ -1,5 +1,5 @@
 //
-//  FetchNotebookOperation.swift
+//  RemoveOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,9 +10,11 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class FetchNotebookOperation: AsyncOperation<Notebook> {
+class RemoveOperation: AsyncOperation<Void> {
     
     // PART: - Properties
+    
+    let note: Note
     
     let notebook: Notebook
     
@@ -20,13 +22,10 @@ class FetchNotebookOperation: AsyncOperation<Notebook> {
     
     // PART: - Initialization
     
-    init(notebook: Notebook, context: NSManagedObjectContext, success: @escaping (Notebook) -> ()) {
+    init(note: Note, notebook: Notebook, context: NSManagedObjectContext) {
+        self.note = note
         self.notebook = notebook
         self.context = context
-        
-        super.init()
-        
-        self.success = success
     }
     
     // PART: - Work
@@ -37,14 +36,13 @@ class FetchNotebookOperation: AsyncOperation<Notebook> {
             
             do {
                 let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: sself.notebook, in: sself.context)
-
-                try sself.context.save()
+                let noteEntity = try NoteEntity.findOrCreateNoteEntity(matching: sself.note, in: sself.context)
                 
-                if let notebook = notebookEntity.toNotebook() {
-                    sself.success?(notebook)
-                }
+                notebookEntity.removeFromNotes(noteEntity)
+                
+                try sself.context.save()
             } catch {
-                DDLogError("Error while fetching notebook(UUID: \(sself.notebook.uuid)): \(error.localizedDescription)")
+                DDLogError("Error while removing \(sself.note): \(error.localizedDescription)")
                 sself.cancel()
             }
             

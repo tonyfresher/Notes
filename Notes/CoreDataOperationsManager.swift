@@ -27,19 +27,11 @@ class CoreDataOperationsManager {
     // PART: - Operations
 
     func fetch(notebook: Notebook, success: @escaping (Notebook) -> ()) -> AsyncOperation<Notebook> {
-        return FetchNotebookOperation(notebook: notebook, context: managedObjectContext, success: success)
+        return FetchOperation(notebook: notebook, context: managedObjectContext, success: success)
     }
     
     func add(_ note: Note, to notebook: Notebook) -> AsyncOperation<Void> {
-        let operation = AddNoteOperation(note: note, notebook: notebook, context: managedObjectContext)
-        operation.success = { [weak self] in
-            self?.coreDataManager.saveChanges()
-        }
-        return operation
-    }
-    
-    func remove(_ note: Note, from notebook: Notebook) -> AsyncOperation<Void> {
-        let operation = RemoveNoteOperation(note: note, notebook: notebook, context: managedObjectContext)
+        let operation = AddOperation(note: note, notebook: notebook, context: managedObjectContext)
         operation.success = { [weak self] in
             self?.coreDataManager.saveChanges()
         }
@@ -47,11 +39,19 @@ class CoreDataOperationsManager {
     }
     
     func update(_ note: Note) -> AsyncOperation<Void> {
-        let operation = UpdateNoteOperation(note: note, context: managedObjectContext)
+        let operation = UpdateOperation(note: note, context: managedObjectContext)
         operation.success = { [weak self] in
             self?.coreDataManager.saveChanges()
         }
         return operation
     }
-    
+
+    func remove(_ note: Note, from notebook: Notebook) -> AsyncOperation<Void> {
+        let operation = RemoveOperation(note: note, notebook: notebook, context: managedObjectContext)
+        operation.success = { [weak self] in
+            self?.coreDataManager.saveChanges()
+        }
+        return operation
+    }
+
 }

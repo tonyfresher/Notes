@@ -127,15 +127,14 @@ class ListTableViewController: UITableViewController {
         }
     }
     
-    // PART: - Operations with Core Data
-    
-    private var coreDataOperationsManager: CoreDataOperationsManager!
+    // PART: - Main preparation
     
     private func prepareNotebook() {
+        //let get =
         let fetch = coreDataOperationsManager.fetch(notebook: notebook, success: { [weak self] notebook in
             guard let sself = self else { return }
             
-            let eraseOutdated = EraseOutdatedNotesOperation(notebook: notebook, manager: sself.coreDataOperationsManager)
+            let eraseOutdated = EraseOutdatedOperation(notebook: notebook, manager: sself.coreDataOperationsManager)
             eraseOutdated.success = { [weak self] notebook in
                 self?.notebook = notebook
             }
@@ -149,19 +148,23 @@ class ListTableViewController: UITableViewController {
         Dispatcher.dispatchToCoreData(fetch)
         Dispatcher.dispatchToMain(updateUI)
     }
+
+    // PART: - Operations with Core Data
+    
+    private var coreDataOperationsManager: CoreDataOperationsManager!
     
     private func add(_ note: Note, to notebook: Notebook) {
         let operation = coreDataOperationsManager.add(note, to: notebook)
         Dispatcher.dispatchToCoreData(operation)
     }
     
-    private func remove(_ note: Note, from notebook: Notebook) {
-        let operation = coreDataOperationsManager.remove(note, from: notebook)
+    private func update(_ note: Note) {
+        let operation = coreDataOperationsManager.update(note)
         Dispatcher.dispatchToCoreData(operation)
     }
     
-    private func update(_ note: Note) {
-        let operation = coreDataOperationsManager.update(note)
+    private func remove(_ note: Note, from notebook: Notebook) {
+        let operation = coreDataOperationsManager.remove(note, from: notebook)
         Dispatcher.dispatchToCoreData(operation)
     }
 
