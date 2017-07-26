@@ -178,31 +178,20 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		023D3D681F26362900A889EC /* Background */ = {
+		023D3D681F26362900A889EC /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				023D3D661F262F7B00A889EC /* EraseOutdatedOperation.swift */,
 			);
-			name = Background;
-			sourceTree = "<group>";
-		};
-		023D3D691F26383C00A889EC /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				023D3D6A1F26387E00A889EC /* UI */,
-				023D3D681F26362900A889EC /* Background */,
-				027042B71F25D2130041D96B /* Core Data */,
-				02FCC2E91F27390900EB08B9 /* Backend */,
-			);
 			name = Operations;
 			sourceTree = "<group>";
 		};
-		023D3D6A1F26387E00A889EC /* UI */ = {
+		023D3D6A1F26387E00A889EC /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				023D3D621F26010000A889EC /* UITableViewOperations.swift */,
 			);
-			name = UI;
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		023D3D6B1F26394600A889EC /* Application */ = {
@@ -264,6 +253,7 @@
 		024E05801F1DE83C000FCD27 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				027042B71F25D2130041D96B /* Operations */,
 				02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */,
 				02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */,
 				0275505E1F1DEFA3007E483F /* CoreDataManager.swift */,
@@ -278,13 +268,12 @@
 		027042AC1F239AEA0041D96B /* Dispatch */ = {
 			isa = PBXGroup;
 			children = (
-				023D3D691F26383C00A889EC /* Operations */,
 				023D3D531F25D4BB00A889EC /* Dispatcher.swift */,
 			);
 			name = Dispatch;
 			sourceTree = "<group>";
 		};
-		027042B71F25D2130041D96B /* Core Data */ = {
+		027042B71F25D2130041D96B /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */,
@@ -293,7 +282,7 @@
 				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 				027042B31F25CC6E0041D96B /* RemoveOperation.swift */,
 			);
-			name = "Core Data";
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		029186761F150FFB001099DD = {
@@ -355,6 +344,7 @@
 		029186B51F1554D9001099DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				023D3D681F26362900A889EC /* Operations */,
 				024E05781F1DDFF8000FCD27 /* Note */,
 				024E05791F1DE003000FCD27 /* Notebook */,
 			);
@@ -364,6 +354,7 @@
 		029186BF1F164F41001099DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				023D3D6A1F26387E00A889EC /* Operations */,
 				02FCC2F51F2763FB00EB08B9 /* Login */,
 				024E057A1F1DE650000FCD27 /* List */,
 				024E057B1F1DE69A000FCD27 /* Detail */,
@@ -374,7 +365,7 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		02FCC2E91F27390900EB08B9 /* Backend */ = {
+		02FCC2E91F27390900EB08B9 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				02FCC2EA1F273A2200EB08B9 /* GetOperation.swift */,
@@ -382,12 +373,13 @@
 				02FCC2F11F273F9400EB08B9 /* PutOperation.swift */,
 				02FCC2F31F273FA600EB08B9 /* DeleteOperation.swift */,
 			);
-			name = Backend;
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		02FCC2EC1F273CE600EB08B9 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				02FCC2E91F27390900EB08B9 /* Operations */,
 				02FCC2ED1F273E2C00EB08B9 /* BackendConfiguration.swift */,
 			);
 			name = Backend;
