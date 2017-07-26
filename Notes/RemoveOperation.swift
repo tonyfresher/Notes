@@ -40,7 +40,7 @@ class RemoveOperation: AsyncOperation<Void> {
                 
                 notebookEntity.removeFromNotes(noteEntity)
                 
-                try sself.context.save()
+                try sself.context.save(recursively: true)
             } catch {
                 DDLogError("Error while removing \(sself.note): \(error.localizedDescription)")
                 sself.cancel()

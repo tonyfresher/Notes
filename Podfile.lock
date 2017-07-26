@@ -1,23 +1,17 @@
 PODS:
-  - CocoaLumberjack (3.2.0):
-    - CocoaLumberjack/Default (= 3.2.0)
-    - CocoaLumberjack/Extensions (= 3.2.0)
   - CocoaLumberjack/Default (3.2.0)
-  - CocoaLumberjack/Extensions (3.2.0):
+  - CocoaLumberjack/Swift (3.2.0):
     - CocoaLumberjack/Default
   - Color-Picker-for-iOS (2.0.2)
-  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
-  - CocoaLumberjack
+  - CocoaLumberjack/Swift
   - Color-Picker-for-iOS (~> 2.0)
-  - UITextView+Placeholder (~> 1.2)
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 9b4aed7073d242f29cc2f62068d995faf67f703a
   Color-Picker-for-iOS: 4980589b3e3cfe7198f227dd50be9adb02d8bc0b
-  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 32d3176312ea2b84e7372688d81352ecbe919fc1
+PODFILE CHECKSUM: 725cabbf114745999f6a85a4a4b02260283b0847
 
 COCOAPODS: 1.2.1

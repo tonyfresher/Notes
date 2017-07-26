@@ -31,11 +31,9 @@ extension Note: JSONConvertable {
             result["color"] = color.hexString
         }
         
-        result["creation_date"] = Int(creationDate.timeIntervalSince1970)
+        result["creation_date"] = creationDate.timeIntervalSince1970
         
-        if let date = erasureDate {
-            result["destroy_date"] = Int(date.timeIntervalSince1970)
-        }
+        result["destroy_date"] = erasureDate?.timeIntervalSince1970
         
         return result
     }

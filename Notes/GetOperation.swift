@@ -12,14 +12,14 @@ class GetOperation: AsyncOperation<Notebook> {
     
     // PART: - Properties
     
-    let notebook: Notebook
+    let notebookUUID: String
     
     let manager: CoreDataManager
     
     // PART: - Initialization
     
-    init(notebook: Notebook, manager: CoreDataManager) {
-        self.notebook = notebook
+    init(notebookUUID: String, manager: CoreDataManager) {
+        self.notebookUUID = notebookUUID
         self.manager = manager
     }
     

@@ -35,26 +35,25 @@ class NotebookTests: XCTestCase {
     }
     
     func testBasicManipulations() {
-        var note = Note()
+        let note = Note()
         
         // test "add"
         notebook.add(note: note)
         
-        // test "contains"
-        let contains = { (note: Note) -> Bool in
-            self.notebook.contains(with: note.uuid)
-        }
-        XCTAssertTrue(contains(note))
+        XCTAssertTrue(notebook.contains(note))
         
         // test "update"
-        note.title = "Foo"
-        notebook.update(note: note)
-        XCTAssertTrue(contains(note))
-        XCTAssertEqual(notebook.first { $0.uuid == note.uuid }!.title, "Foo")
+        let updated: Note! = NoteBuilder(from: note)
+            .set(title: "Foo")
+            .build()
+        
+        notebook.update(note: updated)
+        XCTAssertTrue(notebook.contains(updated))
+        XCTAssertEqual(notebook.first { $0.uuid == updated.uuid }!.title, "Foo")
         
         // test "remove"
         let removed = try! notebook.remove(with: note.uuid)
-        XCTAssertFalse(contains(note))
+        XCTAssertFalse(notebook.contains(note))
         XCTAssertEqual(note, removed)
     }
     

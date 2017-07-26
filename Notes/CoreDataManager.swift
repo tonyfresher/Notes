@@ -97,18 +97,5 @@ public class CoreDataManager {
         
         return managedObjectContext
     }
-    
-    /// Saves changes in private context
-    public func saveChanges() {        
-        privateManagedObjectContext.perform {
-            do {
-                if self.privateManagedObjectContext.hasChanges {
-                    try self.privateManagedObjectContext.save()
-                }
-            } catch {
-                DDLogError("Unable to save changes of private managed object context\n\(error), \(error.localizedDescription)")
-            }
-        }
-    }
-    
+
 }

@@ -25,13 +25,13 @@ class BackendConfiguration {
         
         static let path = "/authorize"
         
-        static let responseTypeName = "responseType"
+        static let responseTypeName = "response_type"
         static let responseType = "token"
         
         static let clientIdName = "client_id"
         static let clientId = "b810a64aa3454975bb665186bc4350cd"
 
-        static var request = { () -> URL in
+        static var requestURL = { () -> URL in
             var components = URLComponents()
             components.scheme = scheme
             components.host = host

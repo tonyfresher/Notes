@@ -14,19 +14,19 @@ public struct Note {
     
     // PART: - Constants
     
-    public static let defaultColor = UIColor(hex: "#FFFFFFFF")!
+    public static let defaultColor: UIColor! = UIColor(hex: "#FFFFFFFF")
     
     // PART: - Properties
     
     public let uuid: String
     
-    public var title: String
-    public var content: String
+    public let title: String
+    public let content: String
     
-    public var color: UIColor
+    public let color: UIColor
     
-    public var creationDate: Date
-    public var erasureDate: Date?
+    public let creationDate: Date
+    public let erasureDate: Date?
     
     // PART: - Initialization
     
@@ -37,24 +37,28 @@ public struct Note {
          creationDate: Date = Date(),
          erasureDate: Date? = nil) {
         (self.uuid, self.title, self.content, self.color, self.creationDate, self.erasureDate) =
-            (uuid, title, content, color, creationDate.withZeroNanoseconds, erasureDate?.withZeroNanoseconds)
+            (uuid, title, content, color, creationDate, erasureDate)
     }
     
     public var isEmpty: Bool {
         return title == "" && content == "" && color == Note.defaultColor && erasureDate == nil
     }
     
+    public func contentEquals(to note: Note) -> Bool {
+        return uuid == note.uuid &&
+            title == note.title &&
+            content == note.content &&
+            color == note.color &&
+            Date.equalsWithoutNanoseconds(creationDate, note.creationDate) &&
+            Date.equalsWithoutNanoseconds(erasureDate, note.erasureDate)
+    }
+
 }
 
 extension Note: Equatable {
     
     public static func == (lhs: Note, rhs: Note) -> Bool {
-        return lhs.uuid == rhs.uuid &&
-            lhs.title == rhs.title &&
-            lhs.content == rhs.content &&
-            lhs.color == rhs.color &&
-            lhs.creationDate == rhs.creationDate &&
-            lhs.erasureDate == rhs.erasureDate
+        return lhs.uuid == rhs.uuid
     }
     
     public static func != (lhs: Note, rhs: Note) -> Bool {
@@ -68,5 +72,5 @@ extension Note: CustomStringConvertible {
     public var description: String {
         return String(describing: json)
     }
-
+    
 }

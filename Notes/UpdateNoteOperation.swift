@@ -35,7 +35,7 @@ class UpdateOperation: AsyncOperation<Void> {
                 let noteEntity = try NoteEntity.findOrCreateNoteEntity(matching: sself.note, in: sself.context)
                 noteEntity.update(from: sself.note)
                 
-                try sself.context.save()
+                try sself.context.save(recursively: true)
             } catch {
                 DDLogError("Error while updating \(sself.note): \(error.localizedDescription)")
                 sself.cancel()

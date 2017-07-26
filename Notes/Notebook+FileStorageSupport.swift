@@ -28,7 +28,7 @@ extension Notebook: FileStorageSupport {
                 let notesJSON = self.map { $0.json }
                 let notebookJSON: [String : Any]  = [
                     "uid": uuid,
-                    "creationDate": creationDate.timeIntervalSince1970,
+                    "creation_date": creationDate.timeIntervalSince1970,
                     "notes": notesJSON
                 ]
                 try JSONSerialization
@@ -56,7 +56,7 @@ extension Notebook: FileStorageSupport {
                 
                 guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let uuid = json["uid"] as? String,
-                    let creationDateTimeInterval = json["creationDate"] as? TimeInterval,
+                    let creationDateTimeInterval = json["creation_date"] as? TimeInterval,
                     let notesArray = json["notes"] as? [[String: Any]] else {
                     return nil
                 }

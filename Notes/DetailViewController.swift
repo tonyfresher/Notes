@@ -40,14 +40,26 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     @IBOutlet weak var autoErasureDatePicker: UIDatePicker!
     @IBAction func pickAutoErasureDate(_ sender: UIDatePicker, forEvent event: UIEvent) {
-        note.erasureDate = sender.date
+        noteErasureDate = sender.date
     }
     
     // MARK: - Properties
     
     var state: State = .blank
     
-    var note: Note!
+    var note: Note! {
+        didSet {
+            noteTitle = note.title
+            noteContent = note.content
+            noteColor = note.color
+            noteErasureDate = note.erasureDate
+        }
+    }
+    
+    var noteTitle: String!
+    var noteContent: String!
+    var noteColor: UIColor!
+    var noteErasureDate: Date?
     
     private func initUI() {
         guard note != nil else { return }
@@ -69,10 +81,16 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
         }
     }
     
-    private func saveData() {
-        note.title = titleTextView.text
-        note.content = contentTextView.text
-        // note.color =
+    private func saveNote() {
+        let builded = NoteBuilder(from: note)
+            .set(title: titleTextView.text)
+            .set(content: contentTextView.text)
+            .set(color: noteColor)
+            .set(erasureDate: noteErasureDate)
+            .build()
+        
+        guard let buildedNote = builded else { return }
+        note = buildedNote
     }
     
     // PART: - Injectable implementation
@@ -108,7 +126,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     private static let saveNoteSegueIdentifier = "Save Note"
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        saveData()
+        saveNote()
         
         if identifier == DetailViewController.saveNoteSegueIdentifier &&
             note.isEmpty {
@@ -122,9 +140,9 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView == titleTextView {
-            note.title = textView.text
+            noteTitle = textView.text
         } else if textView == contentTextView {
-            note.content = textView.text
+            noteContent = textView.text
         }
     }
 

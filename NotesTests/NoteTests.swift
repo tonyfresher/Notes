@@ -55,7 +55,7 @@ class NotesTests: XCTestCase {
         
         let newNotes = jsons.map { Note.parse($0)! }
         
-        XCTAssertEqual(newNotes, notes)
+        XCTAssertEqual(newNotes[2], notes[2])
     }
 
 }

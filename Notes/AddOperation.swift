@@ -40,7 +40,7 @@ class AddOperation: AsyncOperation<Void> {
             
                 notebookEntity.addToNotes(noteEntity)
                 
-                try sself.context.save()
+                try sself.context.save(recursively: true)
             } catch {
                 DDLogError("Error while saving \(sself.note): \(error.localizedDescription)")
                 sself.cancel()

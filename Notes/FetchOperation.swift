@@ -38,7 +38,7 @@ class FetchOperation: AsyncOperation<Notebook> {
             do {
                 let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: sself.notebook, in: sself.context)
 
-                try sself.context.save()
+                try sself.context.save(recursively: true)
                 
                 if let notebook = notebookEntity.toNotebook() {
                     sself.success?(notebook)

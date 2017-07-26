@@ -60,7 +60,7 @@ public class NoteEntity: NSManagedObject {
             "color": color as Any,
             
             "creation_date": (creationDate as Date?)?.timeIntervalSince1970 as Any,
-            "erasure_date": (erasureDate as Date?)?.timeIntervalSince1970 as Any
+            "destroy_date": (erasureDate as Date?)?.timeIntervalSince1970 as Any
         ]
         
         return Note.parse(json)
