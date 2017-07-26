@@ -22,11 +22,9 @@ class GetAllOperation: AsyncOperation<[Note]> {
     // PART: - Work
     
     override func main() {
-        guard let request = BackendRequests.getAll() else {
-            cancel()
-            return
-        }
         let conversion: (Any) -> [Note]? = { json in
+            // TODO: implement
+            
             // MARK: forming the array
             guard let response = json as? [[String: Any]] else {
                 return nil
@@ -36,12 +34,10 @@ class GetAllOperation: AsyncOperation<[Note]> {
             let notes = response.flatMap { Note.parse($0) }
         }
         
-        let completionHandler = BackendRequests.completionHandler(of: "GET",
-                                                                  result: conversion,
-                                                                  in: self)
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
-        task.resume()
+        BackendRequests.performDataTask(method: "GET(all)",
+                                        request: BackendRequests.getAll(),
+                                        using: conversion,
+                                        in: self)
     }
     
 }

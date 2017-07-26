@@ -23,10 +23,15 @@ class DeleteOperation: AsyncOperation<Note> {
     // PART: - Work
     
     override func main() {
-        let request = BackendRequests.delete(note)
+        let conversion: (Any) -> Note? = { json in
+            // TODO: implement
+        }
         
-        //success?()
-        finish()
+        BackendRequests.performDataTask(method: "DELETE",
+                                        request: BackendRequests.delete(note),
+                                        using: conversion,
+                                        in: self)
+
     }
     
 }

@@ -22,11 +22,15 @@ class PutOperation: AsyncOperation<Note> {
     
     // PART: - Work
     
-    override func main() {
-        let request = BackendRequests.put(note)
+    override func main() {        
+        let conversion: (Any) -> Note? = { json in
+            // TODO: implement
+        }
         
-        //success?()
-        finish()
+        BackendRequests.performDataTask(method: "PUT",
+                                        request: BackendRequests.put(note),
+                                        using: conversion,
+                                        in: self)
     }
     
 }

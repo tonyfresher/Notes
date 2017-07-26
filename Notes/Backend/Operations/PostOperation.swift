@@ -23,10 +23,14 @@ class PostOperation: AsyncOperation<Note> {
     // PART: - Work
     
     override func main() {
-        let request = BackendRequests.post(note)
+        let conversion: (Any) -> Note? = { json in
+            // TODO: implement
+        }
         
-        //success?()
-        finish()
+        BackendRequests.performDataTask(method: "POST",
+                                        request: BackendRequests.post(note),
+                                        using: conversion,
+                                        in: self)
     }
     
 }

@@ -27,10 +27,14 @@ class GetOperation: AsyncOperation<Note> {
     // PART: - Work
     
     override func main() {
-        let request = BackendRequests.get(with: noteUUID)
+        let conversion: (Any) -> Note? = { json in
+            // TODO: implement
+        }
         
-        //success?()
-        finish()
+        BackendRequests.performDataTask(method: "GET",
+                                        request: BackendRequests.get(with: noteUUID),
+                                        using: conversion,
+                                        in: self)
     }
 
 }

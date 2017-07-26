@@ -78,9 +78,9 @@ class BackendRequests {
     
     // PART: - Request Completion Handler
     
-    static func completionHandler<T>(of method: String,
-                                  result convertion: @escaping (Any) -> T?,
-                                  in operation: AsyncOperation<T>)
+    static func makeCompletionHandler<T>(of method: String,
+                                         using convertion: @escaping (Any) -> T?,
+                                         in operation: AsyncOperation<T>)
         -> (Data?, URLResponse?, Error?) -> () {
             return { [weak operation] data, response, error in
                 guard let strongOperation = operation else { return }
@@ -128,6 +128,25 @@ class BackendRequests {
                 strongOperation.success?(result)
                 strongOperation.finish()
             }
+    }
+    
+    // PART: - Data Task Performing
+    
+    static func performDataTask<T>(method: String,
+                                   request: URLRequest?,
+                                   using conversion: @escaping (Any) -> T?,
+                                   in operation: AsyncOperation<T>) {
+        guard let strongRequest = request else {
+            operation.cancel()
+            return
+        }
+        
+        let completionHandler = BackendRequests.makeCompletionHandler(of: "GET",
+                                                                      using: conversion,
+                                                                      in: operation)
+        
+        let task = URLSession.shared.dataTask(with: strongRequest, completionHandler: completionHandler)
+        task.resume()
     }
     
 }
