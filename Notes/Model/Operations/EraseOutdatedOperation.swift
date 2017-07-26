@@ -33,9 +33,11 @@ class EraseOutdatedOperation: AsyncOperation<Notebook> {
     override func main() {
         let now = Date()
         
-        for i in 0..<notebook.size {
-            if let deadline = notebook[i].erasureDate, deadline <= now {
-                let erased = notebook.remove(at: i)
+        for note in notebook {
+            if let deadline = note.erasureDate, deadline <= now {
+                guard let index = notebook.index(of: note) else { return }
+                
+                let erased = notebook.remove(at: index)
                 
                 let remove = manager.remove(erased, from: notebook)
                 remove.success = { DDLogInfo("\(erased) was erased in \(now)") }

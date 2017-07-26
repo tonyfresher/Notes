@@ -130,7 +130,6 @@ class ListTableViewController: UITableViewController {
     // PART: - Main preparation
     
     private func prepareNotebook() {
-        //let get =
         let fetch = coreDataOperationsManager.fetch(notebook: notebook, success: { [weak self] notebook in
             guard let sself = self else { return }
             

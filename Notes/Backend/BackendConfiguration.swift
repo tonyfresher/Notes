@@ -12,8 +12,7 @@ class BackendConfiguration {
     
     static let host = "notes.mrdekk.ru"
     
-    static let authHeader = "Autorization"
-    static let contentTypeHeader = "Content-Type"
+    static let path = "/notes"
     
     // PART: OAuth configuration
     
@@ -31,7 +30,7 @@ class BackendConfiguration {
         static let clientIdName = "client_id"
         static let clientId = "b810a64aa3454975bb665186bc4350cd"
         
-        static var requestURL = { () -> URL in
+        static let requestURL = { () -> URL in
             var components = URLComponents()
             components.scheme = scheme
             components.host = host

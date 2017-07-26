@@ -63,6 +63,10 @@ public class Notebook: NoteCollection {
         
     }
     
+    public func index(of note: Note) -> Int? {
+        return notes.index(of: note)
+    }
+    
     // PART: - Basic manipulations
 
     public func add(note: Note) {

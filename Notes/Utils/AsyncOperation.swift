@@ -41,7 +41,7 @@ class AsyncOperation<TResult>: Operation {
         
         willChangeValue(forKey: "isExecuting")
         _executing = true
-        main() // QUESTION: whybefore didChangeValue?
+        main() // QUESTION: why before didChangeValue?
         didChangeValue(forKey: "isExecuting")
     }
     

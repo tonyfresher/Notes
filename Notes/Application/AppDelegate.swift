@@ -53,7 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let userAuthSettingName = "user_auth_token"
     
     private var isUserAuthorized: Bool {
-        return UserDefaults.standard.object(forKey: AppDelegate.userAuthSettingName) is String?
+        if let authToken = UserDefaults.standard.object(forKey: AppDelegate.userAuthSettingName),
+            authToken is String {
+            return true
+        } else {
+            return false
+        }
     }
 
 }

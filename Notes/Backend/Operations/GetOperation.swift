@@ -26,6 +26,7 @@ class GetOperation: AsyncOperation<Notebook> {
     // PART: - Work
     
     override func main() {
+        let request = BackendRequests.get
         
     }
 

@@ -14,6 +14,8 @@ public protocol NoteCollection: Sequence {
     
     subscript(index: Int) -> Note { get set }
     
+    func index(of: Note) -> Int?
+    
     func add(note: Note)
     
     func update(note: Note)

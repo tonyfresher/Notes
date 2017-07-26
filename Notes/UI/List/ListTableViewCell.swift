@@ -29,7 +29,7 @@ class ListTableViewCell: UITableViewCell {
         
         titleLabel?.text = note.title
         contentLabel?.text = note.content
-        colorSpine?.backgroundColor = UIColor.red // MARK: change to note.color
+        colorSpine?.backgroundColor = UIColor.red // TODO: change to note.color
     }
     
 }
