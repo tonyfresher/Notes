@@ -11,6 +11,8 @@ import CoreData
 
 extension NSManagedObjectContext {
     
+    // MARK: Copyright © 2016 mrdekk. All rights reserved. :)
+    
     func save(recursively: Bool) throws {
         var _error: Error!
         

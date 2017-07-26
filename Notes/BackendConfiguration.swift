@@ -15,7 +15,7 @@ class BackendConfiguration {
     static let authHeader = "Autorization"
     static let contentTypeHeader = "Content-Type"
     
-    // PART: OAuthRequest
+    // PART: OAuth configuration
     
     class OAuthRequest {
         
@@ -30,7 +30,7 @@ class BackendConfiguration {
         
         static let clientIdName = "client_id"
         static let clientId = "b810a64aa3454975bb665186bc4350cd"
-
+        
         static var requestURL = { () -> URL in
             var components = URLComponents()
             components.scheme = scheme
@@ -46,22 +46,16 @@ class BackendConfiguration {
         
     }
     
-    // PART: OAuthResponse
-    
-    class OAuthResponse {
+    enum OAuthResponseArguments: String {
         
-        enum Arguments: String {
-            
-            case accessToken = "access_token"
-            
-            case expiresIn = "expires_in"
-            
-            case tokenType = "token_type"
-            
-            case state = "state"
-            
-        }
+        case accessToken = "access_token"
+        
+        case expiresIn = "expires_in"
+        
+        case tokenType = "token_type"
+        
+        case state = "state"
         
     }
-
+    
 }

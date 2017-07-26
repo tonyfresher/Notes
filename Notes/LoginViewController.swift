@@ -56,7 +56,7 @@ extension LoginViewController: WKNavigationDelegate {
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
         
-        guard let accessTokenArgument = arguments.first(where: { $0[0] == BackendConfiguration.OAuthResponse.Arguments.accessToken.rawValue }) else {
+        guard let accessTokenArgument = arguments.first(where: { $0[0] == BackendConfiguration.OAuthResponseArguments.accessToken.rawValue }) else {
             decisionHandler(.allow)
             return
         }

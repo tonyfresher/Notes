@@ -44,13 +44,14 @@
 		02A3F7B01F1F75FC004DEF99 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7AF1F1F75FC004DEF99 /* CoreDataTests.swift */; };
 		02A3F7B21F1F82FC004DEF99 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7B11F1F82FC004DEF99 /* Variables.swift */; };
 		02A3F7B91F1F888F004DEF99 /* Notes 2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */; };
+		02F27F111F28B01100A942ED /* BackendRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F27F101F28B01100A942ED /* BackendRequests.swift */; };
 		02FCC2EB1F273A2200EB08B9 /* GetOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2EA1F273A2200EB08B9 /* GetOperation.swift */; };
 		02FCC2EE1F273E2C00EB08B9 /* BackendConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2ED1F273E2C00EB08B9 /* BackendConfiguration.swift */; };
 		02FCC2F01F273F8300EB08B9 /* PostOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2EF1F273F8300EB08B9 /* PostOperation.swift */; };
 		02FCC2F21F273F9400EB08B9 /* PutOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2F11F273F9400EB08B9 /* PutOperation.swift */; };
 		02FCC2F41F273FA600EB08B9 /* DeleteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2F31F273FA600EB08B9 /* DeleteOperation.swift */; };
 		02FCC2F71F27643400EB08B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2F61F27643400EB08B9 /* LoginViewController.swift */; };
-		02FCC2FB1F287E5C00EB08B9 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext.swift */; };
+		02FCC2FB1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift */; };
 		02FCC2FD1F288DE200EB08B9 /* Date+Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2FC1F288DE200EB08B9 /* Date+Notes.swift */; };
 		02FCC2FF1F28925D00EB08B9 /* NoteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FCC2FE1F28925D00EB08B9 /* NoteBuilder.swift */; };
 		18CC4CC33911433E977722C3 /* Pods_NotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF76875C7BCE9785FD1F65B3 /* Pods_NotesUITests.framework */; };
@@ -123,13 +124,14 @@
 		02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Notes 3.xcdatamodel"; sourceTree = "<group>"; };
 		02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = "Notes 2to3.xcmappingmodel"; sourceTree = "<group>"; };
 		02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Notes 4.xcdatamodel"; sourceTree = "<group>"; };
+		02F27F101F28B01100A942ED /* BackendRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendRequests.swift; sourceTree = "<group>"; };
 		02FCC2EA1F273A2200EB08B9 /* GetOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOperation.swift; sourceTree = "<group>"; };
 		02FCC2ED1F273E2C00EB08B9 /* BackendConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendConfiguration.swift; sourceTree = "<group>"; };
 		02FCC2EF1F273F8300EB08B9 /* PostOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostOperation.swift; sourceTree = "<group>"; };
 		02FCC2F11F273F9400EB08B9 /* PutOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PutOperation.swift; sourceTree = "<group>"; };
 		02FCC2F31F273FA600EB08B9 /* DeleteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteOperation.swift; sourceTree = "<group>"; };
 		02FCC2F61F27643400EB08B9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
+		02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Notes.swift"; sourceTree = "<group>"; };
 		02FCC2FC1F288DE200EB08B9 /* Date+Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Notes.swift"; sourceTree = "<group>"; };
 		02FCC2FE1F28925D00EB08B9 /* NoteBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteBuilder.swift; sourceTree = "<group>"; };
 		2CC92D00A970A5E280876990 /* Pods-NotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotesUITests/Pods-NotesUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			children = (
 				02FCC2E91F27390900EB08B9 /* Operations */,
 				02FCC2ED1F273E2C00EB08B9 /* BackendConfiguration.swift */,
+				02F27F101F28B01100A942ED /* BackendRequests.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -410,7 +413,7 @@
 		02FCC2F91F287E2F00EB08B9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext.swift */,
+				02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -747,12 +750,13 @@
 				023D3D671F262F7B00A889EC /* EraseOutdatedOperation.swift in Sources */,
 				029186C31F165543001099DD /* DetailViewController.swift in Sources */,
 				024E056F1F1DD8B0000FCD27 /* Note+JSONConvertable.swift in Sources */,
-				02FCC2FB1F287E5C00EB08B9 /* NSManagedObjectContext.swift in Sources */,
+				02FCC2FB1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift in Sources */,
 				027042AE1F2514020041D96B /* AsyncOperation.swift in Sources */,
 				029186831F150FFB001099DD /* AppDelegate.swift in Sources */,
 				027042A51F21DAD90041D96B /* Injectable.swift in Sources */,
 				02FCC2F71F27643400EB08B9 /* LoginViewController.swift in Sources */,
 				02A3F7971F1F3C7C004DEF99 /* NotebookEntity+CoreDataClass.swift in Sources */,
+				02F27F111F28B01100A942ED /* BackendRequests.swift in Sources */,
 				023D3D631F26010000A889EC /* UITableViewOperations.swift in Sources */,
 				029186B91F15550A001099DD /* Notebook.swift in Sources */,
 				02A3F7981F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift in Sources */,
