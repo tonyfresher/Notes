@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import CocoaLumberjack
 
 class BackendRequests {
     
-    // PART: Headers
+    // PART: - Headers
     
     static let authHeader = "Autorization"
     
@@ -19,8 +20,8 @@ class BackendRequests {
     static let contentTypeHeader = "Content-Type"
     static let jsonType = "application/json; charset=utf-8"
     
-    // PART: Requests
-
+    // PART: - Requests
+    
     static func getAll() -> URLRequest? {
         return makeBackendRequest(method: "GET", to: BackendConfiguration.path)
     }
@@ -44,7 +45,7 @@ class BackendRequests {
         return makeBackendRequest(method: "delete", to: "\(BackendConfiguration.path)/\(note.uuid)", with: serializedNote)
     }
     
-    // MARK: Request builder
+    // PART: - Request Builder
     
     private static func makeBackendRequest(method: String, to path: String, with body: Data? = nil) -> URLRequest? {
         // MARK: forming URL
@@ -74,5 +75,59 @@ class BackendRequests {
         
         return request
     }
-
+    
+    // PART: - Request Completion Handler
+    
+    static func completionHandler<T>(of method: String,
+                                  result convertion: @escaping (Any) -> T?,
+                                  in operation: AsyncOperation<T>)
+        -> (Data?, URLResponse?, Error?) -> () {
+            return { [weak operation] data, response, error in
+                guard let strongOperation = operation else { return }
+                
+                // MARK: check for error in data task
+                if let errorUnwrapped = error {
+                    DDLogError("Error in \(method) data task: \(errorUnwrapped.localizedDescription)")
+                    strongOperation.cancel()
+                    return
+                }
+                
+                guard let dataUnwrapped = data else {
+                    DDLogError("No data in \(method) data task")
+                    strongOperation.cancel()
+                    return
+                }
+                
+                guard let responseJSON = try? JSONSerialization.jsonObject(with: dataUnwrapped) else {
+                    DDLogError("\(method) response doesn't seem to be a JSON")
+                    strongOperation.cancel()
+                    return
+                }
+                
+                // MARK: check for error in server response
+                if let response = responseJSON as? [String: Any],
+                    let responseError = response["error"] as? Bool,
+                    let responseCode = response["code"] as? Int,
+                    let responseMessage = response["message"] as? String {
+                    if responseError {
+                        DDLogError("Wrong \(method) request to server:\n" +
+                            "code: \(responseCode)\n" +
+                            "message: \(responseMessage)")
+                        strongOperation.cancel()
+                        return
+                    }
+                }
+                
+                // MARK: Argument of type Any is JSON object returned from JSONSerialization.jsonObject(with:)
+                guard let result = convertion(responseJSON) else {
+                    DDLogError("Wrong \(method) response format")
+                    strongOperation.cancel()
+                    return
+                }
+                
+                strongOperation.success?(result)
+                strongOperation.finish()
+            }
+    }
+    
 }

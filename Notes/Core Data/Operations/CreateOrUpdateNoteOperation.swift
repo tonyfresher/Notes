@@ -1,5 +1,5 @@
 //
-//  UpdateOperation.swift
+//  CreateOrUpdateNoteOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class UpdateOperation: AsyncOperation<Void> {
+class CreateOrUpdateNoteOperation: AsyncOperation<Void> {
     
     // PART: - Properties
     
@@ -36,6 +36,8 @@ class UpdateOperation: AsyncOperation<Void> {
                 noteEntity.update(from: sself.note)
                 
                 try sself.context.save(recursively: true)
+                
+                sself.success?()
             } catch {
                 DDLogError("Error while updating \(sself.note): \(error.localizedDescription)")
                 sself.cancel()

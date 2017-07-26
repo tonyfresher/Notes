@@ -27,19 +27,23 @@ class CoreDataOperationsManager {
     // PART: - Operations
 
     func fetch(notebook: Notebook, success: @escaping (Notebook) -> ()) -> AsyncOperation<Notebook> {
-        return FetchOperation(notebook: notebook, context: managedObjectContext, success: success)
+        return FetchNotebookOperation(notebook: notebook, context: managedObjectContext, success: success)
     }
     
     func add(_ note: Note, to notebook: Notebook) -> AsyncOperation<Void> {
-        return AddOperation(note: note, notebook: notebook, context: managedObjectContext)
+        return AddToNotebookOperation(note: note, notebook: notebook, context: managedObjectContext)
     }
     
-    func update(_ note: Note) -> AsyncOperation<Void> {
-        return UpdateOperation(note: note, context: managedObjectContext)
+    func createOrUpdate(_ note: Note) -> AsyncOperation<Void> {
+        return CreateOrUpdateNoteOperation(note: note, context: managedObjectContext)
     }
 
     func remove(_ note: Note, from notebook: Notebook) -> AsyncOperation<Void> {
-        return RemoveOperation(note: note, notebook: notebook, context: managedObjectContext)
+        return RemoveFromNotebookOperation(note: note, notebook: notebook, context: managedObjectContext)
+    }
+
+    func contains(_ note: Note, in notebookUUID: String, success: @escaping (Bool) -> ()) -> AsyncOperation<Bool> {
+        return ContainsNoteOperation(note: note, notebookUUID: notebookUUID, context: managedObjectContext, success: success)
     }
 
 }

@@ -42,7 +42,7 @@ class EraseOutdatedOperation: AsyncOperation<Notebook> {
                 let remove = manager.remove(erased, from: notebook)
                 remove.success = { DDLogInfo("\(erased) was erased in \(now)") }
                 
-                Dispatcher.dispatchToCoreData(remove)
+                Dispatcher.dispatch(coreData: remove)
             }
         }
         

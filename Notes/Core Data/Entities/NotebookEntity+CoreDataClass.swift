@@ -13,12 +13,12 @@ import CocoaLumberjack
 @objc(NotebookEntity)
 public class NotebookEntity: NSManagedObject {
 
-    /// Finds notebook with certain UUID and updates its attributes or creates new note matching notebookInfo in NSManagedContext
+    /// Finds notebook with certain UUID and updates its attributes or creates new notebook matching notebookInfo in NSManagedContext
     ///
     /// - Parameters:
     ///   - notebookInfo: Notebook template for NotebookEntity
     ///   - context: NSManagedContext for manipulations
-    /// - Returns: updated or created NotebookEntity
+    /// - Returns: fetched or created NotebookEntity
     /// - Throws: if context is unable to fetch request for NotebookEntity
     static func findOrCreateNotebookEntity(matching notebookInfo: Notebook, in context: NSManagedObjectContext) throws -> NotebookEntity {
         let request: NSFetchRequest<NotebookEntity> = NotebookEntity.fetchRequest()

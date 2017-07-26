@@ -16,6 +16,10 @@ class ListTableViewController: UITableViewController {
     
     private var notebook = Notebook(uuid: "3392911E-D663-46AE-85A9-F1CAA702AFE0")
     
+    // PART: - Core Data
+    
+    private var coreDataOperationsManager: CoreDataOperationsManager!
+    
     // PART: - Lifecycle
     
     override func awakeFromNib() {
@@ -63,12 +67,11 @@ class ListTableViewController: UITableViewController {
             // TODO: MAKE POPUP VIEW TO ASK IF THE USER SURE
             let note = notebook.remove(at: indexPath.row)
             
-            let updateCoreData = coreDataOperationsManager.remove(note, from: notebook)
-            Dispatcher.dispatchToCoreData(updateCoreData)
+            dispatchNotebookModification(ui: UITableViewOperations.delete(from: tableView, at: [indexPath]),
+                                         coreData: coreDataOperationsManager.remove(note, from: notebook),
+                                         backend: DeleteOperation(note: note))
             
-            let updateUI = UITableViewOperations.delete(from: tableView, at: [indexPath])
-            updateUI.addDependency(updateCoreData)
-            Dispatcher.dispatchToMain(updateUI)
+            DDLogDebug("\(note) was removed from notebook")
         }
     }
     
@@ -99,29 +102,24 @@ class ListTableViewController: UITableViewController {
         case .creation:
             notebook.add(note: note)
             
-            let updateCoreData = coreDataOperationsManager.add(note, to: notebook)
-            Dispatcher.dispatchToCoreData(updateCoreData)
-            
             let indexPaths = [IndexPath(row: notebook.size - 1, section: 0)]
-            let updateUI = UITableViewOperations.insert(to: tableView, at: indexPaths)
-            updateUI.addDependency(updateCoreData)
-            Dispatcher.dispatchToMain(updateUI)
             
-            DDLogDebug("\(note) was saved to local notebook")
+            dispatchNotebookModification(ui: UITableViewOperations.insert(to: tableView, at: indexPaths),
+                                         coreData: coreDataOperationsManager.add(note, to: notebook),
+                                         backend: PostOperation(note: note))
+            
+            DDLogDebug("\(note) was saved to notebook")
             
         case .editing:
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
             notebook[indexPath.row] = note
             
-            let updateCoreData = coreDataOperationsManager.update(note)
-            Dispatcher.dispatchToCoreData(updateCoreData)
+            dispatchNotebookModification(ui: UITableViewOperations.reload(in: tableView, at: [indexPath]),
+                                         coreData: coreDataOperationsManager.createOrUpdate(note),
+                                         backend: PutOperation(note: note))
             
-            let updateUI = UITableViewOperations.reload(in: tableView, at: [indexPath])
-            updateUI.addDependency(updateCoreData)
-            Dispatcher.dispatchToMain(updateUI)
-            
-            DDLogDebug("\(note) was locally updated")
+            DDLogDebug("\(note) was updated")
             
         default: break
         }
@@ -130,6 +128,25 @@ class ListTableViewController: UITableViewController {
     // PART: - Main preparation
     
     private func prepareNotebook() {
+        let get = GetAllOperation(success: { [weak self] notes in
+            guard let sself = self else { return }
+
+            for note in notes {
+                let creation = sself.coreDataOperationsManager.createOrUpdate(note)
+                let check = sself.coreDataOperationsManager.contains(note, in: sself.notebook.uuid, success: { result in
+                    if !result {
+                        let addition = sself.coreDataOperationsManager.add(note, to: sself.notebook)
+                        Dispatcher.dispatch(coreData: addition)
+                    }
+                })
+                
+                check.addDependency(creation)
+                
+                Dispatcher.dispatch(coreData: creation)
+                Dispatcher.dispatch(coreData: check)
+            }
+        })
+        
         let fetch = coreDataOperationsManager.fetch(notebook: notebook, success: { [weak self] notebook in
             guard let sself = self else { return }
             
@@ -138,33 +155,30 @@ class ListTableViewController: UITableViewController {
                 self?.notebook = notebook
             }
             
-            Dispatcher.dispatchToBackground(eraseOutdated)
+            Dispatcher.dispatch(background: eraseOutdated)
         })
+        
         let updateUI = UITableViewOperations.reload(sections: [0], in: tableView) // QUESTION: async?
         
+        fetch.addDependency(get)
         updateUI.addDependency(fetch)
         
-        Dispatcher.dispatchToCoreData(fetch)
-        Dispatcher.dispatchToMain(updateUI)
-    }
-
-    // PART: - Operations with Core Data
-    
-    private var coreDataOperationsManager: CoreDataOperationsManager!
-    
-    private func add(_ note: Note, to notebook: Notebook) {
-        let operation = coreDataOperationsManager.add(note, to: notebook)
-        Dispatcher.dispatchToCoreData(operation)
+        Dispatcher.dispatch(backend: get)
+        Dispatcher.dispatch(coreData: fetch)
+        Dispatcher.dispatch(main: updateUI)
     }
     
-    private func update(_ note: Note) {
-        let operation = coreDataOperationsManager.update(note)
-        Dispatcher.dispatchToCoreData(operation)
-    }
+    // PART: - Special things
     
-    private func remove(_ note: Note, from notebook: Notebook) {
-        let operation = coreDataOperationsManager.remove(note, from: notebook)
-        Dispatcher.dispatchToCoreData(operation)
+    private func dispatchNotebookModification(ui uiOperation: Operation,
+                                              coreData coreDataOperation: Operation,
+                                              backend backendOperation: Operation) {
+        backendOperation.addDependency(coreDataOperation)
+        uiOperation.addDependency(coreDataOperation)
+        
+        Dispatcher.dispatch(coreData: coreDataOperation)
+        Dispatcher.dispatch(backend: backendOperation)
+        Dispatcher.dispatch(main: uiOperation)
     }
 
 }

@@ -8,25 +8,25 @@
 
 import Foundation
 
-class PostOperation: AsyncOperation<Notebook> {
+class PostOperation: AsyncOperation<Note> {
     
     // PART: - Properties
     
-    let notebook: Notebook
-    
-    let manager: CoreDataManager
+    let note: Note
     
     // PART: - Initialization
     
-    init(notebook: Notebook, manager: CoreDataManager) {
-        self.notebook = notebook
-        self.manager = manager
+    init(note: Note) {
+        self.note = note
     }
     
     // PART: - Work
     
     override func main() {
+        let request = BackendRequests.post(note)
         
+        //success?()
+        finish()
     }
     
 }

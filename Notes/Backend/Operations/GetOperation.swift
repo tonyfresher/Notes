@@ -8,26 +8,29 @@
 
 import Foundation
 
-class GetOperation: AsyncOperation<Notebook> {
+class GetOperation: AsyncOperation<Note> {
     
     // PART: - Properties
     
-    let notebookUUID: String
-    
-    let manager: CoreDataManager
+    let noteUUID: String
     
     // PART: - Initialization
     
-    init(notebookUUID: String, manager: CoreDataManager) {
-        self.notebookUUID = notebookUUID
-        self.manager = manager
+    init(noteUUID: String, manager: CoreDataManager, success: @escaping (Note) -> ()) {
+        self.noteUUID = noteUUID
+        
+        super.init()
+        
+        self.success = success
     }
     
     // PART: - Work
     
     override func main() {
-        let request = BackendRequests.get
+        let request = BackendRequests.get(with: noteUUID)
         
+        //success?()
+        finish()
     }
 
 }

@@ -22,19 +22,19 @@ class Dispatcher {
 
     // PART: - Dispatch
 
-    static func dispatchToMain(_ op: Operation) {
+    static func dispatch(main op: Operation) {
         mainQueue.addOperation(op)
     }
 
-    static func dispatchToBackground(_ op: Operation) {
+    static func dispatch(background op: Operation) {
         backgroundQueue.addOperation(op)
     }
 
-    static func dispatchToCoreData(_ op: Operation) {
+    static func dispatch(coreData op: Operation) {
         coreDataQueue.addOperation(op)
     }
 
-    static func dispatchToBackend(_ op: Operation) {
+    static func dispatch(backend op: Operation) {
         backendQueue.addOperation(op)
     }
 

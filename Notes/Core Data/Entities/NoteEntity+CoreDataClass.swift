@@ -19,7 +19,7 @@ public class NoteEntity: NSManagedObject {
     /// - Parameters:
     ///   - noteInfo: Note template for NoteEntity
     ///   - context: NSManagedContext for manipulations
-    /// - Returns: updated or created NoteEntity
+    /// - Returns: fetched or created NoteEntity
     /// - Throws: if context is unable to fetch request for NoteEntity
     static func findOrCreateNoteEntity(matching noteInfo: Note, in context: NSManagedObjectContext) throws -> NoteEntity {
         let request: NSFetchRequest<NoteEntity> = NoteEntity.fetchRequest()

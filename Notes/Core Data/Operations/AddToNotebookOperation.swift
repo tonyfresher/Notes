@@ -1,5 +1,5 @@
 //
-//  FetchOperation.swift
+//  AddToNotebookOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,23 +10,22 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class FetchOperation: AsyncOperation<Notebook> {
-    
+class AddToNotebookOperation: AsyncOperation<Void> {
+
     // PART: - Properties
+
+    let note: Note
     
     let notebook: Notebook
     
     let context: NSManagedObjectContext
     
     // PART: - Initialization
-    
-    init(notebook: Notebook, context: NSManagedObjectContext, success: @escaping (Notebook) -> ()) {
+
+    init(note: Note, notebook: Notebook, context: NSManagedObjectContext) {
+        self.note = note
         self.notebook = notebook
         self.context = context
-        
-        super.init()
-        
-        self.success = success
     }
     
     // PART: - Work
@@ -37,14 +36,15 @@ class FetchOperation: AsyncOperation<Notebook> {
             
             do {
                 let notebookEntity = try NotebookEntity.findOrCreateNotebookEntity(matching: sself.notebook, in: sself.context)
-
+                let noteEntity = try NoteEntity.findOrCreateNoteEntity(matching: sself.note, in: sself.context)
+            
+                notebookEntity.addToNotes(noteEntity)
+                
                 try sself.context.save(recursively: true)
                 
-                if let notebook = notebookEntity.toNotebook() {
-                    sself.success?(notebook)
-                }
+                sself.success?()
             } catch {
-                DDLogError("Error while fetching notebook(UUID: \(sself.notebook.uuid)): \(error.localizedDescription)")
+                DDLogError("Error while saving \(sself.note): \(error.localizedDescription)")
                 sself.cancel()
             }
             

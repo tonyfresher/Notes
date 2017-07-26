@@ -1,5 +1,5 @@
 //
-//  RemoveOperation.swift
+//  RemoveFromNotebookOperation.swift
 //  Notes
 //
 //  Created by Anton Fresher on 24.07.17.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import CocoaLumberjack
 
-class RemoveOperation: AsyncOperation<Void> {
+class RemoveFromNotebookOperation: AsyncOperation<Void> {
     
     // PART: - Properties
     
@@ -41,6 +41,8 @@ class RemoveOperation: AsyncOperation<Void> {
                 notebookEntity.removeFromNotes(noteEntity)
                 
                 try sself.context.save(recursively: true)
+                
+                sself.success?()
             } catch {
                 DDLogError("Error while removing \(sself.note): \(error.localizedDescription)")
                 sself.cancel()
