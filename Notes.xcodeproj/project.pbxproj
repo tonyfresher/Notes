@@ -176,12 +176,13 @@
 		0227A6191F1CD37300CFF062 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				02FCC2FC1F288DE200EB08B9 /* Date+Notes.swift */,
-				02A3F78E1F1E28A5004DEF99 /* UIColor+Notes.swift */,
-				027042A41F21DAD90041D96B /* Injectable.swift */,
 				027042AD1F2514020041D96B /* AsyncOperation.swift */,
+				02FCC2FC1F288DE200EB08B9 /* Date+Notes.swift */,
+				027042A41F21DAD90041D96B /* Injectable.swift */,
+				02A3F78E1F1E28A5004DEF99 /* UIColor+Notes.swift */,
 			);
 			name = Utils;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		023D3D681F26362900A889EC /* Operations */ = {
@@ -190,6 +191,7 @@
 				023D3D661F262F7B00A889EC /* EraseOutdatedOperation.swift */,
 			);
 			name = Operations;
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		023D3D6A1F26387E00A889EC /* Operations */ = {
@@ -198,6 +200,7 @@
 				023D3D621F26010000A889EC /* UITableViewOperations.swift */,
 			);
 			name = Operations;
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		023D3D6B1F26394600A889EC /* Application */ = {
@@ -206,47 +209,52 @@
 				029186821F150FFB001099DD /* AppDelegate.swift */,
 			);
 			name = Application;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		023D3D6C1F271BEE00A889EC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				02A3F7AF1F1F75FC004DEF99 /* CoreDataTests.swift */,
 				0291869A1F150FFB001099DD /* NoteTests.swift */,
 				029186B31F154D8F001099DD /* NotebookTests.swift */,
-				02A3F7AF1F1F75FC004DEF99 /* CoreDataTests.swift */,
 				029186BD1F1610E3001099DD /* UIColorExtensionTests.swift */,
 			);
 			name = Tests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		024E05781F1DDFF8000FCD27 /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				029186B61F1554F9001099DD /* Note.swift */,
 				024E056E1F1DD8B0000FCD27 /* Note+JSONConvertable.swift */,
+				029186B61F1554F9001099DD /* Note.swift */,
 				02FCC2FE1F28925D00EB08B9 /* NoteBuilder.swift */,
 			);
 			name = Note;
+			path = Note;
 			sourceTree = "<group>";
 		};
 		024E05791F1DE003000FCD27 /* Notebook */ = {
 			isa = PBXGroup;
 			children = (
 				027042A81F223F070041D96B /* NoteCollection.swift */,
-				029186B81F15550A001099DD /* Notebook.swift */,
 				024E05741F1DDBFF000FCD27 /* Notebook+FileStorageSupport.swift */,
+				029186B81F15550A001099DD /* Notebook.swift */,
 				024E05761F1DDD5B000FCD27 /* NotebookError.swift */,
 			);
 			name = Notebook;
+			path = Notebook;
 			sourceTree = "<group>";
 		};
 		024E057A1F1DE650000FCD27 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				029186C01F164F62001099DD /* ListTableViewController.swift */,
 				029186C61F16C704001099DD /* ListTableViewCell.swift */,
+				029186C01F164F62001099DD /* ListTableViewController.swift */,
 			);
 			name = List;
+			path = List;
 			sourceTree = "<group>";
 		};
 		024E057B1F1DE69A000FCD27 /* Detail */ = {
@@ -255,19 +263,21 @@
 				029186C21F165543001099DD /* DetailViewController.swift */,
 			);
 			name = Detail;
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		024E05801F1DE83C000FCD27 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				027042B71F25D2130041D96B /* Operations */,
 				02FCC2F81F287E1200EB08B9 /* Entities */,
 				02FCC2F91F287E2F00EB08B9 /* Extensions */,
-				02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */,
-				02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */,
+				027042B71F25D2130041D96B /* Operations */,
 				0275505E1F1DEFA3007E483F /* CoreDataManager.swift */,
+				02A3F7B81F1F888F004DEF99 /* Notes 2to3.xcmappingmodel */,
+				02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */,
 			);
 			name = "Core Data";
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		027042AC1F239AEA0041D96B /* Dispatch */ = {
@@ -276,29 +286,31 @@
 				023D3D531F25D4BB00A889EC /* Dispatcher.swift */,
 			);
 			name = Dispatch;
+			path = Dispatch;
 			sourceTree = "<group>";
 		};
 		027042B71F25D2130041D96B /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				027042B11F25C73A0041D96B /* AddOperation.swift */,
 				027042AF1F25C11F0041D96B /* CoreDataOperationsManager.swift */,
 				023D3D551F25E51C00A889EC /* FetchOperation.swift */,
-				027042B11F25C73A0041D96B /* AddOperation.swift */,
-				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 				027042B31F25CC6E0041D96B /* RemoveOperation.swift */,
+				027042B51F25CCE80041D96B /* UpdateNoteOperation.swift */,
 			);
 			name = Operations;
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		029186761F150FFB001099DD = {
 			isa = PBXGroup;
 			children = (
+				776A2C712C29B472F93858AE /* Frameworks */,
 				029186811F150FFB001099DD /* Notes */,
 				029186991F150FFB001099DD /* NotesTests */,
 				029186A41F150FFB001099DD /* NotesUITests */,
-				029186801F150FFB001099DD /* Products */,
 				F3EC00793D20885D48980B7F /* Pods */,
-				776A2C712C29B472F93858AE /* Frameworks */,
+				029186801F150FFB001099DD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,11 +328,11 @@
 			isa = PBXGroup;
 			children = (
 				023D3D6B1F26394600A889EC /* Application */,
-				027042AC1F239AEA0041D96B /* Dispatch */,
-				029186BF1F164F41001099DD /* UI */,
-				029186B51F1554D9001099DD /* Model */,
-				024E05801F1DE83C000FCD27 /* Core Data */,
 				02FCC2EC1F273CE600EB08B9 /* Backend */,
+				024E05801F1DE83C000FCD27 /* Core Data */,
+				027042AC1F239AEA0041D96B /* Dispatch */,
+				029186B51F1554D9001099DD /* Model */,
+				029186BF1F164F41001099DD /* UI */,
 				0227A6191F1CD37300CFF062 /* Utils */,
 				029186911F150FFB001099DD /* Info.plist */,
 			);
@@ -330,9 +342,9 @@
 		029186991F150FFB001099DD /* NotesTests */ = {
 			isa = PBXGroup;
 			children = (
-				02A3F7B11F1F82FC004DEF99 /* Variables.swift */,
 				023D3D6C1F271BEE00A889EC /* Tests */,
 				0291869C1F150FFB001099DD /* Info.plist */,
+				02A3F7B11F1F82FC004DEF99 /* Variables.swift */,
 			);
 			path = NotesTests;
 			sourceTree = "<group>";
@@ -340,8 +352,8 @@
 		029186A41F150FFB001099DD /* NotesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				029186A51F150FFB001099DD /* NotesUITests.swift */,
 				029186A71F150FFB001099DD /* Info.plist */,
+				029186A51F150FFB001099DD /* NotesUITests.swift */,
 			);
 			path = NotesUITests;
 			sourceTree = "<group>";
@@ -349,36 +361,39 @@
 		029186B51F1554D9001099DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				023D3D681F26362900A889EC /* Operations */,
 				024E05781F1DDFF8000FCD27 /* Note */,
 				024E05791F1DE003000FCD27 /* Notebook */,
+				023D3D681F26362900A889EC /* Operations */,
 			);
 			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		029186BF1F164F41001099DD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				023D3D6A1F26387E00A889EC /* Operations */,
-				02FCC2F51F2763FB00EB08B9 /* Login */,
-				024E057A1F1DE650000FCD27 /* List */,
 				024E057B1F1DE69A000FCD27 /* Detail */,
+				024E057A1F1DE650000FCD27 /* List */,
+				02FCC2F51F2763FB00EB08B9 /* Login */,
+				023D3D6A1F26387E00A889EC /* Operations */,
+				0291868C1F150FFB001099DD /* Assets.xcassets */,
 				0291868E1F150FFB001099DD /* LaunchScreen.storyboard */,
 				029186861F150FFB001099DD /* Main.storyboard */,
-				0291868C1F150FFB001099DD /* Assets.xcassets */,
 			);
 			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		02FCC2E91F27390900EB08B9 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				02FCC2F31F273FA600EB08B9 /* DeleteOperation.swift */,
 				02FCC2EA1F273A2200EB08B9 /* GetOperation.swift */,
 				02FCC2EF1F273F8300EB08B9 /* PostOperation.swift */,
 				02FCC2F11F273F9400EB08B9 /* PutOperation.swift */,
-				02FCC2F31F273FA600EB08B9 /* DeleteOperation.swift */,
 			);
 			name = Operations;
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		02FCC2EC1F273CE600EB08B9 /* Backend */ = {
@@ -389,6 +404,7 @@
 				02F27F101F28B01100A942ED /* BackendRequests.swift */,
 			);
 			name = Backend;
+			path = Backend;
 			sourceTree = "<group>";
 		};
 		02FCC2F51F2763FB00EB08B9 /* Login */ = {
@@ -397,6 +413,7 @@
 				02FCC2F61F27643400EB08B9 /* LoginViewController.swift */,
 			);
 			name = Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		02FCC2F81F287E1200EB08B9 /* Entities */ = {
@@ -408,6 +425,7 @@
 				02A3F7941F1F3C7C004DEF99 /* NotebookEntity+CoreDataProperties.swift */,
 			);
 			name = Entities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		02FCC2F91F287E2F00EB08B9 /* Extensions */ = {
@@ -416,6 +434,7 @@
 				02FCC2FA1F287E5C00EB08B9 /* NSManagedObjectContext+Notes.swift */,
 			);
 			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		776A2C712C29B472F93858AE /* Frameworks */ = {
@@ -808,6 +827,7 @@
 				029186871F150FFB001099DD /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		0291868E1F150FFB001099DD /* LaunchScreen.storyboard */ = {
@@ -816,6 +836,7 @@
 				0291868F1F150FFB001099DD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1051,10 +1072,10 @@
 		02A3F7AB1F1F6405004DEF99 /* Notes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				027042A31F2096810041D96B /* Notes 5.xcdatamodel */,
-				02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */,
-				02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */,
 				02A3F7AE1F1F6A5C004DEF99 /* Notes 2.xcdatamodel */,
+				02A3F7B31F1F86C1004DEF99 /* Notes 3.xcdatamodel */,
+				02A3F7BC1F2073D4004DEF99 /* Notes 4.xcdatamodel */,
+				027042A31F2096810041D96B /* Notes 5.xcdatamodel */,
 				02A3F7AC1F1F6405004DEF99 /* Notes.xcdatamodel */,
 			);
 			currentVersion = 027042A31F2096810041D96B /* Notes 5.xcdatamodel */;
