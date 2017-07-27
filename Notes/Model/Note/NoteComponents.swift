@@ -1,5 +1,5 @@
 //
-//  NoteBuilder.swift
+//  NoteComponents.swift
 //  Notes
 //
 //  Created by Anton Fresher on 26.07.17.
@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class NoteBuilder {
+class NoteComponents {
+    
+    // PART: - Properties
     
     var uuid: String?
     var title: String?
@@ -17,6 +19,8 @@ class NoteBuilder {
     var color: UIColor?
     var creationDate: Date?
     var erasureDate: Date?
+    
+    // PART: - Initialization
     
     init() {}
     
@@ -29,37 +33,9 @@ class NoteBuilder {
         erasureDate = note.erasureDate
     }
     
-    func set(uuid: String) -> NoteBuilder {
-        self.uuid = uuid
-        return self
-    }
+    // PART: - Build
     
-    func set(title: String) -> NoteBuilder {
-        self.title = title
-        return self
-    }
-    
-    func set(content: String) -> NoteBuilder {
-        self.content = content
-        return self
-    }
-    
-    func set(color: UIColor) -> NoteBuilder {
-        self.color = color
-        return self
-    }
-    
-    func set(creationDate: Date) -> NoteBuilder {
-        self.creationDate = creationDate
-        return self
-    }
-    
-    func set(erasureDate: Date?) -> NoteBuilder {
-        self.erasureDate = erasureDate
-        return self
-    }
-    
-    func build() -> Note? {
+    var note: Note? {
         guard let uuidUnwrapped = uuid,
             let titleUnwrapped = title,
             let contentUnwrapped = content,
@@ -72,4 +48,5 @@ class NoteBuilder {
                     title: titleUnwrapped, content: contentUnwrapped, color: colorUnwrapped,
                     creationDate: creationDateUnwrapped, erasureDate: erasureDate)
     }
+    
 }

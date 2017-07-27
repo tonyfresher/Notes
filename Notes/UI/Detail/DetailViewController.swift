@@ -85,15 +85,14 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     }
     
     private func saveNote() {
-        let builded = NoteBuilder(from: note)
-            .set(title: titleTextView.text)
-            .set(content: contentTextView.text)
-            .set(color: noteColor)
-            .set(erasureDate: noteErasureDate)
-            .build()
+        let components = NoteComponents(from: note)
+        components.title = titleTextView.text
+        components.content = contentTextView.text
+        components.color = noteColor
+        components.erasureDate = noteErasureDate
         
-        guard let buildedNote = builded else { return }
-        note = buildedNote
+        guard let builded = components.note else { return }
+        note = builded
     }
     
     // PART: - Injectable implementation

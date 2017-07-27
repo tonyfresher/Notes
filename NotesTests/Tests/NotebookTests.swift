@@ -43,9 +43,9 @@ class NotebookTests: XCTestCase {
         XCTAssertTrue(notebook.contains(note))
         
         // test "update"
-        let updated: Note! = NoteBuilder(from: note)
-            .set(title: "Foo")
-            .build()
+        let components = NoteComponents(from: note)
+        components.title = "Foo"
+        let updated: Note! = components.note
         
         notebook.update(note: updated)
         XCTAssertTrue(notebook.contains(updated))
