@@ -13,7 +13,7 @@ class BackendRequests {
     
     // PART: - Headers
     
-    static let authHeader = "Autorization"
+    static let authHeader = "Authorization"
     
     static let acceptHeader = "Accept"
     
@@ -42,7 +42,7 @@ class BackendRequests {
     
     static func delete(_ note: Note) -> URLRequest? {
         let serializedNote = try! JSONSerialization.data(withJSONObject: note.json)
-        return makeBackendRequest(method: "delete", to: "\(BackendConfiguration.path)/\(note.uuid)", with: serializedNote)
+        return makeBackendRequest(method: "DELETE", to: "\(BackendConfiguration.path)/\(note.uuid)", with: serializedNote)
     }
     
     // PART: - Request Builder
@@ -125,6 +125,7 @@ class BackendRequests {
                     return
                 }
                 
+                DDLogInfo("\(method) request succeded, response: \(result)")
                 strongOperation.success?(result)
                 strongOperation.finish()
             }
@@ -134,15 +135,15 @@ class BackendRequests {
     
     static func performDataTask<T>(method: String,
                                    request: URLRequest?,
-                                   using conversion: @escaping (Any) -> T?,
+                                   using convertor: @escaping (Any) -> T?,
                                    in operation: AsyncOperation<T>) {
         guard let strongRequest = request else {
             operation.cancel()
             return
         }
         
-        let completionHandler = BackendRequests.makeCompletionHandler(of: "GET",
-                                                                      using: conversion,
+        let completionHandler = BackendRequests.makeCompletionHandler(of: method,
+                                                                      using: convertor,
                                                                       in: operation)
         
         let task = URLSession.shared.dataTask(with: strongRequest, completionHandler: completionHandler)

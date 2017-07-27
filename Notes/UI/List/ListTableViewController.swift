@@ -99,6 +99,7 @@ class ListTableViewController: UITableViewController {
         guard let detail = segue.source as? DetailViewController, let note = detail.note else { return }
         
         switch detail.state {
+            
         case .creation:
             notebook.add(note: note)
             
@@ -121,51 +122,64 @@ class ListTableViewController: UITableViewController {
             
             DDLogDebug("\(note) was updated")
             
-        default: break
+        default:
+            break
+            
         }
     }
     
     // PART: - Main preparation
     
     private func prepareNotebook() {
+        // MARK: update ui operation
+        let updateUI = UITableViewOperations.reload(sections: [0], in: tableView) // QUESTION: async?
+
+        // MARK: fetch operation
+        let fetch = coreDataOperationsManager.fetch(notebook: notebook, success: { [weak self] fetched in
+            guard let sself = self else { return }
+            
+            let erase = EraseOutdatedOperation(notebook: fetched, manager: sself.coreDataOperationsManager)
+            erase.success = { [weak self] erased in
+                self?.notebook = erased
+            }
+            
+            updateUI.addDependency(erase)
+            
+            Dispatcher.dispatch(background: erase)
+        })
+        
+        // MARK: get operation
         let get = GetAllOperation(success: { [weak self] notes in
             guard let sself = self else { return }
-
+            
             for note in notes {
+                // MARK: create or update operation
                 let creation = sself.coreDataOperationsManager.createOrUpdate(note)
+                // MARK: contains operation
                 let check = sself.coreDataOperationsManager.contains(note, in: sself.notebook.uuid, success: { result in
                     if !result {
+                        // MARK: add operation
                         let addition = sself.coreDataOperationsManager.add(note, to: sself.notebook)
+                        
+                        fetch.addDependency(addition)
                         Dispatcher.dispatch(coreData: addition)
                     }
                 })
                 
                 check.addDependency(creation)
+                fetch.addDependency(check)
                 
                 Dispatcher.dispatch(coreData: creation)
                 Dispatcher.dispatch(coreData: check)
             }
         })
         
-        let fetch = coreDataOperationsManager.fetch(notebook: notebook, success: { [weak self] notebook in
-            guard let sself = self else { return }
-            
-            let eraseOutdated = EraseOutdatedOperation(notebook: notebook, manager: sself.coreDataOperationsManager)
-            eraseOutdated.success = { [weak self] notebook in
-                self?.notebook = notebook
-            }
-            
-            Dispatcher.dispatch(background: eraseOutdated)
-        })
-        
-        let updateUI = UITableViewOperations.reload(sections: [0], in: tableView) // QUESTION: async?
-        
-        fetch.addDependency(get)
         updateUI.addDependency(fetch)
+        fetch.addDependency(get)
         
-        Dispatcher.dispatch(backend: get)
-        Dispatcher.dispatch(coreData: fetch)
         Dispatcher.dispatch(main: updateUI)
+        Dispatcher.dispatch(coreData: fetch)
+        Dispatcher.dispatch(backend: get)
     }
     
     // PART: - Special things
@@ -176,8 +190,8 @@ class ListTableViewController: UITableViewController {
         backendOperation.addDependency(coreDataOperation)
         uiOperation.addDependency(coreDataOperation)
         
-        Dispatcher.dispatch(coreData: coreDataOperation)
         Dispatcher.dispatch(backend: backendOperation)
+        Dispatcher.dispatch(coreData: coreDataOperation)
         Dispatcher.dispatch(main: uiOperation)
     }
 

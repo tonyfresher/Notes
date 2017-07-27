@@ -37,7 +37,7 @@ public struct Note {
          creationDate: Date = Date(),
          erasureDate: Date? = nil) {
         (self.uuid, self.title, self.content, self.color, self.creationDate, self.erasureDate) =
-            (uuid, title, content, color, creationDate, erasureDate)
+            (uuid.lowercased(), title, content, color, creationDate, erasureDate)
     }
     
     public var isEmpty: Bool {

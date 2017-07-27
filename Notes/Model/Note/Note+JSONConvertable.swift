@@ -41,20 +41,21 @@ extension Note: JSONConvertable {
     public static func parse(_ json: [String: Any]) -> Note? {        
         guard let uuid = json["uid"] as? String,
             let title = json["title"] as? String,
-            let content = json["content"] as? String,
-            let creationDateTimeInterval = json["creation_date"] as? TimeInterval else {
+            let content = json["content"] as? String else {
                 return nil
         }
         
-        let creationDate = Date(timeIntervalSince1970: creationDateTimeInterval)
+        // MARK: because of compatibility
+        let creationDate: Date
+        if let creationDateTimeInterval = json["creation_date"] as? TimeInterval {
+            creationDate = Date(timeIntervalSince1970: creationDateTimeInterval)
+        } else {
+            creationDate = Date()
+        }
         
         let color : UIColor
         if let colorString = json["color"] as? String {
-            if let uiColor = UIColor(hex: colorString) {
-                color = uiColor
-            } else {
-                return nil
-            }
+            color = UIColor(hex: colorString) ?? Note.defaultColor
         } else {
             color = Note.defaultColor
         }

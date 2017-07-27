@@ -24,7 +24,14 @@ class PostOperation: AsyncOperation<Note> {
     
     override func main() {
         let conversion: (Any) -> Note? = { json in
-            // TODO: implement
+            // MARK: converting to the required fomat
+            guard let response = json as? [String: Any] else {
+                return nil
+            }
+            
+            //MARK: parsing
+            let note = Note.parse(response)            
+            return note
         }
         
         BackendRequests.performDataTask(method: "POST",

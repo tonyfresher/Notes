@@ -32,6 +32,8 @@ class GetAllOperation: AsyncOperation<[Note]> {
             
             //MARK: parsing
             let notes = response.flatMap { Note.parse($0) }
+            
+            return notes
         }
         
         BackendRequests.performDataTask(method: "GET(all)",
