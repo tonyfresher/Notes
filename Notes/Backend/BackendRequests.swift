@@ -110,6 +110,14 @@ class BackendRequests {
                     let responseCode = response["code"] as? Int,
                     let responseMessage = response["message"] as? String {
                     if responseError {
+                        if responseCode >= 500 && responseCode < 600 {
+                            DDLogWarn("While performing \(method) request error on server occured, trying again...")
+                            
+                            usleep(500)
+                            
+                            strongOperation.main()
+                            return
+                        }
                         DDLogError("Wrong \(method) request to server:\n" +
                             "code: \(responseCode)\n" +
                             "message: \(responseMessage)")

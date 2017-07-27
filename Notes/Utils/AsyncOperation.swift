@@ -57,4 +57,5 @@ class AsyncOperation<TResult>: Operation {
         _finished = true
         didChangeValue(forKey: "isFinished")
     }
+    
 }

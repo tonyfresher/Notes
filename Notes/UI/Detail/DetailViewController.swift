@@ -36,9 +36,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, Injectable {
     @IBOutlet weak var autoErasureSwitch: UISwitch!
     @IBAction func switchAutoErasureDatePicker(_ uiSwitch: UISwitch) {
         autoErasureDatePicker.isHidden = uiSwitch.isOn ? false : true
-        if !uiSwitch.isOn {
-            noteErasureDate = nil
-        }
+        noteErasureDate = uiSwitch.isOn ? autoErasureDatePicker.date : nil
     }
     
     @IBOutlet weak var autoErasureDatePicker: UIDatePicker!
