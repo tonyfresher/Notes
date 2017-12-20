@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,12 +17,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.tasks.notes.infrastructure.NotesAdapter;
-import com.tasks.notes.domain.Note;
-import com.tasks.notes.helpers.NotificationWrapper;
-import com.tasks.notes.infrastructure.OnItemStateChangedListener;
-import com.tasks.notes.storage.AsyncStorageProvider;
-import com.tasks.notes.storage.DatabaseProvider;
+import com.tasks.notes.R;
+import com.tasks.notes.data.model.Note;
+import com.tasks.notes.ui.MainActivity;
+import com.tasks.notes.ui.infrastructure.NotesAdapter;
+import com.tasks.notes.ui.infrastructure.NotificationWrapper;
+import com.tasks.notes.data.storage.AsyncStorageProvider;
+import com.tasks.notes.data.storage.DatabaseProvider;
+import com.tasks.notes.ui.infrastructure.OnItemStateChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;

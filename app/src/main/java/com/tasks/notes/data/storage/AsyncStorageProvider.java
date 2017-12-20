@@ -1,9 +1,9 @@
-package com.tasks.notes.storage;
+package com.tasks.notes.data.storage;
 
 import android.os.AsyncTask;
 
-import com.tasks.notes.domain.Note;
-import com.tasks.notes.helpers.AsyncTaskBuilder;
+import com.tasks.notes.data.model.Note;
+import com.tasks.notes.utility.AsyncTaskBuilder;
 
 import java.util.List;
 

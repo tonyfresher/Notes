@@ -1,4 +1,4 @@
-package com.tasks.notes.helpers;
+package com.tasks.notes.utility;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

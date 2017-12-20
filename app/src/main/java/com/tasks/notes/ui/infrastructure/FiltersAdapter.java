@@ -1,4 +1,4 @@
-package com.tasks.notes.infrastructure;
+package com.tasks.notes.ui.infrastructure;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tasks.notes.domain.Filter;
+import com.tasks.notes.data.model.Filter;
 import com.tasks.notes.R;
 
 import java.util.List;

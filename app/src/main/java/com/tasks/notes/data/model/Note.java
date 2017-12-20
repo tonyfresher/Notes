@@ -1,4 +1,4 @@
-package com.tasks.notes.domain;
+package com.tasks.notes.data.model;
 
 import android.graphics.Color;
 import android.os.Parcel;
@@ -13,7 +13,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.tasks.notes.helpers.ColorButtonCreator;
+import com.tasks.notes.ui.infrastructure.ColorButtonCreator;
 
 import java.lang.reflect.Type;
 import java.util.Comparator;
@@ -21,7 +21,7 @@ import java.util.Comparator;
 
 import org.joda.time.DateTime;
 
-import static com.tasks.notes.helpers.DateFormats.ISO8601_DATE_FORMAT;
+import static com.tasks.notes.utility.DateFormats.ISO8601_DATE_FORMAT;
 
 public class Note implements Parcelable {
 

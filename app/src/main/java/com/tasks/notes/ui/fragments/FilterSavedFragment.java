@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.JsonParseException;
-import com.tasks.notes.infrastructure.FiltersAdapter;
-import com.tasks.notes.domain.Filter;
+import com.tasks.notes.R;
+import com.tasks.notes.ui.infrastructure.FiltersAdapter;
+import com.tasks.notes.data.model.Filter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.tasks.notes.helpers.ImportExportService.GSON_SERIALIZER;
+import static com.tasks.notes.data.ImportExportUtils.GSON_SERIALIZER;
 
 public class FilterSavedFragment extends Fragment {
 

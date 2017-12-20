@@ -1,4 +1,4 @@
-package com.tasks.notes.helpers;
+package com.tasks.notes.utility;
 
 import android.os.AsyncTask;
 

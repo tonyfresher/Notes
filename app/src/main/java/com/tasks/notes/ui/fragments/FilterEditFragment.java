@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -16,8 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tasks.notes.domain.Filter;
-import com.tasks.notes.helpers.ColorButtonCreator;
+import com.tasks.notes.R;
+import com.tasks.notes.data.model.Filter;
+import com.tasks.notes.ui.infrastructure.ColorButtonCreator;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -26,8 +27,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.tasks.notes.helpers.DateFormats.*;
-import static com.tasks.notes.helpers.ImportExportService.GSON_SERIALIZER;
+import static com.tasks.notes.utility.DateFormats.*;
+import static com.tasks.notes.data.ImportExportUtils.GSON_SERIALIZER;
 
 public class FilterEditFragment extends ColorButtonCreator {
 

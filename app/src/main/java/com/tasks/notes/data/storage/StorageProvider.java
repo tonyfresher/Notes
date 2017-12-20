@@ -1,6 +1,6 @@
-package com.tasks.notes.storage;
+package com.tasks.notes.data.storage;
 
-import com.tasks.notes.domain.Note;
+import com.tasks.notes.data.model.Note;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.tasks.notes.domain;
+package com.tasks.notes.data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,7 +11,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.tasks.notes.helpers.DateFormats;
+import com.tasks.notes.utility.DateFormats;
 
 import java.lang.reflect.Type;
 

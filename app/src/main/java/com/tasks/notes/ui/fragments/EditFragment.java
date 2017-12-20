@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,12 +20,17 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.tasks.notes.domain.Note;
-import com.tasks.notes.helpers.ColorButtonCreator;
+import com.tasks.notes.R;
+import com.tasks.notes.data.model.Note;
+import com.tasks.notes.ui.MainActivity;
+import com.tasks.notes.ui.infrastructure.ColorButtonCreator;
 import com.tasks.notes.infrastructure.OnBackPressedListener;
 import com.tasks.notes.infrastructure.OnItemAddedListener;
 import com.tasks.notes.infrastructure.OnItemStateChangedListener;
-import com.tasks.notes.storage.*;
+import com.tasks.notes.data.storage.*;
+import com.tasks.notes.ui.infrastructure.OnBackPressedListener;
+import com.tasks.notes.ui.infrastructure.OnItemAddedListener;
+import com.tasks.notes.ui.infrastructure.OnItemStateChangedListener;
 
 import org.joda.time.DateTime;
 
@@ -33,7 +38,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.tasks.notes.helpers.DateFormats.ISO8601_DATE_FORMAT;
+import static com.tasks.notes.utility.DateFormats.ISO8601_DATE_FORMAT;
 
 public class EditFragment extends ColorButtonCreator
         implements OnBackPressedListener {

@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,9 +7,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -28,26 +29,32 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.tasks.notes.helpers.AsyncTaskBuilder;
-import com.tasks.notes.infrastructure.NotesAdapter;
-import com.tasks.notes.domain.Filter;
-import com.tasks.notes.domain.Note;
-import com.tasks.notes.helpers.NotificationWrapper;
-import com.tasks.notes.infrastructure.OnBackPressedListener;
-import com.tasks.notes.infrastructure.OnItemStateChangedListener;
-import com.tasks.notes.storage.AsyncStorageProvider;
-import com.tasks.notes.storage.DatabaseProvider;
-import com.tasks.notes.helpers.ImportExportService;
+import com.tasks.notes.App;
+import com.tasks.notes.R;
+import com.tasks.notes.data.model.Filter;
+import com.tasks.notes.data.model.Note;
+import com.tasks.notes.data.storage.AsyncStorageProvider;
+import com.tasks.notes.ui.MainActivity;
+import com.tasks.notes.ui.infrastructure.NotesAdapter;
+import com.tasks.notes.ui.infrastructure.NotificationWrapper;
+import com.tasks.notes.ui.infrastructure.OnBackPressedListener;
+import com.tasks.notes.ui.infrastructure.OnItemStateChangedListener;
+import com.tasks.notes.utility.AsyncTaskBuilder;
+import com.tasks.notes.data.ImportExportUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 
 public class ListFragment extends Fragment
         implements OnBackPressedListener, NavigationView.OnNavigationItemSelectedListener {
@@ -84,27 +91,60 @@ public class ListFragment extends Fragment
     private Comparator<Note> notesComparator = Note.BY_CREATED_DESCENDING_COMPARATOR;
     private final ArrayList<Note> notesList = new ArrayList<>();
 
-    private ImportExportService importExportService;
-
+    @Inject
     private AsyncStorageProvider databaseProvider;
+    @Inject
+    private ImportExportUtils importExportUtils;
+
+    private Handler mainHandler;
 
     @Nullable
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        importExportService = ImportExportService.getInstance(this);
-        databaseProvider = DatabaseProvider.getInstance(getContext());
+        ((App) getContext().getApplicationContext())
+                .getComponent()
+                .newActivityComponentBuilder()
+                .activity(this)
+                .build()
+                .inject(this);
+
+        mainHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case ImportExportUtils.ACTION_IMPORT: {
+                        refreshList();
+                        Toast.makeText(getContext(),
+                                ImportExportUtils.statusToString(getContext(),
+                                        msg.getData().getInt(ImportExportUtils.ARG_STATUS)),
+                                Toast.LENGTH_SHORT).show();
+
+
+                        if (msg.obj != null) {
+                            ((NotificationWrapper) msg.obj).close();
+                        }
+                        break;
+                    }
+                    case ImportExportUtils.ACTION_EXPORT: {
+                        Toast.makeText(getContext(),
+                                ImportExportUtils.statusToString(getContext(),
+                                        msg.getData().getInt(ImportExportUtils.ARG_STATUS)),
+                                Toast.LENGTH_SHORT).show();
+
+                        if (msg.obj != null) {
+                            ((NotificationWrapper) msg.obj).close();
+                        }
+                        break;
+                    }
+                }
+            }
+        };
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        importExportService.close();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
-            savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, rootView);
 
@@ -287,7 +327,10 @@ public class ListFragment extends Fragment
 
     private void tryImport(Uri uri) {
         if (isPermissionAllowed(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            importExportService.sendImportMessage(uri);
+            NotificationWrapper notification = new NotificationWrapper(getContext(),
+                    ImportExportUtils.NOTIFICATION_ID_IMPORT, "Import", true);
+            notification.start();
+            importExportUtils.sendImportMessage(uri, notification);
         } else {
             requestPermission(
                     Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ);
@@ -299,12 +342,14 @@ public class ListFragment extends Fragment
             databaseProvider
                     .getGetAllTask()
                     .setOnPostExecute(result -> {
-                        importExportService.sendExportMessage(result);
+                        NotificationWrapper notification = new NotificationWrapper(getContext(),
+                                ImportExportUtils.NOTIFICATION_ID_EXPORT, "Export", true);
+                        notification.start();
+                        importExportUtils.sendExportMessage(result, notification);
                         return null;
                     })
                     .execute();
         } else {
-            BottomSheetBehavior.
             requestPermission(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE, REQUEST_PERMISSION_WRITE);
         }

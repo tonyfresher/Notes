@@ -1,4 +1,4 @@
-package com.tasks.notes.storage;
+package com.tasks.notes.data.storage;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,23 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.AsyncTask;
 
-import com.tasks.notes.domain.Note;
-import com.tasks.notes.helpers.AsyncTaskBuilder;
+import com.tasks.notes.data.model.Note;
+import com.tasks.notes.utility.AsyncTaskBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class DatabaseProvider extends SQLiteOpenHelper
         implements AsyncStorageProvider {
-
-    private static DatabaseProvider instance;
-
-    public static DatabaseProvider getInstance(Context context) {
-        if (instance == null) {
-            instance = new DatabaseProvider(context);
-        }
-        return instance;
-    }
 
     private final static String TABLE_NAME = "Notes";
     private final static String NOTE_ROWID = "_id";
@@ -48,6 +43,7 @@ public class DatabaseProvider extends SQLiteOpenHelper
             "SELECT * FROM %s WHERE %s LIKE ? OR %s LIKE ?",
             TABLE_NAME, NOTE_TITLE, NOTE_DESCRIPTION);
 
+    @Inject
     private DatabaseProvider(Context context) {
         super(context, String.format("%sDatabase.db", TABLE_NAME), null, 1);
     }

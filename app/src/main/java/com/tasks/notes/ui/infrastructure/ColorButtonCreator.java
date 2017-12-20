@@ -1,4 +1,4 @@
-package com.tasks.notes.helpers;
+package com.tasks.notes.ui.infrastructure;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

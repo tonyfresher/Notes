@@ -1,4 +1,4 @@
-package com.tasks.notes;
+package com.tasks.notes.ui.fragments;
 
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -15,8 +15,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tasks.notes.domain.Filter;
-import com.tasks.notes.infrastructure.OnFilterChosenListener;
+import com.tasks.notes.R;
+import com.tasks.notes.data.model.Filter;
+import com.tasks.notes.ui.MainActivity;
+import com.tasks.notes.ui.infrastructure.OnFilterChosenListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
